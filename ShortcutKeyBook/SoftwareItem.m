@@ -18,6 +18,7 @@
         self.createAccount = jsonData[@"create_account"];
         self.softwareName = [jsonData[@"name"] stringByDecodingURIComponent];
         self.commentCount = ((NSNumber *)jsonData[@"comment_count"]).integerValue;
+        self.likeCount = ((NSNumber *)jsonData[@"like_count"]).integerValue;
         self.addTime = jsonData[@"add_time"];
     }
     
@@ -32,6 +33,7 @@
         self.createAccount = [aDecoder decodeObjectForKey:@"createAccount"];
         self.softwareId = [aDecoder decodeIntegerForKey:@"softwareId"];
         self.commentCount = [aDecoder decodeIntegerForKey:@"commentCount"];
+        self.likeCount = [aDecoder decodeIntegerForKey:@"likeCount"];
         self.addTime = [aDecoder decodeObjectForKey:@"add_time"];
     }
     return self;
@@ -43,6 +45,7 @@
     [aCoder encodeObject:self.createAccount forKey:@"createAccount"];
     [aCoder encodeObject:self.softwareName forKey:@"softwareName"];
     [aCoder encodeInteger:self.commentCount forKey:@"commentCount"];
+    [aCoder encodeInteger:self.likeCount forKey:@"likeCount"];
     [aCoder encodeObject:self.addTime forKey:@"addTime"];
 }
 

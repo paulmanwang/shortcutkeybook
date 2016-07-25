@@ -14,6 +14,7 @@
 #import "WLCToastView.h"
 #import "WLCPraiseView.h"
 #import "WLCCommentView.h"
+#import "LoginViewController.h"
 
 @interface ShortcutKeyViewController ()<WLCPraiseViewDelegate, WLCCommentViewDelegate>
 
@@ -51,19 +52,13 @@
     self.title = [NSString stringWithFormat:@"%@快捷键", self.softwareItem.softwareName];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.praiseView.delegate = self;
-    self.commentView.delegate = self;
-    
-    if ([self.softwareItem.createAccount isEqualToString:@"wlcunknownwlc"]) {
-        self.authorLabel.text = @"匿名用户";
-    } else {
-        self.authorLabel.text = self.softwareItem.createAccount;
-    }
-    
-    NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
-    self.timeLabel.text = subStrings[0];
+    self.tableView.tableHeaderView = self.headerView;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ShortcutKeyCell" bundle:nil] forCellReuseIdentifier:@"ShortcutKeyCell"];
+    
+    self.praiseView.delegate = self;
+    self.commentView.delegate = self;
     
     /*
      The back indicator image is shown beside the back button.
@@ -82,8 +77,14 @@
 //    self.backItem = [[UIBarButtonItem alloc] initWithTitle:@"呵呵" style:UIBarButtonItemStylePlain target:self action:@selector(test)];
 //    self.navigationItem.backBarButtonItem = self.backItem;
     
-    self.tableView.tableHeaderView = self.headerView;
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if ([self.softwareItem.createAccount isEqualToString:@"wlcunknownwlc"]) {
+        self.authorLabel.text = @"匿名用户";
+    } else {
+        self.authorLabel.text = self.softwareItem.createAccount;
+    }
+    
+    NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
+    self.timeLabel.text = subStrings[0];
     
     [[SoftwareManager sharedInstance] queryAllShortcutKeysOfSoftware:self.softwareItem.softwareId completionHandler:^(NSError *error, NSArray *shortcutKeys) {
         if (!error) {
@@ -91,6 +92,29 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSInteger praiseCount = self.softwareItem.likeCount;
+    if (praiseCount == 0) {
+        self.praiseView.numberLabel.hidden = YES;
+    }
+    else {
+        self.praiseView.numberLabel.hidden = NO;
+        self.praiseView.numberLabel.text = [NSString stringWithInteger:praiseCount];
+    }
+    
+    NSInteger commentCount = self.softwareItem.commentCount;
+    if (commentCount == 0) {
+        self.commentView.numberLabel.hidden = YES;
+    }
+    else {
+        self.commentView.numberLabel.hidden = NO;
+        self.commentView.numberLabel.text = [NSString stringWithInteger:commentCount];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,6 +178,7 @@
 
 #pragma mark - WLCPraiseViewDelegate
 
+// 匿名用户也可以点赞
 - (void)wlcPraiseViewDidClicked:(WLCPraiseView *)view
 {
     BOOL hasThumbUp = [[SoftwareManager sharedInstance] softwareHasThumbUp:self.softwareItem];
@@ -162,6 +187,8 @@
         [[SoftwareManager sharedInstance] thumbUpWithUp:NO softwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
             if (success) {
                 NSLog(@"取消点赞成功");
+                self.softwareItem.likeCount -= 1;
+                self.praiseView.numberLabel.text = [NSString stringWithInteger:self.softwareItem.likeCount];
             }
         }];
     }
@@ -170,6 +197,8 @@
         [[SoftwareManager sharedInstance] thumbUpWithUp:YES softwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
             if (success) {
                 NSLog(@"点赞成功");
+                self.softwareItem.likeCount += 1;
+                self.praiseView.numberLabel.text = [NSString stringWithInteger:self.softwareItem.likeCount];
             }
         }];
     }
@@ -177,14 +206,20 @@
 
 #pragma mark - WLCCommentViewDelegate
 
+// 评论之前，请先登录
 - (void)wlcCommentViewDidClicked:(WLCCommentView *)view
 {
-    [self.view toastWithMessage:@"评论"];
     UIViewController *viewController = nil;
     if (self.softwareItem.commentCount > 0) {
-        viewController = [[CommentViewController alloc] initWithSoftwareId:self.softwareItem.softwareId];
+        viewController = [[CommentViewController alloc] initWithSoftwareItem:self.softwareItem];
     } else {
-        viewController = [AddCommentViewController initWithSoftwareId:self.softwareItem.softwareId];
+        if (![LoginManager sharedInstance].logged) {
+            LoginViewController *loginViewController = [LoginViewController new];
+            [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
+            return;
+        }
+        
+        viewController = [AddCommentViewController initWithSoftwareItem:self.softwareItem];
     }
     
     [self presentViewControllerWithNavi:viewController animated:YES completion:nil];

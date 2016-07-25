@@ -14,17 +14,17 @@
 @interface AddCommentViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *textField;
-@property (assign, nonatomic) NSInteger softwareId;
+@property (strong, nonatomic) SoftwareItem *softwareItem;
 @property (weak, nonatomic) IBOutlet UIView *loginTipsView;
 
 @end
 
 @implementation AddCommentViewController
 
-+ (instancetype)initWithSoftwareId:(NSInteger)softwareId
++ (instancetype)initWithSoftwareItem:(SoftwareItem *)item
 {
     AddCommentViewController *vc = [AddCommentViewController new];
-    vc.softwareId = softwareId;
+    vc.softwareItem = item;
     return vc;
 }
 
@@ -65,9 +65,10 @@
         createAccount = @"wlcunknownwlc";
     }
     
-    [[SoftwareManager sharedInstance] addCommentWithSoftwareId:self.softwareId createAccout:createAccount content:content completionHanlder:^(NSError *error, BOOL success) {
+    [[SoftwareManager sharedInstance] addCommentWithSoftwareId:self.softwareItem.softwareId createAccout:createAccount content:content completionHanlder:^(NSError *error, BOOL success) {
         if (success) {
             NSLog(@"添加评论成功");
+            self.softwareItem.commentCount += 1;
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         } else {
             NSLog(@"添加评论失败");

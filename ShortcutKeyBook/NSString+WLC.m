@@ -47,6 +47,11 @@
     return [pinyin uppercaseString];
 }
 
++ (NSString *)stringWithInteger:(NSInteger)integer
+{
+    return [NSString stringWithFormat:@"%li", integer];
+}
+
 - (BOOL)isPureLetter
 {
     if (self == nil) {

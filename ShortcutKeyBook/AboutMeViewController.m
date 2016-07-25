@@ -67,23 +67,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 {
     [super viewWillAppear:animated];
     NSLog(@"viewWillAppear width = %f", self.tableView.frame.size.width);
-    
-    LoginManager *loginManager = [LoginManager sharedInstance];
-    if (loginManager.logged) {
-        NSLog(@"已登录");
-        [self.loginButton setTitle:@"退出登录"];
-        if (loginManager.currentUserInfo.nickname.length > 0) {
-            self.usernameLabel.text = loginManager.currentUserInfo.nickname;
-        } else {
-            self.usernameLabel.text = loginManager.currentUserInfo.username;
-        }
-        self.headerImageView.image = [UIImage imageNamed:@"chaiquan"];
-    } else {
-        NSLog(@"未登录");
-        self.usernameLabel.text = @"未登录";
-        [self.loginButton setTitle:@"点击登录"];
-        self.headerImageView.image = [UIImage imageNamed:@"default_header"];
-    }
+    [self updateLoginState];
 }
 
 //2016-06-24 08:49:01.082 ShortcutKeyBook[10728:518783] viewWillAppear width = 320.000000
@@ -105,6 +89,29 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 {
     [super viewDidAppear:animated];
     NSLog(@"viewDidAppear width = %f", self.tableView.frame.size.width);
+}
+
+
+#pragma mark - Private
+
+- (void)updateLoginState
+{
+    LoginManager *loginManager = [LoginManager sharedInstance];
+    if (loginManager.logged) {
+        NSLog(@"已登录");
+        [self.loginButton setTitle:@"退出登录"];
+        if (loginManager.currentUserInfo.nickname.length > 0) {
+            self.usernameLabel.text = loginManager.currentUserInfo.nickname;
+        } else {
+            self.usernameLabel.text = loginManager.currentUserInfo.username;
+        }
+        self.headerImageView.image = [UIImage imageNamed:@"chaiquan"];
+    } else {
+        NSLog(@"未登录");
+        self.usernameLabel.text = @"未登录";
+        [self.loginButton setTitle:@"点击登录"];
+        self.headerImageView.image = [UIImage imageNamed:@"default_header"];
+    }
 }
 
 - (AMCellType)cellTypeForIndexPath:(NSIndexPath *)indexPath
@@ -217,8 +224,17 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 
 - (IBAction)onLoginButtonClicked:(id)sender
 {
-    LoginViewController *loginViewController = [LoginViewController new];
-    [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
+    if ([LoginManager sharedInstance].logged) {
+        [LoginManager sharedInstance].logged = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.view toastWithMessage:@"退出登录成功"];
+            [self updateLoginState];
+        });
+    }
+    else {
+        LoginViewController *loginViewController = [LoginViewController new];
+        [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
+    }
 }
 
 

@@ -10,10 +10,11 @@
 #import "CommentTableViewCell.h"
 #import "SoftwareManager.h"
 #import "AddCommentViewController.h"
+#import "LoginViewController.h"
 
 @interface CommentViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (assign, nonatomic) NSInteger softwareId;
+@property (strong, nonatomic) SoftwareItem *softwareItem;
 @property (copy, nonatomic) NSArray *commentList;
 @property (assign, nonatomic) BOOL isLoadingData;
 
@@ -21,11 +22,11 @@
 
 @implementation CommentViewController
 
-- (instancetype)initWithSoftwareId:(NSInteger)softwareId
+- (instancetype)initWithSoftwareItem:(SoftwareItem *)item;
 {
     self = [super init];
     if (self) {
-        self.softwareId = softwareId;
+        self.softwareItem = item;
     }
     
     return self;
@@ -35,6 +36,7 @@
 {
     [super viewDidLoad];
     self.title = @"评论";
+    self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentTableViewCell" bundle:nil] forCellReuseIdentifier:@"CommentTableViewCell"];
     
     [self queryComments];
@@ -53,7 +55,7 @@
     }
     
     self.isLoadingData = YES;
-    [[SoftwareManager sharedInstance] queryallCommentsOfSoftware:self.softwareId
+    [[SoftwareManager sharedInstance] queryallCommentsOfSoftware:self.softwareItem.softwareId
                                                completionHandler:^(NSError *error, NSArray *comments) {
                                                    self.isLoadingData = NO;
                                                    if (!error) {
@@ -95,7 +97,13 @@
 
 - (IBAction)onAddCommentBtnClicked:(id)sender
 {
-    AddCommentViewController *vc = [AddCommentViewController initWithSoftwareId:self.softwareId];
+    if (![LoginManager sharedInstance].logged) {
+        LoginViewController *loginViewController = [LoginViewController new];
+        [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
+        return;
+    }
+    
+    AddCommentViewController *vc = [AddCommentViewController initWithSoftwareItem:self.softwareItem];
     [self presentViewControllerWithNavi:vc animated:YES completion:nil];
 }
 

@@ -31,4 +31,6 @@
 // 形如“xcode 2.3”的字符串
 - (BOOL)isLetterBeforeNumer;
 
++ (NSString *)stringWithInteger:(NSInteger)integer;
+
 @end

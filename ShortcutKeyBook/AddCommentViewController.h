@@ -10,6 +10,6 @@
 
 @interface AddCommentViewController : UIViewController
 
-+ (instancetype)initWithSoftwareId:(NSInteger)softwareId;
++ (instancetype)initWithSoftwareItem:(SoftwareItem *)item;
 
 @end
