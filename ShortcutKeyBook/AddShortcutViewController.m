@@ -14,6 +14,8 @@
 #import "ShortcutkeyItem.h"
 #import "WLCToastView.h"
 
+#define kWordBoardHeight 44.0f
+
 @interface AddShortcutViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *softwareNameLabel;
 
 @property (strong, nonatomic) NSMutableArray *shortcutList;
+@property (strong, nonatomic) IBOutlet UIView *wordHeaderView;
 
 @end
 
@@ -36,23 +39,49 @@
     if (self) {
         self.shortcutList = [NSMutableArray new];
         self.dataCount = 3;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
     }
     
     return self;
 }
 
+- (void)onKeyboardWillShowNotification:(NSNotification *)notification
+{
+    NSLog(@"onKeyboardWillShowNotification");
+    //获取键盘的高度
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyboardHeight = [aValue CGRectValue].size.height;
+    if (self.tableView.height == self.view.height - kWordBoardHeight) {
+        self.tableView.frame = CGRectMake(0, kWordBoardHeight, self.tableView.width, self.view.height - keyboardHeight - kWordBoardHeight);
+    }
+}
+
+- (void)onKeyboardWillHideNotification:(NSNotification *)notification
+{
+    NSLog(@"onKeyboardWillHideNotification self.view.height = %f", self.view.height);
+    self.tableView.frame = CGRectMake(0, kWordBoardHeight, self.tableView.width, self.view.height - kWordBoardHeight);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self configTitleView];
-    self.saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(onSubmitBtnClicked)];
+    self.saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(onSubmitBtnClicked)];
     self.navigationItem.rightBarButtonItem = self.saveButtonItem;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerNib:[UINib nibWithNibName:@"AddShortcutTableViewCell" bundle:nil] forCellReuseIdentifier:@"AddShortcutTableViewCell"];
-    self.tableView.sectionHeaderHeight = 2;
     [self initDataSource];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)initDataSource
@@ -82,18 +111,51 @@
     }
 }
 
+- (void)postNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddShortcutKeySuccess object:self];
+}
+
 - (void)onSubmitBtnClicked
 {
     NSLog(@"提交");
-    if (self.softwareNameLabel.text.length == 0) {
+    NSString *softwareName = self.softwareNameLabel.text;
+    if (softwareName.length == 0) {
         NSLog(@"请填写正确的软件名称");
         [self.view toastWithMessage:@"请填写正确的软件名称"];
         return;
     }
     
-    if (self.softwareNameLabel.text.length > 20) {
+    if (softwareName.length > 20) {
         NSLog(@"软件名称不能超过20个字符");
         [self.view toastWithMessage:@"软件名称不能超过20个字符"];
+        return;
+    }
+    
+    // 软件名称合法性检查
+    BOOL prefixIsNumber = [softwareName prefixIsNumber];
+    if (prefixIsNumber) {
+        NSLog(@"首字母不能为数字");
+        [self.view toastWithMessage:@"首字母不能为数字，请输入正确的软件名称"];
+        return;
+    }
+    
+    BOOL isPuttyLetter = [softwareName isPureLetterAndNumber];
+    if (!isPuttyLetter) {
+        NSLog(@"请输入英文字符或数字");
+        [self.view toastWithMessage:@"软件名称只能包含数字和字母"];
+        return;
+    }
+    
+    BOOL validate = [softwareName isLetterBeforeNumer];
+    if (!validate) {
+        NSLog(@"不合法的软件名称格式");
+        [self.view toastWithMessage:@"请输入正确的软件名称"];
+        return;
+    }
+    
+    if (self.shortcutList.count == 0) {
+        [self.view toastWithMessage:@"请填写正确的快捷键信息"];
         return;
     }
     
@@ -122,10 +184,11 @@
     } else {
         account = @"wlcunknownwlc";
     }
-    NSString *softwareName = [self.softwareNameLabel.text stringByEncodingURIComponent];
+    softwareName = [softwareName stringByEncodingURIComponent];
     [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account completionHandler:^(NSError *error, BOOL success) {
         if (success) {
             NSLog(@"添加成功");
+            [self postNotification];
             [self.view toastWithMessage:@"发布成功"];
             self.softwareNameLabel.text = @"";
             [self initDataSource];
@@ -140,11 +203,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ([LoginManager sharedInstance].logged) {
-        self.tableView.tableHeaderView = nil;
-    } else {
-        self.tableView.tableHeaderView = self.headerView;
-    }
+//    if ([LoginManager sharedInstance].logged) {
+//        self.tableView.tableHeaderView = self.wordHeaderView;
+//    } else {
+//        self.tableView.tableHeaderView = self.headerView;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -208,6 +271,29 @@
     }
 }
 
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectZero];
+    return headerView;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectZero];
+    return footerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.5;
+}
+
+
 - (IBAction)onAddButtonClicked:(id)sender
 {
     [self.tableView beginUpdates];
@@ -222,6 +308,12 @@
 {
     LoginViewController *loginViewController = [LoginViewController new];
     [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
+}
+- (IBAction)onWordButtonClicked:(id)sender
+{
+    NSString *text = ((UIButton *)sender).title;
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:text, @"word", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWordButtonClicked object:self userInfo:dict];
 }
 
 @end

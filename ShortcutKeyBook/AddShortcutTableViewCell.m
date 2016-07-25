@@ -21,6 +21,19 @@
 
 - (void)awakeFromNib
 {
+    self.nameTextField.delegate = self;
+    self.detailTextFiled.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onWordButtonClicked:) name:kWordButtonClicked object:nil];
+}
+
+- (void)onWordButtonClicked:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *word = userInfo[@"word"];
+    if ([self.nameTextField isFirstResponder]) {
+        self.nameTextField.text = [self.nameTextField.text stringByAppendingString:word];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -43,6 +56,12 @@
 - (void)fillData:(ShortcutkeyItem *)item
 {
     self.shortcutKeyItem = item;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)nameTextFiledEditingChanged:(id)sender

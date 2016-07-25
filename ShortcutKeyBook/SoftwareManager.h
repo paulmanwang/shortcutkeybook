@@ -35,6 +35,8 @@ DECLARA_SHARED_INSTANCE
 
 - (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
 
+- (void)searchSoftwaresWithKeyword:(NSString *)keyword completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler;
+
 #pragma mar - comment
 
 - (void)queryallCommentsOfSoftware:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, NSArray *comments))completionHandler;

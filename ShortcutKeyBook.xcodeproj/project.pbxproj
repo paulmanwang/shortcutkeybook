@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		921C648A1D17B0350055D5CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921C64891D17B0350055D5CD /* LaunchScreen.xib */; };
+		92304C321D436BE100627100 /* WLCPraiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92304C311D436BE100627100 /* WLCPraiseView.m */; };
+		92304C371D43774200627100 /* WLCCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92304C361D43774200627100 /* WLCCommentView.m */; };
 		923F507D1D262C6200A46AA6 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F507C1D262C6200A46AA6 /* XMLDictionary.m */; };
 		923F50811D26338000A46AA6 /* SoftwareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50801D26338000A46AA6 /* SoftwareManager.m */; };
 		923F50841D26367200A46AA6 /* NSObject+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50831D26367200A46AA6 /* NSObject+Networking.m */; };
 		923F508F1D27727A00A46AA6 /* SoftwareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F508E1D27727A00A46AA6 /* SoftwareItem.m */; };
 		923F50921D27BA5F00A46AA6 /* ShortcutkeyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50911D27BA5F00A46AA6 /* ShortcutkeyItem.m */; };
 		923F50951D27C78F00A46AA6 /* CommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50941D27C78F00A46AA6 /* CommentItem.m */; };
-		923F50B21D2AC49F00A46AA6 /* NSString+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50B11D2AC49F00A46AA6 /* NSString+JSON.m */; };
+		923F50B21D2AC49F00A46AA6 /* NSString+WLC.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50B11D2AC49F00A46AA6 /* NSString+WLC.m */; };
 		923F50B91D2B4D6800A46AA6 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50B81D2B4D6800A46AA6 /* NSString+URLEncode.m */; };
 		923F50BD1D2B79F800A46AA6 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F50BB1D2B79F800A46AA6 /* AddCommentViewController.m */; };
 		923F50BE1D2B79F800A46AA6 /* AddCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923F50BC1D2B79F800A46AA6 /* AddCommentViewController.xib */; };
@@ -64,6 +66,10 @@
 		3280373EA8D8B6733149B8CF /* Pods_ShortcutKeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortcutKeyBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F274B43D867F6A0A3EFD06 /* Pods-ShortcutKeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.debug.xcconfig"; sourceTree = "<group>"; };
 		921C64891D17B0350055D5CD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		92304C301D436BE100627100 /* WLCPraiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCPraiseView.h; sourceTree = "<group>"; };
+		92304C311D436BE100627100 /* WLCPraiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCPraiseView.m; sourceTree = "<group>"; };
+		92304C351D43774200627100 /* WLCCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCCommentView.h; sourceTree = "<group>"; };
+		92304C361D43774200627100 /* WLCCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCCommentView.m; sourceTree = "<group>"; };
 		923F507B1D262C6200A46AA6 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		923F507C1D262C6200A46AA6 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		923F507F1D26338000A46AA6 /* SoftwareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareManager.h; sourceTree = "<group>"; };
@@ -76,8 +82,8 @@
 		923F50911D27BA5F00A46AA6 /* ShortcutkeyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutkeyItem.m; sourceTree = "<group>"; };
 		923F50931D27C78F00A46AA6 /* CommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItem.h; sourceTree = "<group>"; };
 		923F50941D27C78F00A46AA6 /* CommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItem.m; sourceTree = "<group>"; };
-		923F50B01D2AC49F00A46AA6 /* NSString+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSON.h"; sourceTree = "<group>"; };
-		923F50B11D2AC49F00A46AA6 /* NSString+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSON.m"; sourceTree = "<group>"; };
+		923F50B01D2AC49F00A46AA6 /* NSString+WLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WLC.h"; sourceTree = "<group>"; };
+		923F50B11D2AC49F00A46AA6 /* NSString+WLC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WLC.m"; sourceTree = "<group>"; };
 		923F50B71D2B4D6800A46AA6 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		923F50B81D2B4D6800A46AA6 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 		923F50BA1D2B79F800A46AA6 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
@@ -175,6 +181,66 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		92304C381D443D0B00627100 /* All */ = {
+			isa = PBXGroup;
+			children = (
+				92843D601D155A31000F9555 /* SoftwareListViewController.h */,
+				92843D611D155A31000F9555 /* SoftwareListViewController.m */,
+				92843D621D155A31000F9555 /* SoftwareListViewController.xib */,
+			);
+			name = All;
+			sourceTree = "<group>";
+		};
+		92304C391D443D1F00627100 /* MyFavor */ = {
+			isa = PBXGroup;
+			children = (
+				9241A6FB1D20DF1A00FF47F1 /* MyFavorViewController.h */,
+				9241A6FC1D20DF1A00FF47F1 /* MyFavorViewController.m */,
+			);
+			name = MyFavor;
+			sourceTree = "<group>";
+		};
+		92304C3A1D443D3900627100 /* MyCreated */ = {
+			isa = PBXGroup;
+			children = (
+				9241A6FE1D20E22900FF47F1 /* MyCreatedViewController.h */,
+				9241A6FF1D20E22900FF47F1 /* MyCreatedViewController.m */,
+			);
+			name = MyCreated;
+			sourceTree = "<group>";
+		};
+		92304C3B1D443D6700627100 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				92797BB01D18FB2E00EADEE4 /* SoftwareSearchViewController.h */,
+				92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		92304C3C1D443DE200627100 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				92843D8C1D1626E4000F9555 /* AddShortcutTableViewCell.h */,
+				92843D8D1D1626E4000F9555 /* AddShortcutTableViewCell.m */,
+				92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */,
+				92843D871D162588000F9555 /* AddShortcutViewController.h */,
+				92843D881D162588000F9555 /* AddShortcutViewController.m */,
+				92843D891D162588000F9555 /* AddShortcutViewController.xib */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
+		92304C3D1D443DFB00627100 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				923F50BA1D2B79F800A46AA6 /* AddCommentViewController.h */,
+				923F50BB1D2B79F800A46AA6 /* AddCommentViewController.m */,
+				923F50BC1D2B79F800A46AA6 /* AddCommentViewController.xib */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
 		923F507A1D262C4900A46AA6 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,8 +314,8 @@
 				9241A71D1D215DC100FF47F1 /* UIViewController+WLC.m */,
 				923F50821D26367200A46AA6 /* NSObject+Networking.h */,
 				923F50831D26367200A46AA6 /* NSObject+Networking.m */,
-				923F50B01D2AC49F00A46AA6 /* NSString+JSON.h */,
-				923F50B11D2AC49F00A46AA6 /* NSString+JSON.m */,
+				923F50B01D2AC49F00A46AA6 /* NSString+WLC.h */,
+				923F50B11D2AC49F00A46AA6 /* NSString+WLC.m */,
 				923F50B71D2B4D6800A46AA6 /* NSString+URLEncode.h */,
 				923F50B81D2B4D6800A46AA6 /* NSString+URLEncode.m */,
 				927DB93B1D32A9BD000D94B6 /* UILabel+WLC.h */,
@@ -291,6 +357,10 @@
 				927DB9341D32A768000D94B6 /* WLCToastView.xib */,
 				92B95DFB1D38AA1600E48581 /* OnePixelHeightView.h */,
 				92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */,
+				92304C301D436BE100627100 /* WLCPraiseView.h */,
+				92304C311D436BE100627100 /* WLCPraiseView.m */,
+				92304C351D43774200627100 /* WLCCommentView.h */,
+				92304C361D43774200627100 /* WLCCommentView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -341,21 +411,16 @@
 		92843D731D159903000F9555 /* Software */ = {
 			isa = PBXGroup;
 			children = (
-				9241A6DD1D1FEF5700FF47F1 /* BaseViewController.h */,
-				9241A6DE1D1FEF5700FF47F1 /* BaseViewController.m */,
-				9241A6DF1D1FEF5700FF47F1 /* BaseViewController.xib */,
-				92843D601D155A31000F9555 /* SoftwareListViewController.h */,
-				92843D611D155A31000F9555 /* SoftwareListViewController.m */,
-				92843D621D155A31000F9555 /* SoftwareListViewController.xib */,
+				92304C3B1D443D6700627100 /* Search */,
+				92304C3A1D443D3900627100 /* MyCreated */,
+				92304C391D443D1F00627100 /* MyFavor */,
+				92304C381D443D0B00627100 /* All */,
 				92843D6E1D1590FC000F9555 /* SoftwareCell.h */,
 				92843D6F1D1590FC000F9555 /* SoftwareCell.m */,
 				92843D701D1590FC000F9555 /* SoftwareCell.xib */,
-				92797BB01D18FB2E00EADEE4 /* SoftwareSearchViewController.h */,
-				92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */,
-				9241A6FB1D20DF1A00FF47F1 /* MyFavorViewController.h */,
-				9241A6FC1D20DF1A00FF47F1 /* MyFavorViewController.m */,
-				9241A6FE1D20E22900FF47F1 /* MyCreatedViewController.h */,
-				9241A6FF1D20E22900FF47F1 /* MyCreatedViewController.m */,
+				9241A6DD1D1FEF5700FF47F1 /* BaseViewController.h */,
+				9241A6DE1D1FEF5700FF47F1 /* BaseViewController.m */,
+				9241A6DF1D1FEF5700FF47F1 /* BaseViewController.xib */,
 			);
 			name = Software;
 			sourceTree = "<group>";
@@ -373,12 +438,7 @@
 		92843D751D159928000F9555 /* ShortcutKey */ = {
 			isa = PBXGroup;
 			children = (
-				92843D8C1D1626E4000F9555 /* AddShortcutTableViewCell.h */,
-				92843D8D1D1626E4000F9555 /* AddShortcutTableViewCell.m */,
-				92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */,
-				92843D871D162588000F9555 /* AddShortcutViewController.h */,
-				92843D881D162588000F9555 /* AddShortcutViewController.m */,
-				92843D891D162588000F9555 /* AddShortcutViewController.xib */,
+				92304C3C1D443DE200627100 /* Add */,
 				92843D7B1D159B84000F9555 /* ShortcutKeyCell.h */,
 				92843D7C1D159B84000F9555 /* ShortcutKeyCell.m */,
 				92843D7D1D159B84000F9555 /* ShortcutKeyCell.xib */,
@@ -402,15 +462,13 @@
 		92BF5C5C1D1CE318000FA2A8 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				92304C3D1D443DFB00627100 /* Add */,
 				92BF5C5D1D1CE33D000FA2A8 /* CommentViewController.h */,
 				92BF5C5E1D1CE33D000FA2A8 /* CommentViewController.m */,
 				92BF5C5F1D1CE33D000FA2A8 /* CommentViewController.xib */,
 				92BF5C661D1D1586000FA2A8 /* CommentTableViewCell.h */,
 				92BF5C671D1D1586000FA2A8 /* CommentTableViewCell.m */,
 				92BF5C681D1D1586000FA2A8 /* CommentTableViewCell.xib */,
-				923F50BA1D2B79F800A46AA6 /* AddCommentViewController.h */,
-				923F50BB1D2B79F800A46AA6 /* AddCommentViewController.m */,
-				923F50BC1D2B79F800A46AA6 /* AddCommentViewController.xib */,
 			);
 			name = Comment;
 			sourceTree = "<group>";
@@ -586,7 +644,9 @@
 				9241A7261D22182B00FF47F1 /* UIView+WLC.m in Sources */,
 				92843D461D155964000F9555 /* main.m in Sources */,
 				923F507D1D262C6200A46AA6 /* XMLDictionary.m in Sources */,
-				923F50B21D2AC49F00A46AA6 /* NSString+JSON.m in Sources */,
+				923F50B21D2AC49F00A46AA6 /* NSString+WLC.m in Sources */,
+				92304C321D436BE100627100 /* WLCPraiseView.m in Sources */,
+				92304C371D43774200627100 /* WLCCommentView.m in Sources */,
 				923F50811D26338000A46AA6 /* SoftwareManager.m in Sources */,
 				92843D8F1D1626E4000F9555 /* AddShortcutTableViewCell.m in Sources */,
 				92843D631D155A31000F9555 /* SoftwareListViewController.m in Sources */,

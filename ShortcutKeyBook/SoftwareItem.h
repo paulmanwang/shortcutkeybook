@@ -22,7 +22,7 @@
 
 @property (assign, nonatomic) NSInteger softwareId;
 
-@property (assign, nonatomic) NSString *createCount; // to modify
+@property (copy, nonatomic) NSString *createAccount; // to modify
 
 @property (copy, nonatomic) NSString *softwareName;
 
@@ -37,6 +37,8 @@
 @property (assign, nonatomic) NSUInteger collectCount;
 
 @property (assign, nonatomic) NSUInteger commentCount;
+
+@property (copy, nonatomic) NSString *addTime;
 
 - (instancetype)initWithJsonData:(NSDictionary *)jsonData;
 

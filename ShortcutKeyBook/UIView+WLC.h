@@ -16,6 +16,9 @@
 - (void)setHeight:(CGFloat)height;
 - (CGFloat)height;
 
+- (void)setTop:(CGFloat)top;
+- (CGFloat)top;
+
 - (void)showLoadingView;
 - (void)dismissLoadingView;
 

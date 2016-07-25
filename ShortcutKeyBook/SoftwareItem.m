@@ -15,8 +15,10 @@
     self = [super init];
     if (self) {
         self.softwareId = ((NSNumber *)jsonData[@"id"]).integerValue;
+        self.createAccount = jsonData[@"create_account"];
         self.softwareName = [jsonData[@"name"] stringByDecodingURIComponent];
         self.commentCount = ((NSNumber *)jsonData[@"comment_count"]).integerValue;
+        self.addTime = jsonData[@"add_time"];
     }
     
     return self;
@@ -27,17 +29,21 @@
     self = [super init];
     if (self) {
         self.softwareName = [aDecoder decodeObjectForKey:@"softwareName"];
-        self.softwareId = ((NSNumber *)[aDecoder decodeObjectForKey:@"softwareId"]).integerValue;
-        self.commentCount = ((NSNumber *)[aDecoder decodeObjectForKey:@"commentCount"]).integerValue;
+        self.createAccount = [aDecoder decodeObjectForKey:@"createAccount"];
+        self.softwareId = [aDecoder decodeIntegerForKey:@"softwareId"];
+        self.commentCount = [aDecoder decodeIntegerForKey:@"commentCount"];
+        self.addTime = [aDecoder decodeObjectForKey:@"add_time"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:@(self.softwareId) forKey:@"softwareId"];
+    [aCoder encodeInteger:self.softwareId forKey:@"softwareId"];
+    [aCoder encodeObject:self.createAccount forKey:@"createAccount"];
     [aCoder encodeObject:self.softwareName forKey:@"softwareName"];
-    [aCoder encodeObject:@(self.commentCount) forKey:@"commentCount"];
+    [aCoder encodeInteger:self.commentCount forKey:@"commentCount"];
+    [aCoder encodeObject:self.addTime forKey:@"addTime"];
 }
 
 @end

@@ -55,6 +55,7 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         NSDictionary *dic = [NSDictionary dictionaryWithXMLData:responseObject];
+        NSLog(@"dict = %@", dic);
         if (completionHandler) {
             completionHandler(nil, dic[@"body"]);
         }

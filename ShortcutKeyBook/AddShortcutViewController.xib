@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddShortcutViewController">
@@ -13,6 +13,7 @@
                 <outlet property="softwareNameTableViewCell" destination="aid-8X-K45" id="jcA-oL-71g"/>
                 <outlet property="tableView" destination="56i-Xj-Apy" id="U9B-Uv-s0E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wordHeaderView" destination="C6Y-Rn-vMW" id="TJi-ae-hEn"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,8 +21,60 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6Y-Rn-vMW">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-H9-lgK">
+                            <rect key="frame" x="107" y="7" width="36" height="30"/>
+                            <state key="normal" title="Cmd"/>
+                            <connections>
+                                <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="016-QG-Ox7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHt-rZ-FaG">
+                            <rect key="frame" x="58" y="7" width="41" height="30"/>
+                            <state key="normal" title="Ctrl"/>
+                            <connections>
+                                <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="cI3-Cz-rVF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLW-zt-Keo">
+                            <rect key="frame" x="151" y="7" width="30" height="30"/>
+                            <state key="normal" title="Alt"/>
+                            <connections>
+                                <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="fzO-7l-AAT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80O-f8-F82">
+                            <rect key="frame" x="189" y="7" width="54" height="30"/>
+                            <state key="normal" title="Shift"/>
+                            <connections>
+                                <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="NLs-Qc-1bY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbO-oV-QYG">
+                            <rect key="frame" x="251" y="7" width="48" height="30"/>
+                            <state key="normal" title="Win"/>
+                            <connections>
+                                <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="omf-C6-Pa6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tj-H4-SO8">
+                            <rect key="frame" x="8" y="7" width="42" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="+"/>
+                            <connections>
+                                <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="HM3-Lh-579"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Ia6-kh-HgK"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="56i-Xj-Apy">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="zQF-xo-cIG"/>
@@ -31,13 +84,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="56i-Xj-Apy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RWd-8A-XOR"/>
-                <constraint firstItem="56i-Xj-Apy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UDu-s0-oWP"/>
-                <constraint firstAttribute="trailing" secondItem="56i-Xj-Apy" secondAttribute="trailing" id="lXW-Jl-lm0"/>
-                <constraint firstAttribute="bottom" secondItem="56i-Xj-Apy" secondAttribute="bottom" id="yTK-Iv-f7k"/>
+                <constraint firstItem="56i-Xj-Apy" firstAttribute="top" secondItem="C6Y-Rn-vMW" secondAttribute="bottom" id="0WY-IS-5GR"/>
+                <constraint firstAttribute="bottom" secondItem="56i-Xj-Apy" secondAttribute="bottom" id="9GC-nl-Y2G"/>
+                <constraint firstItem="C6Y-Rn-vMW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BgU-x6-cUN"/>
+                <constraint firstAttribute="trailing" secondItem="56i-Xj-Apy" secondAttribute="trailing" id="J4w-ur-9fW"/>
+                <constraint firstItem="56i-Xj-Apy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dQb-PT-fad"/>
+                <constraint firstItem="C6Y-Rn-vMW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h0s-eF-4lR"/>
+                <constraint firstAttribute="trailing" secondItem="C6Y-Rn-vMW" secondAttribute="trailing" id="kFA-ef-oqh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="256" y="285"/>
+            <point key="canvasLocation" x="204" y="287"/>
         </view>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="94Q-c5-62v">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -71,10 +127,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="软件名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoF-6U-EJx">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="软件名称(包含字母或数字)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoF-6U-EJx">
                         <rect key="frame" x="8" y="15" width="304" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="1rH-kB-GvJ"/>
+                        </connections>
                     </textField>
                 </subviews>
                 <constraints>

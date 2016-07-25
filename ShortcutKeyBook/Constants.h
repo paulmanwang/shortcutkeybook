@@ -13,6 +13,9 @@
 
 #define RNCryptorPassword @"wlc20112413015++"
 
+#define kAddShortcutKeySuccess @"kAddShortcutKeySuccess"
+#define kWordButtonClicked @"kWordButtonClicked"
+
 #define DECLARA_SHARED_INSTANCE \
 + (instancetype)sharedInstance;
 

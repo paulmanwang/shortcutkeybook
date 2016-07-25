@@ -12,7 +12,7 @@
 #import "UIView+WLC.h"
 #import "UIViewController+WLC.h"
 #import "NSObject+Networking.h"
-#import "NSString+JSON.h"
+#import "NSString+WLC.h"
 #import "NSString+URLEncode.h"
 #import "UILabel+WLC.h"
 #import "UIButton+WLC.h"

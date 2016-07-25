@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface BaseViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (copy, nonatomic) NSArray *softwares;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

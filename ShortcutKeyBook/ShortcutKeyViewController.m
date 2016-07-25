@@ -12,8 +12,10 @@
 #import "SoftwareManager.h"
 #import "AddCommentViewController.h"
 #import "WLCToastView.h"
+#import "WLCPraiseView.h"
+#import "WLCCommentView.h"
 
-@interface ShortcutKeyViewController ()
+@interface ShortcutKeyViewController ()<WLCPraiseViewDelegate, WLCCommentViewDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *backItem;
 @property (assign, nonatomic) SoftwareItem *softwareItem;
@@ -22,6 +24,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UILabel *usedCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet WLCPraiseView *praiseView;
+@property (weak, nonatomic) IBOutlet WLCCommentView *commentView;
 
 @end
 
@@ -43,6 +50,19 @@
     [super viewDidLoad];
     self.title = [NSString stringWithFormat:@"%@快捷键", self.softwareItem.softwareName];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.praiseView.delegate = self;
+    self.commentView.delegate = self;
+    
+    if ([self.softwareItem.createAccount isEqualToString:@"wlcunknownwlc"]) {
+        self.authorLabel.text = @"匿名用户";
+    } else {
+        self.authorLabel.text = self.softwareItem.createAccount;
+    }
+    
+    NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
+    self.timeLabel.text = subStrings[0];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"ShortcutKeyCell" bundle:nil] forCellReuseIdentifier:@"ShortcutKeyCell"];
     
     /*
@@ -79,6 +99,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Private
+
+- (BOOL)checkFavor
+{
+    NSArray *favorSoftwares = [[SoftwareManager sharedInstance] loadMyFavorSoftwares];
+    for (SoftwareItem *favorItem in favorSoftwares) {
+        if (favorItem.softwareId == self.softwareItem.softwareId) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -107,18 +141,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)onCommentBtnClicked:(id)sender
-{
-    UIViewController *viewController = nil;
-    if (self.softwareItem.commentCount > 0) {
-        viewController = [[CommentViewController alloc] initWithSoftwareId:self.softwareItem.softwareId];
-    } else {
-        viewController = [AddCommentViewController initWithSoftwareId:self.softwareItem.softwareId];
-    }
-    
-    [self presentViewControllerWithNavi:viewController animated:YES completion:nil];
-}
-
 - (IBAction)onFavorButtonClicked:(id)sender
 {
     BOOL ret = [[SoftwareManager sharedInstance] addMyFavorSoftware:self.softwareItem];
@@ -130,7 +152,9 @@
     }
 }
 
-- (IBAction)onThumbUpBtnClicked:(id)sender
+#pragma mark - WLCPraiseViewDelegate
+
+- (void)wlcPraiseViewDidClicked:(WLCPraiseView *)view
 {
     BOOL hasThumbUp = [[SoftwareManager sharedInstance] softwareHasThumbUp:self.softwareItem];
     if (hasThumbUp) {
@@ -149,7 +173,21 @@
             }
         }];
     }
+}
 
+#pragma mark - WLCCommentViewDelegate
+
+- (void)wlcCommentViewDidClicked:(WLCCommentView *)view
+{
+    [self.view toastWithMessage:@"评论"];
+    UIViewController *viewController = nil;
+    if (self.softwareItem.commentCount > 0) {
+        viewController = [[CommentViewController alloc] initWithSoftwareId:self.softwareItem.softwareId];
+    } else {
+        viewController = [AddCommentViewController initWithSoftwareId:self.softwareItem.softwareId];
+    }
+    
+    [self presentViewControllerWithNavi:viewController animated:YES completion:nil];
 }
 
 @end

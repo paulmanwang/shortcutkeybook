@@ -37,6 +37,18 @@
     return self.frame.size.height;
 }
 
+- (void)setTop:(CGFloat)top
+{
+    CGRect rect = self.frame;
+    rect.origin.y = top;
+    self.frame = rect;
+}
+
+- (CGFloat)top
+{
+    return self.frame.origin.y;
+}
+
 - (void)setHud:(MBProgressHUD *)hud
 {
     objc_setAssociatedObject(self, @"MBProgressHUD", hud, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

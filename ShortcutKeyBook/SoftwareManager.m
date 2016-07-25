@@ -179,6 +179,36 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
     }];
 }
 
+- (void)searchSoftwaresWithKeyword:(NSString *)keyword completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler
+{
+    NSString *paramString = [NSString stringWithFormat:@"keyword=%@", [keyword stringByEncodingURIComponent]];
+    [self requestWithProtocalName:@"search" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+        NSString *resultString = (NSString *)bodyData;
+        NSLog(@"searchSoftwares resultString = %@", resultString);
+        if (error) {
+            if (completionHandler) {
+                completionHandler(error, nil);
+            }
+            return;
+        }
+        
+        resultString = [NSString stringWithFormat:@"{\"softwares\":%@}", resultString];
+        NSDictionary *dict = [resultString toJsonData];
+        NSLog(@"dic = %@", dict);
+        NSArray *softwareList = dict[@"softwares"];
+        NSMutableArray *results = [NSMutableArray new];
+        for (NSInteger i = 0; i < softwareList.count; i++) {
+            NSDictionary *info = softwareList[i];
+            SoftwareItem *item = [[SoftwareItem alloc] initWithJsonData:info];
+            [results addObject:item];
+        }
+        
+        if (completionHandler) {
+            completionHandler(nil, results);
+        }
+    }];
+}
+
 - (void)queryAllShortcutKeysOfSoftware:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, NSArray *shortcutKeys))completionHandler
 {
     NSString *paramString = [NSString stringWithFormat:@"software_id=%li", softwareId];

@@ -13,11 +13,15 @@
 #import "SoftwareManager.h"
 #import "SoftwareItem.h"
 
-@interface SoftwareListViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@interface SoftwareListViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @property (copy, nonatomic) NSArray *softwares;
 @property (assign, nonatomic) BOOL isLoadingData;
+@property (strong, nonatomic) NSMutableDictionary *letterDic;
+@property (strong, nonatomic) NSMutableArray *letterArray;
 
 @end
 
@@ -28,6 +32,10 @@
     self = [super init];
     if (self) {
         self.title = @"快捷键";
+        self.letterDic = [NSMutableDictionary new];
+        self.letterArray = [NSMutableArray new];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAddShortcutKeySuccess:) name:kAddShortcutKeySuccess object:nil];
     }
     
     return self;
@@ -39,9 +47,7 @@
     // Do any additional setup after loading the view from its nib.
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self configTitleView];
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"SoftwareCell" bundle:nil] forCellWithReuseIdentifier:@"SoftwareCell"];
-    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self querySoftwares];
 }
 
@@ -63,6 +69,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (self.softwares.count == 0) {
+        [self refreshData];
+    }
+}
+
+#pragma mark - Notification
+
+- (void)onAddShortcutKeySuccess:(NSNotification *)notification
+{
     [self refreshData];
 }
 
@@ -86,9 +102,34 @@
         [self.view dismissLoadingView];
         if (!error) {
             self.softwares = softwares;
-            [self.collectionView reloadData];
+            [self updateUI];
         }
     }];
+}
+
+- (void)updateUI
+{
+    // 分类算法
+    [self.letterDic removeAllObjects];
+    [self.letterArray removeAllObjects];
+    
+    for (SoftwareItem *item in self.softwares) {
+        NSString *name = [item.softwareName transformToChinise];
+        NSString *firstLetter = [name substringToIndex:1];
+        if (self.letterDic[firstLetter] == nil) {
+            self.letterDic[firstLetter] = [NSMutableArray new];
+        }
+        [self.letterDic[firstLetter] addObject:item];
+    }
+    
+    [self.letterArray addObjectsFromArray:self.letterDic.allKeys];
+    [self.letterArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NSString *letter1 = (NSString *)obj1;
+        NSString *letter2 = (NSString *)obj2;
+        return [letter1 characterAtIndex:0] > [letter2 characterAtIndex:0];
+    }];
+    
+    [self.tableView reloadData];
 }
 
 - (void)timeout
@@ -110,68 +151,89 @@
         [self.view dismissLoadingView];
         if (!error) {
             self.softwares = softwares;
-            [self.collectionView reloadData];
+            [self updateUI];
         }
     }];
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - UITableViewDataSource
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.softwares.count;
+    return self.letterDic.allKeys.count;
 }
 
-//每个UICollectionView展示的内容
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    SoftwareCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SoftwareCell" forIndexPath:indexPath];
-    SoftwareItem *item = self.softwares[indexPath.row];
-    [cell fillWithName:item.softwareName iconImage:nil];
-    
+    NSString *key = self.letterArray[section];
+    return ((NSArray *)self.letterDic[key]).count;
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.letterArray[section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *key = self.letterArray[indexPath.section];
+    NSArray *softwares = (NSArray *)self.letterDic[key];
+    SoftwareItem *item = softwares[indexPath.row];
+    UITableViewCell *cell = [UITableViewCell new];
+    cell.textLabel.font = [UIFont systemFontOfSize:17];
+    cell.textLabel.text = item.softwareName;
     return cell;
 }
 
-#pragma mark - UICollectionViewDelegate
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    //选择事件全部用手势代替
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"navibar_back_btn"];
-//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"navibar_back_btn"];
-//    
-//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationItem.backBarButtonItem = backItem;
-    
-    SoftwareItem *item = self.softwares[indexPath.row];
+    return self.letterArray;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 20)];
+    headerView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 50, 20)];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = self.letterArray[section];
+    label.font = [UIFont systemFontOfSize:12];
+    [headerView addSubview:label];
+    return headerView;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectZero];
+    return footerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *key = self.letterArray[indexPath.section];
+    NSArray *softwares = (NSArray *)self.letterDic[key];
+    SoftwareItem *item = softwares[indexPath.row];
     ShortcutKeyViewController *vc = [[ShortcutKeyViewController alloc] initWithSoftwareItem:item];
     [self.navigationController pushViewController:vc animated:YES];
     
-    return;
-}
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [SoftwareCell cellSize];
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
-}
-
-////设置cell的横向间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 10.0;
-}
-
-//设置cell的纵向间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 20;
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - UISearchBarDelegate

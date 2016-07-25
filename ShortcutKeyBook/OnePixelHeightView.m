@@ -12,7 +12,29 @@
 
 - (void)awakeFromNib
 {
-    self.height = 0.5;
+    CGFloat onePixel = 1.0f/[UIScreen mainScreen].scale;
+    
+    self.height = onePixel;
+    
+    if (self.tag < 0) {
+        self.top -= onePixel*([UIScreen mainScreen].scale-1);
+    }
+    else if (self.tag > 0)
+    {
+        self.top += onePixel*([UIScreen mainScreen].scale-1);
+    }
+    
+    BOOL heightConstraintExist = NO;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            constraint.constant = onePixel;
+            heightConstraintExist = YES;
+            break ;
+        }
+    }
+    if (!heightConstraintExist) {
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:onePixel]];
+    }
 }
 
 

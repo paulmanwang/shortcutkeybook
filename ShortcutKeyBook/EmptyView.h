@@ -10,6 +10,7 @@
 
 @interface EmptyView : UIView
 
+- (void)dismiss;
 + (instancetype)showOnView:(UIView *)view withText:(NSString *)text;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 

@@ -9,11 +9,13 @@
 #import "SoftwareSearchViewController.h"
 #import "SoftwareCell.h"
 #import "ShortcutKeyViewController.h"
+#import "SoftwareManager.h"
+#import "EmptyView.h"
 
 @interface SoftwareSearchViewController ()<UISearchBarDelegate>
 
-@property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem;
+@property (strong, nonatomic) EmptyView *emptyView;
 
 @end
 
@@ -27,23 +29,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     self.searchBar.delegate = self;
-    self.searchBar.barTintColor = [UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0];
     self.navigationItem.titleView = self.searchBar;
     
     self.cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(onCancelButtonClicked)];
     self.navigationItem.rightBarButtonItem = self.cancelButtonItem;
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"SoftwareCell" bundle:nil] forCellWithReuseIdentifier:@"SoftwareCell"];
-    self.collectionView.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.searchBar becomeFirstResponder];
 }
 
@@ -74,7 +69,17 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.searchBar resignFirstResponder];
-    self.collectionView.hidden = NO;
+    
+    NSString *keyword = self.searchBar.text;
+    [[SoftwareManager sharedInstance] searchSoftwaresWithKeyword:keyword completionHandler:^(NSError *error, NSArray *softwares) {
+        if (softwares.count > 0) {
+            [self.emptyView dismiss];
+            self.softwares = softwares;
+            [self.tableView reloadData];
+        } else {
+            self.emptyView = [EmptyView showOnView:self.view withText:@"没有搜到符合条件的快捷键哦~"];
+        }
+    }];
 }
 
 @end
