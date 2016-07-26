@@ -184,8 +184,6 @@ didCompleteWithError:(NSError *)error
         dispatch_async(url_session_manager_processing_queue(), ^{
             NSError *serializationError = nil;
             responseObject = [manager.responseSerializer responseObjectForResponse:task.response data:data error:&serializationError];
-            
-            // NSString *string = [[NSString alloc] initWithData:data encoding:0];
 
             if (self.downloadFileURL) {
                 responseObject = self.downloadFileURL;

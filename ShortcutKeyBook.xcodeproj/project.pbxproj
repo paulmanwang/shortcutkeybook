@@ -59,12 +59,12 @@
 		92BF5C6A1D1D1586000FA2A8 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BF5C681D1D1586000FA2A8 /* CommentTableViewCell.xib */; };
 		92BF5C721D1D367C000FA2A8 /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BF5C701D1D367C000FA2A8 /* AboutMeViewController.m */; };
 		92BF5C731D1D367C000FA2A8 /* AboutMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BF5C711D1D367C000FA2A8 /* AboutMeViewController.xib */; };
-		DC2BCE1CEF6C231983D1B3F5 /* Pods_ShortcutKeyBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280373EA8D8B6733149B8CF /* Pods_ShortcutKeyBook.framework */; };
+		B293D00E6154CC3C80DDB633 /* Pods_ShortcutKeyBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8F17AD009B7BFCE1BD27BC /* Pods_ShortcutKeyBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3280373EA8D8B6733149B8CF /* Pods_ShortcutKeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortcutKeyBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		47F274B43D867F6A0A3EFD06 /* Pods-ShortcutKeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.debug.xcconfig"; sourceTree = "<group>"; };
+		6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.release.xcconfig"; sourceTree = "<group>"; };
+		7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.debug.xcconfig"; sourceTree = "<group>"; };
 		921C64891D17B0350055D5CD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		92304C301D436BE100627100 /* WLCPraiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCPraiseView.h; sourceTree = "<group>"; };
 		92304C311D436BE100627100 /* WLCPraiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCPraiseView.m; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		92BF5C6F1D1D367C000FA2A8 /* AboutMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeViewController.h; sourceTree = "<group>"; };
 		92BF5C701D1D367C000FA2A8 /* AboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeViewController.m; sourceTree = "<group>"; };
 		92BF5C711D1D367C000FA2A8 /* AboutMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMeViewController.xib; sourceTree = "<group>"; };
-		ED846BE0D2B57CBA043C80BA /* Pods-ShortcutKeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.release.xcconfig"; sourceTree = "<group>"; };
+		9C8F17AD009B7BFCE1BD27BC /* Pods_ShortcutKeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortcutKeyBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,20 +165,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC2BCE1CEF6C231983D1B3F5 /* Pods_ShortcutKeyBook.framework in Frameworks */,
+				B293D00E6154CC3C80DDB633 /* Pods_ShortcutKeyBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F078E14C8FD738AFFC7BD23 /* Pods */ = {
+		544E4BC4D498D4DB2987A3F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				47F274B43D867F6A0A3EFD06 /* Pods-ShortcutKeyBook.debug.xcconfig */,
-				ED846BE0D2B57CBA043C80BA /* Pods-ShortcutKeyBook.release.xcconfig */,
+				9C8F17AD009B7BFCE1BD27BC /* Pods_ShortcutKeyBook.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		92304C381D443D0B00627100 /* All */ = {
@@ -370,8 +369,8 @@
 			children = (
 				92843D431D155964000F9555 /* ShortcutKeyBook */,
 				92843D421D155964000F9555 /* Products */,
-				D562843A700FCC84E2F16E17 /* Frameworks */,
-				3F078E14C8FD738AFFC7BD23 /* Pods */,
+				F6D7215FB44B324A0C38A13C /* Pods */,
+				544E4BC4D498D4DB2987A3F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -473,12 +472,13 @@
 			name = Comment;
 			sourceTree = "<group>";
 		};
-		D562843A700FCC84E2F16E17 /* Frameworks */ = {
+		F6D7215FB44B324A0C38A13C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3280373EA8D8B6733149B8CF /* Pods_ShortcutKeyBook.framework */,
+				7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */,
+				6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,12 +488,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92843D581D155964000F9555 /* Build configuration list for PBXNativeTarget "ShortcutKeyBook" */;
 			buildPhases = (
-				6294FF09CE4269B2ADE5ADDB /* Check Pods Manifest.lock */,
+				61303865C42CF6BE2B2D74D5 /* [CP] Check Pods Manifest.lock */,
 				92843D3D1D155964000F9555 /* Sources */,
 				92843D3E1D155964000F9555 /* Frameworks */,
 				92843D3F1D155964000F9555 /* Resources */,
-				0D58B619A204C432BD6DAD1E /* Embed Pods Frameworks */,
-				7B2E52D69F63B4B067F43C4C /* Copy Pods Resources */,
+				C78823DB2A5A66007449214F /* [CP] Embed Pods Frameworks */,
+				68F5BC1522E140026F5B066E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -563,29 +563,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D58B619A204C432BD6DAD1E /* Embed Pods Frameworks */ = {
+		61303865C42CF6BE2B2D74D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6294FF09CE4269B2ADE5ADDB /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,19 +578,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7B2E52D69F63B4B067F43C4C /* Copy Pods Resources */ = {
+		68F5BC1522E140026F5B066E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C78823DB2A5A66007449214F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -741,12 +741,13 @@
 		};
 		92843D591D155964000F9555 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47F274B43D867F6A0A3EFD06 /* Pods-ShortcutKeyBook.debug.xcconfig */;
+			baseConfigurationReference = 7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ShortcutKeyBook/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = ShortcutKeyBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -757,11 +758,12 @@
 		};
 		92843D5A1D155964000F9555 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED846BE0D2B57CBA043C80BA /* Pods-ShortcutKeyBook.release.xcconfig */;
+			baseConfigurationReference = 6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = ShortcutKeyBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

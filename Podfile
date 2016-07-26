@@ -9,6 +9,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 pod 'AFNetworking', '~> 2.0'
 pod 'RNCryptor', '~> 4.0.0-beta'
 pod 'MBProgressHUD', '~> 0.9.2'
+pod 'UMengFeedback', '~> 2.3.4'
 
 #source 'http://10.10.164.249/xl_common/xlpodsspec.git'
 #pod 'XL', '~> 1.0'

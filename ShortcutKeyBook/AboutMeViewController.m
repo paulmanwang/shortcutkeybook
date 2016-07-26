@@ -12,6 +12,7 @@
 #import "MyFavorViewController.h"
 #import "MyCreatedViewController.h"
 #import "LoginManager.h"
+#import "UMengFeedback/UMFeedback.h"
 
 typedef NS_ENUM(NSUInteger, AMCellType){
     AMCellTypeMyCreatedShortcuts = 0,
@@ -212,6 +213,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
             break;
         }
         case AMCellTypeFeedback: {
+            [self.navigationController pushViewController:[UMFeedback feedbackViewController] animated:YES];
             break;
         }
         case AMCellTypeAbout: {

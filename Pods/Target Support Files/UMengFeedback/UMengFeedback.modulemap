@@ -1,0 +1,6 @@
+framework module UMengFeedback {
+  umbrella header "UMengFeedback-umbrella.h"
+
+  export *
+  module * { export * }
+}

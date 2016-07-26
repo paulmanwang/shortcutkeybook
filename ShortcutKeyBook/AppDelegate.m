@@ -10,6 +10,7 @@
 #import "SoftwareListViewController.h"
 #import "AddShortcutViewController.h"
 #import "AboutMeViewController.h"
+#import "UMengFeedback/UMFeedback.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [UMFeedback setAppkey:UMAppKey];
+    
+    [self configUI];
+    
+    return YES;
+}
+
+- (void)configUI
+{
     // root
     SoftwareListViewController *rootViewController = [SoftwareListViewController new];
     UINavigationController *naviForRoot = [[UINavigationController alloc] initWithRootViewController:rootViewController];
@@ -49,7 +60,7 @@
     UIView *itemView = [naviForAdd.tabBarItem valueForKey:@"_view"];
     addLabel.center = CGPointMake(itemView.width/2.0, itemView.height/2.0);
     [itemView addSubview:addLabel];
-
+    
     naviForAbout.tabBarItem.image = [UIImage imageNamed:@"aboutme_normal"];
     naviForAbout.tabBarItem.selectedImage = [UIImage imageNamed:@"aboutme_selected"];
     
@@ -60,8 +71,6 @@
     [self configGlobalNavigationBarAppearance];
     
     [self.window makeKeyAndVisible];
-    
-    return YES;
 }
 
 - (void)configGlobalNavigationBarAppearance

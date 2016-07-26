@@ -7,7 +7,7 @@
 //
 
 #import "LoginManager.h"
-#import <RNCryptor/RNCryptor.h>
+#import "RNCryptor/RNCryptor.h"
 
 @import RNCryptor;
 

@@ -13,6 +13,8 @@
 
 #define RNCryptorPassword @"wlc20112413015++"
 
+#define UMAppKey @"5770b2dbe0f55a5f640013e0"
+
 #define kAddShortcutKeySuccess @"kAddShortcutKeySuccess"
 #define kWordButtonClicked @"kWordButtonClicked"
 
