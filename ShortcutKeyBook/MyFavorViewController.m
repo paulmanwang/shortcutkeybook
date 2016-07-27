@@ -46,5 +46,29 @@
 }
 
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SoftwareItem *item = self.softwares[indexPath.row];
+    BOOL ret = [[SoftwareManager sharedInstance] removeMyFavorSoftware:item];
+    if (ret) {
+        NSLog(@"删除收藏成功");
+        self.softwares = [[SoftwareManager sharedInstance] loadMyFavorSoftwares];
+        if (self.softwares.count == 0) {
+            self.emptyView = [EmptyView showOnView:self.view withText:@"您还没有收藏快捷键哦~"];
+        }
+        else {
+            [self.emptyView dismiss];
+        }
+        [self.tableView reloadData];
+    }
+    else {
+        NSLog(@"删除收藏失败");
+    }
+}
 
 @end

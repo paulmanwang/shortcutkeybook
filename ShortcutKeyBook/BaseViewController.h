@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EmptyView.h"
 
 @interface BaseViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (copy, nonatomic) NSArray *softwares;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) EmptyView *emptyView;
 
 @end

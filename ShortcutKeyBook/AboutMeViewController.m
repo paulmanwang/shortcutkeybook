@@ -139,6 +139,13 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [UITableViewCell new];
+    if (indexPath.section == 0) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    cell.textLabel.font = [UIFont systemFontOfSize:15.0f];
     AMCellType cellTye = [self cellTypeForIndexPath:indexPath];
     switch (cellTye) {
         case AMCellTypeMyCreatedShortcuts: {
@@ -238,6 +245,5 @@ typedef NS_ENUM(NSUInteger, AMCellType){
         [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
     }
 }
-
 
 @end

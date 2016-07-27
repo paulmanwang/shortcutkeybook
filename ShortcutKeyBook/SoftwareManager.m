@@ -54,6 +54,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 
 - (BOOL)addMyFavorSoftware:(SoftwareItem *)item
 {
+    [self loadMyFavorSoftwares];
     for (SoftwareItem *existedItem in self.favorSoftwares) {
         if (existedItem.softwareId == item.softwareId) {
             return YES;
@@ -62,6 +63,23 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
     
     NSString *path = [self favorSoftwareFilePath];
     [self.favorSoftwares addObject:item];
+    return [NSKeyedArchiver archiveRootObject:self.favorSoftwares toFile:path];
+}
+
+- (BOOL)removeMyFavorSoftware:(SoftwareItem *)item
+{
+    [self loadMyFavorSoftwares];
+    
+    SoftwareItem *destItem = nil;
+    for (SoftwareItem *existedItem in self.favorSoftwares) {
+        if (existedItem.softwareId == item.softwareId) {
+            destItem = existedItem;
+            break;
+        }
+    }
+    
+    [self.favorSoftwares removeObject:destItem];
+    NSString *path = [self favorSoftwareFilePath];
     return [NSKeyedArchiver archiveRootObject:self.favorSoftwares toFile:path];
 }
 
@@ -267,6 +285,11 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
             completionHandler(nil, results);
         }
     }];
+}
+
+- (void)deleteMyCreatedSoftwareWithSoftwareId:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
+{
+    
 }
 
 - (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler

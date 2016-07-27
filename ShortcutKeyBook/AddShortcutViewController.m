@@ -203,11 +203,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    if ([LoginManager sharedInstance].logged) {
-//        self.tableView.tableHeaderView = self.wordHeaderView;
-//    } else {
-//        self.tableView.tableHeaderView = self.headerView;
-//    }
+    if ([LoginManager sharedInstance].logged) {
+       self.tableView.tableFooterView = nil;
+    } else {
+        self.tableView.tableFooterView = self.headerView;
+    }
 }
 
 - (void)didReceiveMemoryWarning

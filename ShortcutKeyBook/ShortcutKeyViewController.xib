@@ -52,6 +52,9 @@
                                 <constraint firstAttribute="height" constant="27" id="M5D-TT-FdR"/>
                             </constraints>
                             <state key="normal" backgroundImage="share"/>
+                            <connections>
+                                <action selector="onShareBtnClicked:" destination="-1" eventType="touchUpInside" id="eS1-Bh-qzj"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WJ-na-8os">
                             <rect key="frame" x="30" y="13" width="29" height="25"/>
@@ -81,7 +84,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="5dl-SQ-1fb"/>
                         <constraint firstAttribute="trailing" secondItem="5WJ-na-8os" secondAttribute="trailing" multiplier="5.42:1" id="5k8-qc-fGf"/>

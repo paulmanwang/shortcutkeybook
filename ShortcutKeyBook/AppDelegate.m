@@ -11,6 +11,8 @@
 #import "AddShortcutViewController.h"
 #import "AboutMeViewController.h"
 #import "UMengFeedback/UMFeedback.h"
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +24,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [UMFeedback setAppkey:UMAppKey];
+    [UMSocialData setAppKey:UMAppKey];
+    
+    [UMSocialWechatHandler setWXAppId:WXAppId appSecret:WXAppSecret url:@"http://www.umeng.com/social"];
     
     [self configUI];
     

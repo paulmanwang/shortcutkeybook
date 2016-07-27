@@ -19,6 +19,8 @@ DECLARA_SHARED_INSTANCE
 
 - (BOOL)addMyFavorSoftware:(SoftwareItem *)item;
 
+- (BOOL)removeMyFavorSoftware:(SoftwareItem *)item;
+
 - (BOOL)softwareHasThumbUp:(SoftwareItem *)item;
 
 - (BOOL)addThumbUpSoftware:(SoftwareItem *)item;
@@ -32,6 +34,8 @@ DECLARA_SHARED_INSTANCE
 - (void)queryAllShortcutKeysOfSoftware:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, NSArray *shortcutKeys))completionHandler;
 
 - (void)queryAllMyCreatedSoftwaresWithAccount:(NSString *)account completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler;
+
+- (void)deleteMyCreatedSoftwareWithSoftwareId:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
 
 - (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
 

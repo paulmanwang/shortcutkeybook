@@ -26,6 +26,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-H9-lgK">
                             <rect key="frame" x="107" y="7" width="36" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Cmd"/>
                             <connections>
                                 <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="016-QG-Ox7"/>
@@ -33,6 +34,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHt-rZ-FaG">
                             <rect key="frame" x="58" y="7" width="41" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Ctrl"/>
                             <connections>
                                 <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="cI3-Cz-rVF"/>
@@ -40,6 +42,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLW-zt-Keo">
                             <rect key="frame" x="151" y="7" width="30" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Alt"/>
                             <connections>
                                 <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="fzO-7l-AAT"/>
@@ -47,6 +50,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80O-f8-F82">
                             <rect key="frame" x="189" y="7" width="54" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Shift"/>
                             <connections>
                                 <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="NLs-Qc-1bY"/>
@@ -54,6 +58,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbO-oV-QYG">
                             <rect key="frame" x="251" y="7" width="48" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Win"/>
                             <connections>
                                 <action selector="onWordButtonClicked:" destination="-1" eventType="touchUpInside" id="omf-C6-Pa6"/>
@@ -104,6 +109,7 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YF-7w-SWS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="+继续添加"/>
                         <connections>
                             <action selector="onAddButtonClicked:" destination="-1" eventType="touchUpInside" id="6Nk-8A-uzc"/>
@@ -146,27 +152,27 @@
             <point key="canvasLocation" x="241" y="746"/>
         </tableViewCell>
         <view contentMode="scaleToFill" id="mPJ-o2-ig6">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="登录之后创建，让更多人知道你的贡献" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxk-KN-wgj">
-                    <rect key="frame" x="10" y="11" width="243" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <rect key="frame" x="8" y="8" width="243" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFG-nt-Nnm">
-                    <rect key="frame" x="252" y="6" width="60" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <rect key="frame" x="208" y="5" width="60" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="点我登录"/>
                     <connections>
                         <action selector="onGotoLoginBtnClicked:" destination="-1" eventType="touchUpInside" id="Xs7-UW-KYt"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="234" y="849"/>
+            <point key="canvasLocation" x="234" y="844"/>
         </view>
     </objects>
 </document>

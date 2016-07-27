@@ -15,8 +15,9 @@
 #import "WLCPraiseView.h"
 #import "WLCCommentView.h"
 #import "LoginViewController.h"
+#import "UMSocial.h"
 
-@interface ShortcutKeyViewController ()<WLCPraiseViewDelegate, WLCCommentViewDelegate>
+@interface ShortcutKeyViewController ()<WLCPraiseViewDelegate, WLCCommentViewDelegate, UMSocialUIDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *backItem;
 @property (assign, nonatomic) SoftwareItem *softwareItem;
@@ -160,6 +161,13 @@
     return [ShortcutKeyCell cellHeight];
 }
 
+#pragma mark - Button actions
+
+- (IBAction)onShareBtnClicked:(id)sender
+{
+    [self share];
+}
+
 - (IBAction)onBackBtnClicked:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -183,21 +191,25 @@
 {
     BOOL hasThumbUp = [[SoftwareManager sharedInstance] softwareHasThumbUp:self.softwareItem];
     if (hasThumbUp) {
-        [[SoftwareManager sharedInstance] removeThumbUpSoftware:self.softwareItem];
         [[SoftwareManager sharedInstance] thumbUpWithUp:NO softwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
             if (success) {
+                [[SoftwareManager sharedInstance] removeThumbUpSoftware:self.softwareItem];
                 NSLog(@"取消点赞成功");
                 self.softwareItem.likeCount -= 1;
+                if (self.softwareItem.likeCount == 0) {
+                    self.praiseView.numberLabel.hidden = YES;
+                }
                 self.praiseView.numberLabel.text = [NSString stringWithInteger:self.softwareItem.likeCount];
             }
         }];
     }
     else {
-        [[SoftwareManager sharedInstance] addThumbUpSoftware:self.softwareItem];
         [[SoftwareManager sharedInstance] thumbUpWithUp:YES softwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
             if (success) {
                 NSLog(@"点赞成功");
+                [[SoftwareManager sharedInstance] addThumbUpSoftware:self.softwareItem];
                 self.softwareItem.likeCount += 1;
+                self.praiseView.numberLabel.hidden = NO;
                 self.praiseView.numberLabel.text = [NSString stringWithInteger:self.softwareItem.likeCount];
             }
         }];
@@ -223,6 +235,31 @@
     }
     
     [self presentViewControllerWithNavi:viewController animated:YES completion:nil];
+}
+
+#pragma mark - Share
+
+- (void)share
+{
+    // 设置分享标
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"xcode快捷键";
+    // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    // 不设置type的时候才生效
+    // UMSocialData.defaultData().extConfig.wechatSessionData.url = "http://baidu.com" // 不填写默认跳转到了UMeng首页
+    
+    UIImage *appImage = [UIImage imageNamed:@""];
+    NSString *content = @"总结的非常全面，很实用";
+    
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:self];
+}
+
+// 如果选择“留在微信”，不会有回调；如果选择“返回双龙戏珠”会有回调。
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    if (response.responseCode == UMSResponseCodeSuccess) {
+        NSLog(@"share to sns name is %@", response.data);
+    }
 }
 
 @end
