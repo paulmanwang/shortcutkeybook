@@ -19,10 +19,10 @@
     [self addSubview:imageView];
     self.praiseImageView = imageView;
     
-    UIColor *blueColor = kAppBackgroudColor;
+    UIColor *blueColor = [UIColor clearColor];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(19, 3, 15, 8)];
-    label.font = [UIFont systemFontOfSize:8.0f];
-    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:8.0f];
+    label.textColor = [UIColor darkGrayColor];
     label.backgroundColor = blueColor;
     label.text = @"100";
     label.textAlignment = NSTextAlignmentCenter;

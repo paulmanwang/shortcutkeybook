@@ -19,9 +19,9 @@
     [self addSubview:imageView];
     self.commentImageView = imageView;
     
-    UIColor *blueColor = kAppBackgroudColor;
+    UIColor *blueColor = [UIColor clearColor];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 19, 15, 8)];
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [UIColor darkGrayColor];
     label.backgroundColor = blueColor;
     label.font = [UIFont boldSystemFontOfSize:8.0f];
     label.text = @"999";

@@ -20,7 +20,7 @@
 #define kSoftwareNumChanged @"kSoftwareNumChanged"
 #define kWordButtonClicked  @"kWordButtonClicked"
 
-#define kAppBackgroudColor [UIColor colorWithRed:0/255.0 green:204/255.0 blue:255/255.0 alpha:1.0]
+#define kAppBackgroudColor [UIColor colorWithRed:20/255.0 green:150/255.0 blue:213/255.0 alpha:1.0]
 #define kAppTextColor [UIColor colorWithRed:34/255.0 green:34/255.0 blue:34/255.0 alpha:1.0]
 
 #define DECLARA_SHARED_INSTANCE \
