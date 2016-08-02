@@ -12,8 +12,6 @@
 #import "SoftwareSearchViewController.h"
 #import "SoftwareManager.h"
 #import "SoftwareItem.h"
-#import "MJRefresh/MJRefresh.h"
-#import "MJRefresh/MJRefreshHeader.h"
 
 @interface SoftwareListViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -55,11 +53,6 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kSoftwareCell"];
     
     [self querySoftwares];
-    
-    MJRefreshHeader *header = [MJRefreshHeader headerWithRefreshingBlock:^{
-        [self refreshData];
-    }];
-    self.tableView.mj_header = header;
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,8 +147,6 @@
             self.softwares = softwares;
             [self updateUI];
         }
-        
-        [self.tableView.mj_header endRefreshing];
     }];
 }
 

@@ -21,24 +21,21 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.9.2)
-  - MJRefresh (3.1.0)
   - RNCryptor (4.0.0)
   - UMengFeedback (2.3.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - MBProgressHUD (~> 0.9.2)
-  - MJRefresh
   - RNCryptor (~> 4.0.0-beta)
   - UMengFeedback (~> 2.3.4)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   UMengFeedback: 5283cc0e324dffca4dd54c4abb3cbded56487817
 
-PODFILE CHECKSUM: 40751aa7bca9a394f7a4e4cb3181bd8e1061730c
+PODFILE CHECKSUM: 31fdab937e3bc11f5ec4e218c17fb8fb7fba6b99
 
 COCOAPODS: 1.0.1
