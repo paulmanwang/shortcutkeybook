@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"关于";
     // Do any additional setup after loading the view from its nib.
     
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];

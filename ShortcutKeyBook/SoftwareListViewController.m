@@ -52,6 +52,8 @@
     [self configTitleView];
     self.searchBar.barTintColor = kAppBackgroudColor;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kSoftwareCell"];
+    
     [self querySoftwares];
     
     MJRefreshHeader *header = [MJRefreshHeader headerWithRefreshingBlock:^{
@@ -180,7 +182,8 @@
     NSString *key = self.letterArray[indexPath.section];
     NSArray *softwares = (NSArray *)self.letterDic[key];
     SoftwareItem *item = softwares[indexPath.row];
-    UITableViewCell *cell = [UITableViewCell new];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kSoftwareCell"];
     cell.textLabel.font = [UIFont systemFontOfSize:17];
     cell.textLabel.textColor = kAppTextColor;
     cell.textLabel.text = item.softwareName;

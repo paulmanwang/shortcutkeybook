@@ -229,7 +229,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
         }
         case AMCellTypeAbout: {
             SoftwareInfoViewController *vc = [SoftwareInfoViewController new];
-            [self.navigationController pushViewController:vc animated:NO];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         }
     }

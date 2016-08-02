@@ -50,7 +50,7 @@
                         <constraint firstAttribute="height" constant="30" id="kbs-qO-VTj"/>
                     </constraints>
                     <state key="normal" title="点击登录">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="onLoginButtonClicked:" destination="-1" eventType="touchUpInside" id="We0-Mr-ayH"/>
@@ -71,6 +71,7 @@
                         <constraint firstAttribute="width" constant="123" id="afb-ml-sw9"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

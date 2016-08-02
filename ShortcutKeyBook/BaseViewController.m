@@ -31,6 +31,7 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.tableView dequeueReusableCellWithIdentifier:@"kSoftwareCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +49,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SoftwareItem *item = self.softwares[indexPath.row];
-    UITableViewCell *cell = [UITableViewCell new];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kSoftwareCell"];
     cell.textLabel.font = [UIFont systemFontOfSize:17];
     cell.textLabel.text = item.softwareName;
     cell.textLabel.textColor = kAppTextColor;
