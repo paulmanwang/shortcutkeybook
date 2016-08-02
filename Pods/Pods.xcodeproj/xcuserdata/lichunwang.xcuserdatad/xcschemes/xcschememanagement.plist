@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ShortcutKeyBook.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,22 +37,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10033C19F455E9DF0B4B5880FFE91C32</key>
+		<key>254E9B72459B90F27091F9B9F233A73F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>29DD99664D189A7CA206368F493B1E0B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3A00EC26D7F45B2DAF7951F77BBAF5AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3D76F73CE2DDEDD6992E0C18DA34F06C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>4878C70B21CA37D7CB8A476BF986741B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80936B87ED5F59059D5322901369D98E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B23620D2161DC6671B1F11ACEA589169</key>
 		<dict>
 			<key>primary</key>
 			<true/>

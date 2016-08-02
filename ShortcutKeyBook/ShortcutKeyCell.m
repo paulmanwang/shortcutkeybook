@@ -20,6 +20,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.nameLabel.textColor = kAppTextColor;
+    self.detailLabel.textColor = kAppTextColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

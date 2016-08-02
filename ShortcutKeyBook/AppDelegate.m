@@ -26,7 +26,7 @@
     [UMFeedback setAppkey:UMAppKey];
     [UMSocialData setAppKey:UMAppKey];
     
-    [UMSocialWechatHandler setWXAppId:WXAppId appSecret:WXAppSecret url:@"http://www.umeng.com/social"];
+    [UMSocialWechatHandler setWXAppId:WXAppId appSecret:WXAppSecret url:nil];
     
     [self configUI];
     
@@ -55,7 +55,7 @@
     naviForRoot.tabBarItem.selectedImage = [UIImage imageNamed:@"arrow_selected"];
     
     UILabel *addLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 38, 34)];
-    addLabel.backgroundColor = [UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0];
+    addLabel.backgroundColor = kAppBackgroudColor;
     addLabel.layer.cornerRadius = 2;
     addLabel.layer.masksToBounds = YES;
     addLabel.font = [UIFont systemFontOfSize:30];
@@ -80,7 +80,7 @@
 
 - (void)configGlobalNavigationBarAppearance
 {
-    UIColor *blueColor = [UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0];
+    UIColor *blueColor = kAppBackgroudColor;
     UIColor *whiteColor = [UIColor whiteColor];
     
     // set NavigationBar背景颜色和Title颜色(方法一，只能修改单个navigationBar)

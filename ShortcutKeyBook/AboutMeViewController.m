@@ -13,6 +13,8 @@
 #import "MyCreatedViewController.h"
 #import "LoginManager.h"
 #import "UMengFeedback/UMFeedback.h"
+#import "SoftwareInfoViewController.h"
+#import "UMSocial.h"
 
 typedef NS_ENUM(NSUInteger, AMCellType){
     AMCellTypeMyCreatedShortcuts = 0,
@@ -146,6 +148,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     }
     
     cell.textLabel.font = [UIFont systemFontOfSize:15.0f];
+    cell.textLabel.textColor = kAppTextColor;
     AMCellType cellTye = [self cellTypeForIndexPath:indexPath];
     switch (cellTye) {
         case AMCellTypeMyCreatedShortcuts: {
@@ -217,6 +220,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
             break;
         }
         case AMCellTypeRecommand: {
+            [self shareApp];
             break;
         }
         case AMCellTypeFeedback: {
@@ -224,12 +228,30 @@ typedef NS_ENUM(NSUInteger, AMCellType){
             break;
         }
         case AMCellTypeAbout: {
+            SoftwareInfoViewController *vc = [SoftwareInfoViewController new];
+            [self.navigationController pushViewController:vc animated:NO];
             break;
         }
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+- (void)shareApp
+{
+    // 设置分享标
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"快捷键大全";
+    // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp以及其他
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
+    // 不设置type的时候才生效
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://itunes.apple.com/us/app/shuang-long-xi-zhu/id1096588313?l=zh&ls=1&mt=8"; // 这里填写为应用地址
+    
+    UIImage *appImage = [UIImage imageNamed:@"108x108"];
+    NSString *content = @"我正在使用《快捷键大全》，挺不错的应用，你也来试试吧！";
+    
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:nil];
+}
+
 
 - (IBAction)onLoginButtonClicked:(id)sender
 {

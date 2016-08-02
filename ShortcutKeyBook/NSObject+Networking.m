@@ -12,7 +12,7 @@
 
 @implementation NSObject (Networking)
 
-- (void)requestWithProtocalName:(NSString *)protocalName
+- (void)getWithProtocalName:(NSString *)protocalName
                    paramString:(NSString *)paramString
               completionHandler:(void(^)(NSError *error, id bodyData))completionHandler
 {

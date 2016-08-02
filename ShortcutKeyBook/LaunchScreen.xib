@@ -1,29 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="7LA-NT-xcA">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快捷键大全" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41o-o1-nhB">
-                    <rect key="frame" x="118" y="229" width="85" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016年 springcome. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Ju-ylV">
+                    <rect key="frame" x="10" y="441" width="300" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="7mb-eu-dxJ"/>
+                        <constraint firstAttribute="width" constant="300" id="9KT-WI-Ma0"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快捷键大全" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qar-S4-GFi">
+                    <rect key="frame" x="20" y="219" width="280" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="uQz-Id-haG"/>
+                        <constraint firstAttribute="height" constant="43" id="ugG-nh-4lD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="108x108" translatesAutoresizingMaskIntoConstraints="NO" id="oln-LO-imM">
+                    <rect key="frame" x="124" y="142" width="72" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="SsV-PA-qjL"/>
+                        <constraint firstAttribute="width" constant="72" id="TCf-JQ-BcE"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="41o-o1-nhB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JnG-xG-BRn"/>
-                <constraint firstItem="41o-o1-nhB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="odI-Rf-TGY"/>
+                <constraint firstAttribute="bottom" secondItem="abo-Ju-ylV" secondAttribute="bottom" constant="18" id="Gwt-UX-xwv"/>
+                <constraint firstItem="oln-LO-imM" firstAttribute="centerX" secondItem="7LA-NT-xcA" secondAttribute="centerX" id="Me7-va-v3T"/>
+                <constraint firstItem="abo-Ju-ylV" firstAttribute="centerX" secondItem="7LA-NT-xcA" secondAttribute="centerX" id="Vce-s6-Pud"/>
+                <constraint firstItem="Qar-S4-GFi" firstAttribute="top" secondItem="oln-LO-imM" secondAttribute="bottom" constant="5" id="bIG-bp-TGa"/>
+                <constraint firstItem="Qar-S4-GFi" firstAttribute="centerY" secondItem="7LA-NT-xcA" secondAttribute="centerY" id="bjB-cS-vX4"/>
+                <constraint firstItem="Qar-S4-GFi" firstAttribute="centerX" secondItem="7LA-NT-xcA" secondAttribute="centerX" id="ynx-lr-fpN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="327" y="160"/>
         </view>
     </objects>
+    <resources>
+        <image name="108x108" width="54" height="54"/>
+    </resources>
 </document>

@@ -19,7 +19,7 @@
     [self addSubview:imageView];
     self.praiseImageView = imageView;
     
-    UIColor *blueColor = [UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0];
+    UIColor *blueColor = kAppBackgroudColor;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(19, 3, 15, 8)];
     label.font = [UIFont systemFontOfSize:8.0f];
     label.textColor = [UIColor whiteColor];

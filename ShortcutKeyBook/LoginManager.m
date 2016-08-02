@@ -41,7 +41,7 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
     NSString *paramsString = [NSString stringWithFormat:@"account=%@&password=%@",
                      username, cipherPassword];
     
-    [self requestWithProtocalName:@"login" paramString:paramsString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"login" paramString:paramsString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"login resultString = %@", resultString);
         if (error) {
@@ -79,7 +79,7 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
     NSString *paramString = [NSString stringWithFormat:@"account=%@&password=%@&nickname=%@",
                      username, cipherPassword, nickname];
     
-    [self requestWithProtocalName:@"register" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"register" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"register resultString = %@", resultString);
         if (error) {

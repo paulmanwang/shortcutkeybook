@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet WLCPraiseView *praiseView;
 @property (weak, nonatomic) IBOutlet WLCCommentView *commentView;
+@property (weak, nonatomic) IBOutlet UILabel *browseCountLabel;
 
 @end
 
@@ -61,6 +62,13 @@
     self.praiseView.delegate = self;
     self.commentView.delegate = self;
     
+    [[SoftwareManager sharedInstance] updateBrowseNumWithSoftwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
+        if (success) {
+            NSLog(@"更新成功");
+            self.softwareItem.browseCount+=1;
+        }
+    }];
+    
     /*
      The back indicator image is shown beside the back button.
      The back indicator transition mask image is used as a mask for content during push and pop transitions
@@ -86,6 +94,8 @@
     
     NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
     self.timeLabel.text = subStrings[0];
+    
+    self.browseCountLabel.text = [NSString stringWithFormat:@"%li次浏览", self.softwareItem.browseCount];
     
     [[SoftwareManager sharedInstance] queryAllShortcutKeysOfSoftware:self.softwareItem.softwareId completionHandler:^(NSError *error, NSArray *shortcutKeys) {
         if (!error) {
@@ -165,7 +175,7 @@
 
 - (IBAction)onShareBtnClicked:(id)sender
 {
-    [self share];
+    [self shareShortcutKey];
 }
 
 - (IBAction)onBackBtnClicked:(id)sender
@@ -239,17 +249,17 @@
 
 #pragma mark - Share
 
-- (void)share
+- (void)shareShortcutKey
 {
     // 设置分享标
     [UMSocialData defaultData].extConfig.wechatSessionData.title = @"xcode快捷键";
-    // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp以及其他
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
     // 不设置type的时候才生效
-    // UMSocialData.defaultData().extConfig.wechatSessionData.url = "http://baidu.com" // 不填写默认跳转到了UMeng首页
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"http://121.40.60.250/shortcutkeybook.php"; // 不填写默认跳转到了UMeng首页
     
-    UIImage *appImage = [UIImage imageNamed:@""];
-    NSString *content = @"总结的非常全面，很实用";
+    UIImage *appImage = [UIImage imageNamed:@"108x108"];
+    NSString *content = @"总结的非常全面，很实用，赶紧去看看";
     
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:self];
 }

@@ -41,6 +41,8 @@ DECLARA_SHARED_INSTANCE
 
 - (void)searchSoftwaresWithKeyword:(NSString *)keyword completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler;
 
+- (void)updateBrowseNumWithSoftwareId:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
+
 #pragma mar - comment
 
 - (void)queryallCommentsOfSoftware:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, NSArray *comments))completionHandler;

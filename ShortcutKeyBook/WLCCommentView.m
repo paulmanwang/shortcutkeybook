@@ -19,7 +19,7 @@
     [self addSubview:imageView];
     self.commentImageView = imageView;
     
-    UIColor *blueColor = [UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0];
+    UIColor *blueColor = kAppBackgroudColor;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 19, 15, 8)];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = blueColor;

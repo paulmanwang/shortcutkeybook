@@ -38,6 +38,8 @@
 
 @property (assign, nonatomic) NSUInteger commentCount;
 
+@property (assign, nonatomic) NSUInteger browseCount;
+
 @property (copy, nonatomic) NSString *addTime;
 
 - (instancetype)initWithJsonData:(NSDictionary *)jsonData;

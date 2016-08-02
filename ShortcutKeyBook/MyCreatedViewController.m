@@ -42,6 +42,20 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)deleteSofware:(SoftwareItem *)item
+{
+    NSMutableArray *softwares = [NSMutableArray arrayWithArray:self.softwares];
+    for (NSInteger i = 0; i < softwares.count; i++) {
+        SoftwareItem *dstItem = softwares[i];
+        if (item.softwareId == dstItem.softwareId) {
+            [softwares removeObjectAtIndex:i];
+            break;
+        }
+    }
+    
+    self.softwares = [NSArray arrayWithArray:softwares];
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
@@ -49,7 +63,21 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    SoftwareItem *item = self.softwares[indexPath.row];
+    [[SoftwareManager sharedInstance] deleteMyCreatedSoftwareWithSoftwareId:item.softwareId completionHandler:^(NSError *error, BOOL success) {
+        if (success) {
+            [self.view toastWithMessage:@"删除成功"];
+            [self deleteSofware:item];
+            if (self.softwares.count == 0) {
+                self.emptyView = [EmptyView showOnView:self.view withText:@"您还没有创建过快捷键哦~"];
+            }
+            [self.tableView reloadData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSoftwareNumChanged object:self];
+        }
+        else {
+            [self.view toastWithMessage:@"删除失败，请重试"];
+        }
+    }];
 }
 
 @end

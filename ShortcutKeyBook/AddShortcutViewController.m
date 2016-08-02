@@ -113,7 +113,7 @@
 
 - (void)postNotification
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAddShortcutKeySuccess object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSoftwareNumChanged object:self];
 }
 
 - (void)onSubmitBtnClicked
@@ -203,11 +203,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ([LoginManager sharedInstance].logged) {
-       self.tableView.tableFooterView = nil;
-    } else {
-        self.tableView.tableFooterView = self.headerView;
-    }
+//    if ([LoginManager sharedInstance].logged) {
+//       self.tableView.tableFooterView = nil;
+//    } else {
+//        self.tableView.tableFooterView = self.headerView;
+//    }
 }
 
 - (void)didReceiveMemoryWarning

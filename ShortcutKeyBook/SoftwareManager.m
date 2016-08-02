@@ -145,7 +145,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 {
     NSInteger num = up ? 1 : -1;
     NSString *paramString = [NSString stringWithFormat:@"software_id=%li&num=%li", softwareId, num];
-    [self requestWithProtocalName:@"thumbup" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"thumbup" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"thumbup resultString = %@", resultString);
         if (!completionHandler) {
@@ -170,7 +170,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 
 - (void)queryAllSoftwaresWithCompletionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler
 {
-    [self requestWithProtocalName:@"getallsoftware" paramString:nil completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"getallsoftware" paramString:nil completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"getallsoftware resultString = %@", resultString);
         if (error) {
@@ -180,10 +180,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
             return;
         }
         
-        resultString = [NSString stringWithFormat:@"{\"softwares\":%@}", resultString];
-        NSDictionary *dict = [resultString toJsonData];
-        NSLog(@"dic = %@", dict);
-        NSArray *softwareList = dict[@"softwares"];
+        NSArray *softwareList = [resultString toJsonData];
         NSMutableArray *results = [NSMutableArray new];
         for (NSInteger i = 0; i < softwareList.count; i++) {
             NSDictionary *info = softwareList[i];
@@ -200,7 +197,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 - (void)searchSoftwaresWithKeyword:(NSString *)keyword completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler
 {
     NSString *paramString = [NSString stringWithFormat:@"keyword=%@", [keyword stringByEncodingURIComponent]];
-    [self requestWithProtocalName:@"search" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"search" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"searchSoftwares resultString = %@", resultString);
         if (error) {
@@ -210,10 +207,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
             return;
         }
         
-        resultString = [NSString stringWithFormat:@"{\"softwares\":%@}", resultString];
-        NSDictionary *dict = [resultString toJsonData];
-        NSLog(@"dic = %@", dict);
-        NSArray *softwareList = dict[@"softwares"];
+        NSArray *softwareList = [resultString toJsonData];
         NSMutableArray *results = [NSMutableArray new];
         for (NSInteger i = 0; i < softwareList.count; i++) {
             NSDictionary *info = softwareList[i];
@@ -227,10 +221,34 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
     }];
 }
 
+- (void)updateBrowseNumWithSoftwareId:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
+{
+    NSString *paramString = [NSString stringWithFormat:@"software_id=%li", softwareId];
+    [self getWithProtocalName:@"updateBrowseNum" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+        NSString *resultString = (NSString *)bodyData;
+        NSLog(@"updateBrowseNum resultString = %@", resultString);
+        if (!completionHandler) {
+            return;
+        }
+        
+        if (error) {
+            completionHandler(error, NO);
+            return;
+        }
+        
+        if ([resultString containsString:@"200:OK"]) {
+            completionHandler(nil, YES);
+        } else {
+            NSError *error = [NSError errorWithDomain:@"server error" code:-1 userInfo:@{@"msg":resultString}];
+            completionHandler(error, NO);
+        }
+    }];
+}
+
 - (void)queryAllShortcutKeysOfSoftware:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, NSArray *shortcutKeys))completionHandler
 {
     NSString *paramString = [NSString stringWithFormat:@"software_id=%li", softwareId];
-    [self requestWithProtocalName:@"getallshortcut" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"getallshortcut" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"getallsoftware resultString = %@", resultString);
         if (error) {
@@ -240,10 +258,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
             return;
         }
         
-        resultString = [NSString stringWithFormat:@"{\"shortcutkeys\":%@}", resultString];
-        NSDictionary *dict = [resultString toJsonData];
-        NSLog(@"dic = %@", dict);
-        NSArray *softwareList = dict[@"shortcutkeys"];
+        NSArray *softwareList = [resultString toJsonData];
         NSMutableArray *results = [NSMutableArray new];
         for (NSInteger i = 0; i < softwareList.count; i++) {
             NSDictionary *info = softwareList[i];
@@ -260,7 +275,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 - (void)queryAllMyCreatedSoftwaresWithAccount:(NSString *)account completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler
 {
     NSString *paramString = [NSString stringWithFormat:@"create_account=%@", account];
-    [self requestWithProtocalName:@"getmysoftware" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"getmysoftware" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"getmysoftware resultString = %@", resultString);
         if (error) {
@@ -270,10 +285,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
             return;
         }
         
-        resultString = [NSString stringWithFormat:@"{\"softwares\":%@}", resultString];
-        NSDictionary *dict = [resultString toJsonData];
-        NSLog(@"dic = %@", dict);
-        NSArray *softwareList = dict[@"softwares"];
+        NSArray *softwareList = [resultString toJsonData];
         NSMutableArray *results = [NSMutableArray new];
         for (NSInteger i = 0; i < softwareList.count; i++) {
             NSDictionary *info = softwareList[i];
@@ -289,7 +301,26 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 
 - (void)deleteMyCreatedSoftwareWithSoftwareId:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
 {
-    
+    NSString *paramString = [NSString stringWithFormat:@"software_id=%li", softwareId];
+    [self getWithProtocalName:@"deletemysoftware" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+        NSString *resultString = (NSString *)bodyData;
+        NSLog(@"deletemysoftware resultString = %@", resultString);
+        if (!completionHandler) {
+            return;
+        }
+        
+        if (error) {
+            completionHandler(error, NO);
+            return;
+        }
+        
+        if ([resultString containsString:@"200:OK"]) {
+            completionHandler(nil, YES);
+        } else {
+            NSError *error = [NSError errorWithDomain:@"server error" code:-1 userInfo:@{@"msg":resultString}];
+            completionHandler(error, NO);
+        }
+    }];
 }
 
 - (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
@@ -337,7 +368,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 - (void)queryallCommentsOfSoftware:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, NSArray *comments))completionHandler
 {
     NSString *paramString = [NSString stringWithFormat:@"software_id=%li", softwareId];
-    [self requestWithProtocalName:@"getallcomment" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"getallcomment" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"getallcomment resultString = %@", resultString);
         if (error) {
@@ -347,10 +378,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
             return;
         }
         
-        resultString = [NSString stringWithFormat:@"{\"comments\":%@}", resultString];
-        NSDictionary *dict = [resultString toJsonData];
-        NSLog(@"dic = %@", dict);
-        NSArray *softwareList = dict[@"comments"];
+        NSArray *softwareList = [resultString toJsonData];
         NSMutableArray *results = [NSMutableArray new];
         for (NSInteger i = 0; i < softwareList.count; i++) {
             NSDictionary *info = softwareList[i];
@@ -368,7 +396,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
 {
     NSString *encodeContent = [content stringByEncodingURIComponent];
     NSString *paramString = [NSString stringWithFormat:@"software_id=%li&create_account=%@&content=%@", softwareId, createAccout, encodeContent];
-    [self requestWithProtocalName:@"addonecomment" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
+    [self getWithProtocalName:@"addonecomment" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
         NSLog(@"addcomment resultString = %@", resultString);
         if (!completionHandler) {

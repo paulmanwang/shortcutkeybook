@@ -11,7 +11,7 @@
 @interface NSObject (Networking)
 
 // 类别的运行时
-- (void)requestWithProtocalName:(NSString *)protocalName
+- (void)getWithProtocalName:(NSString *)protocalName
                     paramString:(NSString *)paramsString
               completionHandler:(void(^)(NSError *error, id bodyData))completionHandler;
 

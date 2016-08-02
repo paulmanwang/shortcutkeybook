@@ -10,7 +10,7 @@
 
 @implementation NSString (WLC)
 
-- (NSDictionary *)toJsonData
+- (id)toJsonData
 {
     if (self.length == 0) {
         return nil;

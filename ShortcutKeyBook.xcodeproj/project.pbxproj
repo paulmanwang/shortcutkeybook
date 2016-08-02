@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		921C648A1D17B0350055D5CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921C64891D17B0350055D5CD /* LaunchScreen.xib */; };
 		921FC9501D4858F000C0483D /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 921FC9361D4858F000C0483D /* UMSocialLocalizable.strings */; };
 		921FC9511D4858F000C0483D /* libUMSocial_Sdk_5.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 921FC9441D4858F000C0483D /* libUMSocial_Sdk_5.2.1.a */; };
 		921FC9521D4858F000C0483D /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921FC9461D4858F000C0483D /* UMSCommentDetailController.xib */; };
@@ -55,6 +54,8 @@
 		927DB9361D32A768000D94B6 /* WLCToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927DB9341D32A768000D94B6 /* WLCToastView.xib */; };
 		927DB93D1D32A9BD000D94B6 /* UILabel+WLC.m in Sources */ = {isa = PBXBuildFile; fileRef = 927DB93C1D32A9BD000D94B6 /* UILabel+WLC.m */; };
 		927DB9401D32AA3B000D94B6 /* UIButton+WLC.m in Sources */ = {isa = PBXBuildFile; fileRef = 927DB93F1D32AA3B000D94B6 /* UIButton+WLC.m */; };
+		928014B01D4CEC3B004DEA23 /* SoftwareInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928014AE1D4CEC3B004DEA23 /* SoftwareInfoViewController.m */; };
+		928014B11D4CEC3B004DEA23 /* SoftwareInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928014AF1D4CEC3B004DEA23 /* SoftwareInfoViewController.xib */; };
 		92843D461D155964000F9555 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92843D451D155964000F9555 /* main.m */; };
 		92843D491D155964000F9555 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92843D481D155964000F9555 /* AppDelegate.m */; };
 		92843D511D155964000F9555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92843D501D155964000F9555 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		92843D8B1D162588000F9555 /* AddShortcutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92843D891D162588000F9555 /* AddShortcutViewController.xib */; };
 		92843D8F1D1626E4000F9555 /* AddShortcutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92843D8D1D1626E4000F9555 /* AddShortcutTableViewCell.m */; };
 		92843D901D1626E4000F9555 /* AddShortcutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */; };
+		929A46DA1D501A3000882690 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929A46D91D501A3000882690 /* LaunchScreen.xib */; };
 		92B95DFD1D38AA1600E48581 /* OnePixelHeightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */; };
 		92B95E071D39B61500E48581 /* EmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B95E061D39B61500E48581 /* EmptyView.m */; };
 		92B95E091D39B62F00E48581 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B95E081D39B62F00E48581 /* EmptyView.xib */; };
@@ -87,7 +89,6 @@
 /* Begin PBXFileReference section */
 		6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.release.xcconfig"; sourceTree = "<group>"; };
 		7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.debug.xcconfig"; sourceTree = "<group>"; };
-		921C64891D17B0350055D5CD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		921FC9371D4858F000C0483D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		921FC9391D4858F000C0483D /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		921FC93A1D4858F000C0483D /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -176,6 +177,9 @@
 		927DB93C1D32A9BD000D94B6 /* UILabel+WLC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WLC.m"; sourceTree = "<group>"; };
 		927DB93E1D32AA3B000D94B6 /* UIButton+WLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WLC.h"; sourceTree = "<group>"; };
 		927DB93F1D32AA3B000D94B6 /* UIButton+WLC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WLC.m"; sourceTree = "<group>"; };
+		928014AD1D4CEC3B004DEA23 /* SoftwareInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareInfoViewController.h; sourceTree = "<group>"; };
+		928014AE1D4CEC3B004DEA23 /* SoftwareInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareInfoViewController.m; sourceTree = "<group>"; };
+		928014AF1D4CEC3B004DEA23 /* SoftwareInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareInfoViewController.xib; sourceTree = "<group>"; };
 		92843D411D155964000F9555 /* ShortcutKeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortcutKeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92843D451D155964000F9555 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		92843D471D155964000F9555 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		92843D8C1D1626E4000F9555 /* AddShortcutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShortcutTableViewCell.h; sourceTree = "<group>"; };
 		92843D8D1D1626E4000F9555 /* AddShortcutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShortcutTableViewCell.m; sourceTree = "<group>"; };
 		92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddShortcutTableViewCell.xib; sourceTree = "<group>"; };
+		929A46D91D501A3000882690 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		92B95DFB1D38AA1600E48581 /* OnePixelHeightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePixelHeightView.h; sourceTree = "<group>"; };
 		92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePixelHeightView.m; sourceTree = "<group>"; };
 		92B95E051D39B61500E48581 /* EmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyView.h; sourceTree = "<group>"; };
@@ -539,10 +544,10 @@
 		92843D441D155964000F9555 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				921C64891D17B0350055D5CD /* LaunchScreen.xib */,
 				92843D551D155964000F9555 /* Info.plist */,
 				9241A7231D2213A500FF47F1 /* PrefixHeader.pch */,
 				92843D451D155964000F9555 /* main.m */,
+				929A46D91D501A3000882690 /* LaunchScreen.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -570,6 +575,9 @@
 				92BF5C6F1D1D367C000FA2A8 /* AboutMeViewController.h */,
 				92BF5C701D1D367C000FA2A8 /* AboutMeViewController.m */,
 				92BF5C711D1D367C000FA2A8 /* AboutMeViewController.xib */,
+				928014AD1D4CEC3B004DEA23 /* SoftwareInfoViewController.h */,
+				928014AE1D4CEC3B004DEA23 /* SoftwareInfoViewController.m */,
+				928014AF1D4CEC3B004DEA23 /* SoftwareInfoViewController.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -683,9 +691,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				921FC9591D4858F000C0483D /* UMSShareListController.xib in Resources */,
+				928014B11D4CEC3B004DEA23 /* SoftwareInfoViewController.xib in Resources */,
 				921FC9521D4858F000C0483D /* UMSCommentDetailController.xib in Resources */,
 				921FC9581D4858F000C0483D /* UMSnsAccountViewController.xib in Resources */,
 				921FC9571D4858F000C0483D /* UMSLoginViewController.xib in Resources */,
+				929A46DA1D501A3000882690 /* LaunchScreen.xib in Resources */,
 				92BF5C611D1CE33D000FA2A8 /* CommentViewController.xib in Resources */,
 				921FC9531D4858F000C0483D /* UMSCommentInputController.xib in Resources */,
 				92BF5C731D1D367C000FA2A8 /* AboutMeViewController.xib in Resources */,
@@ -707,7 +717,6 @@
 				927DB9361D32A768000D94B6 /* WLCToastView.xib in Resources */,
 				923F50BE1D2B79F800A46AA6 /* AddCommentViewController.xib in Resources */,
 				92843D641D155A31000F9555 /* SoftwareListViewController.xib in Resources */,
-				921C648A1D17B0350055D5CD /* LaunchScreen.xib in Resources */,
 				92843D901D1626E4000F9555 /* AddShortcutTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,6 +781,7 @@
 				92BF5C601D1CE33D000FA2A8 /* CommentViewController.m in Sources */,
 				923F50B91D2B4D6800A46AA6 /* NSString+URLEncode.m in Sources */,
 				9241A7001D20E22900FF47F1 /* MyCreatedViewController.m in Sources */,
+				928014B01D4CEC3B004DEA23 /* SoftwareInfoViewController.m in Sources */,
 				923F508F1D27727A00A46AA6 /* SoftwareItem.m in Sources */,
 				92BF5C241D1BC90A000FA2A8 /* LoginViewController.m in Sources */,
 				92843D711D1590FC000F9555 /* SoftwareCell.m in Sources */,

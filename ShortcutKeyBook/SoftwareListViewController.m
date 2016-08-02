@@ -12,6 +12,8 @@
 #import "SoftwareSearchViewController.h"
 #import "SoftwareManager.h"
 #import "SoftwareItem.h"
+#import "MJRefresh/MJRefresh.h"
+#import "MJRefresh/MJRefreshHeader.h"
 
 @interface SoftwareListViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -35,7 +37,7 @@
         self.letterDic = [NSMutableDictionary new];
         self.letterArray = [NSMutableArray new];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAddShortcutKeySuccess:) name:kAddShortcutKeySuccess object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSoftwareNumChanged:) name:kSoftwareNumChanged object:nil];
     }
     
     return self;
@@ -46,9 +48,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self configTitleView];
+    self.searchBar.barTintColor = kAppBackgroudColor;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self querySoftwares];
+    
+    MJRefreshHeader *header = [MJRefreshHeader headerWithRefreshingBlock:^{
+        [self refreshData];
+    }];
+    self.tableView.mj_header = header;
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,18 +75,9 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    if (self.softwares.count == 0) {
-        [self refreshData];
-    }
-}
-
 #pragma mark - Notification
 
-- (void)onAddShortcutKeySuccess:(NSNotification *)notification
+- (void)onSoftwareNumChanged:(NSNotification *)notification
 {
     [self refreshData];
 }
@@ -144,7 +144,6 @@
     if (self.isLoadingData) {
         return;
     }
-    
     self.isLoadingData = YES;
     [[SoftwareManager sharedInstance] queryAllSoftwaresWithCompletionHandler:^(NSError *error, NSArray *softwares) {
         self.isLoadingData = NO;
@@ -153,6 +152,8 @@
             self.softwares = softwares;
             [self updateUI];
         }
+        
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -181,6 +182,7 @@
     SoftwareItem *item = softwares[indexPath.row];
     UITableViewCell *cell = [UITableViewCell new];
     cell.textLabel.font = [UIFont systemFontOfSize:17];
+    cell.textLabel.textColor = kAppTextColor;
     cell.textLabel.text = item.softwareName;
     return cell;
 }

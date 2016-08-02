@@ -51,6 +51,7 @@
     UITableViewCell *cell = [UITableViewCell new];
     cell.textLabel.font = [UIFont systemFontOfSize:17];
     cell.textLabel.text = item.softwareName;
+    cell.textLabel.textColor = kAppTextColor;
     return cell;
 }
 

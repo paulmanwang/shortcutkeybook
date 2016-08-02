@@ -10,7 +10,7 @@
 
 @interface NSString (WLC)
 
-- (NSDictionary *)toJsonData;
+- (id)toJsonData;
 
 + (NSString *)stringWithJsonData:(NSDictionary *)jsonData;
 

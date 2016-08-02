@@ -19,6 +19,7 @@
         self.softwareName = [jsonData[@"name"] stringByDecodingURIComponent];
         self.commentCount = ((NSNumber *)jsonData[@"comment_count"]).integerValue;
         self.likeCount = ((NSNumber *)jsonData[@"like_count"]).integerValue;
+        self.browseCount = ((NSNumber *)jsonData[@"browse_count"]).integerValue;
         self.addTime = jsonData[@"add_time"];
     }
     
@@ -34,6 +35,7 @@
         self.softwareId = [aDecoder decodeIntegerForKey:@"softwareId"];
         self.commentCount = [aDecoder decodeIntegerForKey:@"commentCount"];
         self.likeCount = [aDecoder decodeIntegerForKey:@"likeCount"];
+        self.browseCount = [aDecoder decodeIntegerForKey:@"browseCount"];
         self.addTime = [aDecoder decodeObjectForKey:@"add_time"];
     }
     return self;
@@ -46,6 +48,7 @@
     [aCoder encodeObject:self.softwareName forKey:@"softwareName"];
     [aCoder encodeInteger:self.commentCount forKey:@"commentCount"];
     [aCoder encodeInteger:self.likeCount forKey:@"likeCount"];
+    [aCoder encodeInteger:self.browseCount forKey:@"browseCount"];
     [aCoder encodeObject:self.addTime forKey:@"addTime"];
 }
 

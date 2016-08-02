@@ -14,11 +14,14 @@
 #define RNCryptorPassword @"wlc20112413015++"
 
 #define UMAppKey    @"5770b2dbe0f55a5f640013e0"
-#define WXAppId     @""
-#define WXAppSecret @""
+#define WXAppId     @"wx6d75e9579450d27d"
+#define WXAppSecret @"285ea8906cae9e3977ecc43de4231383"
 
-#define kAddShortcutKeySuccess @"kAddShortcutKeySuccess"
-#define kWordButtonClicked @"kWordButtonClicked"
+#define kSoftwareNumChanged @"kSoftwareNumChanged"
+#define kWordButtonClicked  @"kWordButtonClicked"
+
+#define kAppBackgroudColor [UIColor colorWithRed:0/255.0 green:204/255.0 blue:255/255.0 alpha:1.0]
+#define kAppTextColor [UIColor colorWithRed:34/255.0 green:34/255.0 blue:34/255.0 alpha:1.0]
 
 #define DECLARA_SHARED_INSTANCE \
 + (instancetype)sharedInstance;
