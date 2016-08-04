@@ -663,6 +663,7 @@
 				TargetAttributes = {
 					92843D401D155964000F9555 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 54QM55S5G4;
 					};
 				};
 			};
@@ -919,6 +920,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ShortcutKeyBook/PrefixHeader.pch";
@@ -933,6 +935,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.ShortcutKeyBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -942,6 +945,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
@@ -955,6 +959,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.ShortcutKeyBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

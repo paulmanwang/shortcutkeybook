@@ -31,7 +31,7 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.tableView dequeueReusableCellWithIdentifier:@"kSoftwareCell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kSoftwareCell"];
 }
 
 - (void)didReceiveMemoryWarning

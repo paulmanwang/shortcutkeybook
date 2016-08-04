@@ -15,7 +15,6 @@
 @interface SoftwareSearchViewController ()<UISearchBarDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem;
-@property (strong, nonatomic) EmptyView *emptyView;
 
 @end
 

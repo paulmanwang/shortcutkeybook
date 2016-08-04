@@ -114,7 +114,7 @@
         if (!(letter >= 'a' && letter <= 'z')
             && !(letter >= 'A' && letter <= 'Z')
             && !(letter >= '0' && letter <= '9')
-            && letter != '.') {
+            && letter != '.' && letter != ' ') {
             return NO;
         }
     }

@@ -49,6 +49,7 @@
     
     [self configTitleView];
     self.searchBar.barTintColor = kAppBackgroudColor;
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kSoftwareCell"];
     

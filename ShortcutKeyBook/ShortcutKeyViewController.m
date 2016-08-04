@@ -252,11 +252,12 @@
 - (void)shareShortcutKey
 {
     // 设置分享标
-    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"xcode快捷键";
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = [NSString stringWithFormat:@"%@快捷键", self.softwareItem.softwareName];
     // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp以及其他
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
     // 不设置type的时候才生效
-    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"http://121.40.60.250/shortcutkeybook.php"; // 不填写默认跳转到了UMeng首页
+    NSString *url = [NSString stringWithFormat:@"http://121.40.60.250/shortcutkeybook.php?software_id=%li&software_name=%@", self.softwareItem.softwareId, self.softwareItem.softwareName];
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = url; // 不填写默认跳转到了UMeng首页
     
     UIImage *appImage = [UIImage imageNamed:@"108x108"];
     NSString *content = @"总结的非常全面，很实用，赶紧去看看";
