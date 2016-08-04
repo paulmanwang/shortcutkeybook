@@ -51,6 +51,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     // Do any additional setup after loading the view from its nib.
     self.tableView.tableHeaderView = self.headerView;
     self.headerImageView.layer.cornerRadius = 38;

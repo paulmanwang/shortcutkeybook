@@ -69,6 +69,7 @@
 {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self configTitleView];
     self.saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(onSubmitBtnClicked)];
     self.navigationItem.rightBarButtonItem = self.saveButtonItem;

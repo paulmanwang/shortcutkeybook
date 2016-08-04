@@ -333,22 +333,22 @@
 			name = All;
 			sourceTree = "<group>";
 		};
-		92304C391D443D1F00627100 /* MyFavor */ = {
+		92304C391D443D1F00627100 /* Favor */ = {
 			isa = PBXGroup;
 			children = (
 				9241A6FB1D20DF1A00FF47F1 /* MyFavorViewController.h */,
 				9241A6FC1D20DF1A00FF47F1 /* MyFavorViewController.m */,
 			);
-			name = MyFavor;
+			name = Favor;
 			sourceTree = "<group>";
 		};
-		92304C3A1D443D3900627100 /* MyCreated */ = {
+		92304C3A1D443D3900627100 /* Created */ = {
 			isa = PBXGroup;
 			children = (
 				9241A6FE1D20E22900FF47F1 /* MyCreatedViewController.h */,
 				9241A6FF1D20E22900FF47F1 /* MyCreatedViewController.m */,
 			);
-			name = MyCreated;
+			name = Created;
 			sourceTree = "<group>";
 		};
 		92304C3B1D443D6700627100 /* Search */ = {
@@ -556,8 +556,8 @@
 			isa = PBXGroup;
 			children = (
 				92304C3B1D443D6700627100 /* Search */,
-				92304C3A1D443D3900627100 /* MyCreated */,
-				92304C391D443D1F00627100 /* MyFavor */,
+				92304C3A1D443D3900627100 /* Created */,
+				92304C391D443D1F00627100 /* Favor */,
 				92304C381D443D0B00627100 /* All */,
 				92843D6E1D1590FC000F9555 /* SoftwareCell.h */,
 				92843D6F1D1590FC000F9555 /* SoftwareCell.m */,

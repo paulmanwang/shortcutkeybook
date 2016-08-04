@@ -50,6 +50,22 @@
     [self configTitleView];
     self.searchBar.barTintColor = kAppBackgroudColor;
     
+    // 去掉searchbar的一像素黑线
+    self.searchBar.layer.borderWidth = 1;
+    self.searchBar.layer.borderColor = kAppBackgroudColor.CGColor;
+    
+    // 去掉navigationbar的一像素黑线
+    UINavigationBar *bar = self.navigationController.navigationBar;
+    for (UIView *subView in bar.subviews) {
+        if ([subView isKindOfClass:NSClassFromString(@"_UINavigationBarBackground")]) {
+            for (UIView *childView in subView.subviews) {
+                if ([childView isKindOfClass:[UIImageView class]]) {
+                    [childView removeFromSuperview];
+                }
+            }
+        }
+    }
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kSoftwareCell"];
     

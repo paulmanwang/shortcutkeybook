@@ -62,9 +62,9 @@
     addLabel.textColor = [UIColor whiteColor];
     addLabel.textAlignment = NSTextAlignmentCenter;
     addLabel.text = @"+";
-    UIView *itemView = [naviForAdd.tabBarItem valueForKey:@"_view"];
-    addLabel.center = CGPointMake(itemView.width/2.0, itemView.height/2.0);
-    [itemView addSubview:addLabel];
+    UIView *view = [naviForAdd.tabBarItem valueForKey:@"_view"];
+    addLabel.center = CGPointMake(view.width/2.0, view.height/2.0);
+    [view addSubview:addLabel];
     
     naviForAbout.tabBarItem.image = [UIImage imageNamed:@"aboutme_normal"];
     naviForAbout.tabBarItem.selectedImage = [UIImage imageNamed:@"aboutme_selected"];
