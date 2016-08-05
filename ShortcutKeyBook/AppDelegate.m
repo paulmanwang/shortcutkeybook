@@ -30,7 +30,20 @@
     
     [self configUI];
     
+    [self autoLogin];
+    
     return YES;
+}
+
+// 默认自动登录
+- (void)autoLogin
+{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"kUserInfo"];
+    UserInfo *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (userInfo) {
+        [LoginManager sharedInstance].currentUserInfo = userInfo;
+        [LoginManager sharedInstance].logged = YES;
+    }
 }
 
 - (void)configUI

@@ -57,13 +57,6 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     self.headerImageView.layer.cornerRadius = 38;
     self.headerImageView.layer.masksToBounds = YES;
     
-    // 默认自动登录
-    UserInfo *userInfo = [self readUserInfo];
-    if (userInfo) {
-        [LoginManager sharedInstance].currentUserInfo = userInfo;
-        [LoginManager sharedInstance].logged = YES;
-    }
-    
     self.sections = @[@[@"我创建的快捷键", @"我收藏的快捷键"],
                       @[@"推荐APP给好友"],
                       @[@"用户反馈", @"关于"]];
@@ -104,14 +97,6 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 
 
 #pragma mark - Private
-
-- (UserInfo *)readUserInfo
-{
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"kUserInfo"];
-    UserInfo *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    return userInfo;
-}
 
 - (void)cleanUserInfo
 {
