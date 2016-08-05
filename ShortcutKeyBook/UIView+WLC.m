@@ -60,7 +60,7 @@
     return hud;
 }
 
-- (void)showLoadingView
+- (void)showLoadingViewWithText:(NSString *)text
 {
 //    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
 //    hud.labelText = @"正在加载";
@@ -68,7 +68,7 @@
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
     hud.removeFromSuperViewOnHide = YES;
-    hud.labelText = @"正在加载...";
+    hud.labelText = text;
     [self addSubview:hud];
     [hud show:NO];
     [self setHud:hud];

@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserInfo : NSObject
+@interface UserInfo : NSObject<NSCoding>
 
-@property (copy, nonatomic) NSString *userId;
+@property (assign, nonatomic) NSInteger userId;
 @property (copy, nonatomic) NSString *username;
 @property (copy, nonatomic) NSString *nickname;
 

@@ -38,7 +38,7 @@
         toastView.toastButton.alpha = 1;
         
     } completion:^(BOOL finished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction animations:^{
                 toastView.toastButton.alpha = 0;
             } completion:^(BOOL finished) {

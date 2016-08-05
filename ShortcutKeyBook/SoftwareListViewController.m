@@ -147,7 +147,7 @@
 - (void)timeout
 {
     if (self.isLoadingData) {
-        [self.view showLoadingView];
+        [self.view showLoadingViewWithText:@"正在加载数据..."];
     }
 }
 

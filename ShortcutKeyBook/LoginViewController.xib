@@ -10,12 +10,12 @@
             <connections>
                 <outlet property="handleButton" destination="Qe9-eS-dXg" id="yrc-SV-Qof"/>
                 <outlet property="loginContainerView" destination="Ver-h8-Qhd" id="bGn-C3-M5P"/>
-                <outlet property="loginPasswordLabel" destination="KUO-CG-w2J" id="1ie-8n-RVB"/>
-                <outlet property="loginUserNameLabel" destination="8Z5-0j-rlr" id="gSN-Ws-660"/>
+                <outlet property="loginPasswordTextField" destination="KUO-CG-w2J" id="kne-EE-Lhv"/>
+                <outlet property="loginUserNameTextField" destination="8Z5-0j-rlr" id="xQm-am-NBB"/>
                 <outlet property="registerContainerView" destination="2Fl-8C-Yoq" id="UPm-gF-t1w"/>
-                <outlet property="registerNicknameLabel" destination="iIC-NR-MbI" id="Abv-xg-IRY"/>
-                <outlet property="registerPasswordLabel" destination="OyC-Mm-j5H" id="Yq0-w2-D6B"/>
-                <outlet property="registerUserNameLabel" destination="blA-DQ-y6G" id="CoL-aY-DF6"/>
+                <outlet property="registerNicknameTextField" destination="iIC-NR-MbI" id="qcL-uI-CgM"/>
+                <outlet property="registerPasswordTextField" destination="OyC-Mm-j5H" id="Y4M-ue-SaT"/>
+                <outlet property="registerUserNameTextField" destination="blA-DQ-y6G" id="XOI-wh-xXn"/>
                 <outlet property="scrollView" destination="BcA-Th-9cS" id="Wkd-XH-5k3"/>
                 <outlet property="tipsLabel" destination="cNM-Ik-2hU" id="Yug-PV-2aS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="p1U-xt-tEI"/>
@@ -73,14 +73,17 @@
             <rect key="frame" x="0.0" y="0.0" width="265" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15019224279" placeholder="邮箱或手机" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-0j-rlr">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱或手机" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-0j-rlr">
                     <rect key="frame" x="0.0" y="60" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="FRS-s4-zDR"/>
                     </constraints>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="dgd-NX-jBO"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLL-Qy-lwN" customClass="OnePixelHeightView">
                     <rect key="frame" x="0.0" y="91" width="265" height="1"/>
@@ -89,14 +92,17 @@
                         <constraint firstAttribute="height" constant="1" id="OkF-1b-w7N"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15019224279" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUO-CG-w2J">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUO-CG-w2J">
                     <rect key="frame" x="0.0" y="114" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="IyA-sM-xte"/>
                     </constraints>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="MqA-MQ-eMB"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5D-8J-YxZ" customClass="OnePixelHeightView">
                     <rect key="frame" x="0.0" y="145" width="265" height="1"/>
@@ -126,14 +132,17 @@
             <rect key="frame" x="0.0" y="0.0" width="265" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15019224279" placeholder="邮箱或手机" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blA-DQ-y6G">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱或手机" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blA-DQ-y6G">
                     <rect key="frame" x="0.0" y="7" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="wvm-6w-bV0"/>
                     </constraints>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="DSt-RC-ZNA"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mhy-7X-IGI" customClass="OnePixelHeightView">
                     <rect key="frame" x="0.0" y="38" width="265" height="1"/>
@@ -142,14 +151,17 @@
                         <constraint firstAttribute="height" constant="1" id="Iak-UU-bRG"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20112413015" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OyC-Mm-j5H">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OyC-Mm-j5H">
                     <rect key="frame" x="0.0" y="60" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="TvF-KA-vGE"/>
                     </constraints>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="hPo-pb-1by"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aan-GB-yDx" customClass="OnePixelHeightView">
                     <rect key="frame" x="0.0" y="91" width="265" height="1"/>
@@ -165,14 +177,17 @@
                         <constraint firstAttribute="height" constant="1" id="5OD-5A-ceC"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="paul" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iIC-NR-MbI">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iIC-NR-MbI">
                     <rect key="frame" x="0.0" y="112" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="cf5-W8-jn8"/>
                     </constraints>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" spellCheckingType="no" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="5oZ-L2-z9E"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

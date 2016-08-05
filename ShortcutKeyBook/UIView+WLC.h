@@ -19,7 +19,7 @@
 - (void)setTop:(CGFloat)top;
 - (CGFloat)top;
 
-- (void)showLoadingView;
+- (void)showLoadingViewWithText:(NSString *)text;
 - (void)dismissLoadingView;
 
 - (void)toastWithMessage:(NSString *)message;

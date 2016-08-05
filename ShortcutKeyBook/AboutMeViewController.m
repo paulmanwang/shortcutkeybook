@@ -52,10 +52,17 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    // Do any additional setup after loading the view from its nib.
+    
     self.tableView.tableHeaderView = self.headerView;
     self.headerImageView.layer.cornerRadius = 38;
     self.headerImageView.layer.masksToBounds = YES;
+    
+    // 默认自动登录
+    UserInfo *userInfo = [self readUserInfo];
+    if (userInfo) {
+        [LoginManager sharedInstance].currentUserInfo = userInfo;
+        [LoginManager sharedInstance].logged = YES;
+    }
     
     self.sections = @[@[@"我创建的快捷键", @"我收藏的快捷键"],
                       @[@"推荐APP给好友"],
@@ -98,6 +105,19 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 
 #pragma mark - Private
 
+- (UserInfo *)readUserInfo
+{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"kUserInfo"];
+    UserInfo *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return userInfo;
+}
+
+- (void)cleanUserInfo
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kUserInfo"];
+}
+
 - (void)updateLoginState
 {
     LoginManager *loginManager = [LoginManager sharedInstance];
@@ -126,6 +146,22 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     }
     return count + indexPath.row;
 }
+
+- (void)shareApp
+{
+    // 设置分享标
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"快捷键大全";
+    // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp以及其他
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
+    // 不设置type的时候才生效
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://itunes.apple.com/us/app/shuang-long-xi-zhu/id1096588313?l=zh&ls=1&mt=8"; // 这里填写为应用地址
+    
+    UIImage *appImage = [UIImage imageNamed:@"108x108"];
+    NSString *content = @"我正在使用《快捷键大全》，挺不错的应用，你也来试试吧！";
+    
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:nil];
+}
+
 
 #pragma mark - UITableViewDataSource
 
@@ -238,27 +274,16 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (void)shareApp
-{
-    // 设置分享标
-    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"快捷键大全";
-    // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp以及其他
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
-    // 不设置type的时候才生效
-    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://itunes.apple.com/us/app/shuang-long-xi-zhu/id1096588313?l=zh&ls=1&mt=8"; // 这里填写为应用地址
-    
-    UIImage *appImage = [UIImage imageNamed:@"108x108"];
-    NSString *content = @"我正在使用《快捷键大全》，挺不错的应用，你也来试试吧！";
-    
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:nil];
-}
-
+#pragma mark - Button action
 
 - (IBAction)onLoginButtonClicked:(id)sender
 {
     if ([LoginManager sharedInstance].logged) {
         [LoginManager sharedInstance].logged = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSString *username = [LoginManager sharedInstance].currentUserInfo.username;
+            [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
+            [self cleanUserInfo];
             [self.view toastWithMessage:@"退出登录成功"];
             [self updateLoginState];
         });

@@ -919,8 +919,8 @@
 			baseConfigurationReference = 7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ShortcutKeyBook/PrefixHeader.pch";
@@ -935,7 +935,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.ShortcutKeyBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "39ac5fc3-09c8-40b5-91d3-55d6692b9f1e";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -944,8 +945,8 @@
 			baseConfigurationReference = 6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
@@ -959,7 +960,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.ShortcutKeyBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "39ac5fc3-09c8-40b5-91d3-55d6692b9f1e";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -27,12 +27,12 @@ typedef NS_ENUM(NSUInteger, PageStatus)
 
 @property (strong, nonatomic) IBOutlet UIView *loginContainerView;
 @property (strong, nonatomic) IBOutlet UIView *registerContainerView;
-@property (weak, nonatomic) IBOutlet UITextField *registerUserNameLabel;
-@property (weak, nonatomic) IBOutlet UITextField *registerPasswordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *registerNicknameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *registerUserNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *registerPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *registerNicknameTextField;
 
-@property (weak, nonatomic) IBOutlet UITextField *loginUserNameLabel;
-@property (weak, nonatomic) IBOutlet UITextField *loginPasswordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *loginUserNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *loginPasswordTextField;
 
 @property (assign, nonatomic) PageStatus pageStatus;
 
@@ -49,6 +49,11 @@ typedef NS_ENUM(NSUInteger, PageStatus)
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
     [self.tipsLabel addGestureRecognizer:tapGesture];
+    
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    if (username.length > 0) {
+        self.loginUserNameTextField.text = username;
+    }
 }
 
 //2016-06-24 00:33:34.164 ShortcutKeyBook[10204:498560] view width = 265.000000
@@ -97,28 +102,38 @@ typedef NS_ENUM(NSUInteger, PageStatus)
     [self.scrollView addSubview:self.registerContainerView];
 }
 
+- (void)changeToLoginStatus
+{
+    self.tipsLabel.text = kRegisterTips;
+    self.handleButton.titleLabel.text = @"登录";
+    self.title = @"登录";
+    self.pageStatus = PageStatusLogin;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.scrollView.contentOffset = CGPointMake(0, 0);
+    }];
+}
+
+- (void)changeToRegesterStatus
+{
+    self.tipsLabel.text = kLoginTips;
+    self.handleButton.titleLabel.text = @"注册";
+    self.title = @"注册";
+    self.pageStatus = PageStatusRegister;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGFloat width = self.scrollView.frame.size.width;
+        self.scrollView.contentOffset = CGPointMake(width, 0);
+    }];
+}
+
 - (void)onTap
 {
     if (self.pageStatus == PageStatusLogin) {
-        self.tipsLabel.text = kLoginTips;
-        self.handleButton.titleLabel.text = @"注册";
-        self.title = @"注册";
-        self.pageStatus = PageStatusRegister;
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            CGFloat width = self.scrollView.frame.size.width;
-            self.scrollView.contentOffset = CGPointMake(width, 0);
-        }];
+        [self changeToRegesterStatus];
     }
     else {
-        self.tipsLabel.text = kRegisterTips;
-        self.handleButton.titleLabel.text = @"登录";
-        self.title = @"登录";
-        self.pageStatus = PageStatusLogin;
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            self.scrollView.contentOffset = CGPointMake(0, 0);
-        }];
+        [self changeToLoginStatus];
     }
 }
 
@@ -127,45 +142,123 @@ typedef NS_ENUM(NSUInteger, PageStatus)
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)saveUserInfo
+{
+    UserInfo *userInfo = [LoginManager sharedInstance].currentUserInfo;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
+    [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"kUserInfo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)login
 {
-    NSString *username = self.loginUserNameLabel.text;
-    NSString *pwd = self.loginPasswordLabel.text;
+    if ([self.loginUserNameTextField isFirstResponder]) {
+        [self.loginUserNameTextField resignFirstResponder];
+    }
+    
+    if ([self.loginPasswordTextField isFirstResponder]) {
+        [self.loginPasswordTextField resignFirstResponder];
+    }
+    
+    if (self.loginUserNameTextField.text.length == 0) {
+        [self.view toastWithMessage:@"请输入用户名"];
+        return;
+    }
+    
+    if (self.loginPasswordTextField.text.length == 0) {
+        [self.view toastWithMessage:@"请输入密码"];
+        return;
+    }
+    
+    NSString *username = self.loginUserNameTextField.text;
+    NSString *pwd = self.loginPasswordTextField.text;
+    [self.view showLoadingViewWithText:@"正在登录..."];
     [[LoginManager sharedInstance] loginWithUserName:username password:pwd completionHandler:^(NSError *error, LoginErrorType result) {
+        [self.view dismissLoadingView];
         if (result == LoginErrorTypeSuccess) {
             [self dismiss];
             [self.view toastWithMessage:@"登录成功"];
-            NSLog(@"登录成功");
+            [self saveUserInfo];
         }
         else if (result == LoginErrorTypeInvalidPWD) {
-            NSLog(@"密码错误");
             [self.view toastWithMessage:@"密码错误"];
         }
         else if (result == LoginErrorTypeUserNotFound) {
-            NSLog(@"该用户不存在");
             [self.view toastWithMessage:@"该用户不存在"];
         }
         else {
-            NSLog(@"登录失败");
             [self.view toastWithMessage:@"登录失败"];
         }
     }];
 }
 
+- (BOOL)checkRegisterUserName
+{
+    NSString *registerUserName = self.registerUserNameTextField.text;
+    for (NSInteger i = 0; i < registerUserName.length; i++) {
+        unichar letter = [registerUserName characterAtIndex:i];
+        if (!(letter >= 'a' && letter <= 'z')
+            && !(letter >= 'A' && letter <= 'Z')
+            && !(letter >= '0' && letter <= '9')
+            && letter != '.' && letter != '@') {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 - (void)regiseter
 {
-    NSString *username = self.registerUserNameLabel.text;
-    NSString *pwd = self.registerUserNameLabel.text;
-    NSString *nickname = self.registerNicknameLabel.text;
+    if ([self.registerUserNameTextField isFirstResponder]) {
+        [self.registerUserNameTextField resignFirstResponder];
+    }
+    
+    if ([self.registerPasswordTextField isFirstResponder]) {
+        [self.registerPasswordTextField resignFirstResponder];
+    }
+    
+    if ([self.registerNicknameTextField isFirstResponder]) {
+        [self.registerNicknameTextField resignFirstResponder];
+    }
+    
+    if (self.registerUserNameTextField.text.length == 0) {
+        [self.view toastWithMessage:@"请输入用户名"];
+        return;
+    }
+    
+    if (self.registerPasswordTextField.text.length == 0) {
+        [self.view toastWithMessage:@"请输入密码"];
+        return;
+    }
+    
+    if (self.registerNicknameTextField.text.length == 0) {
+        [self.view toastWithMessage:@"输入昵称"];
+        return;
+    }
+    
+    if (![self checkRegisterUserName]) {
+        [self.view toastWithMessage:@"用户名包含非法字符"];
+        return;
+    }
+    
+    NSString *username = self.registerUserNameTextField.text;
+    NSString *pwd = self.registerPasswordTextField.text;
+    NSString *nickname = self.registerNicknameTextField.text;
+    [self.view showLoadingViewWithText:@"正在注册..."];
     [[LoginManager sharedInstance] registerWithUserName:username password:pwd nickname:nickname completionHandler:^(NSError *error, RegisterResult result) {
+        [self.view dismissLoadingView];
         if (result == RegisterResultSuccess) {
-            NSLog(@"注册成功");
+            [self.view toastWithMessage:@"注册成功"];
+            
+            self.loginUserNameTextField.text = username;
+            [self changeToLoginStatus];
         }
         else if (result == RegisterResultConflict) {
-            NSLog(@"该用户已存在");
+            [self.view toastWithMessage:@"该用户已存在"];
         }
         else {
-            NSLog(@"注册失败");
+            [self.view toastWithMessage:@"注册失败"];
         }
     }];
 }
@@ -186,5 +279,10 @@ typedef NS_ENUM(NSUInteger, PageStatus)
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end

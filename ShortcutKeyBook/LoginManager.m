@@ -56,6 +56,7 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
             errorType = LoginErrorTypeSuccess;
             NSDictionary *info = [resultString toJsonData];
             self.logged = YES;
+            self.currentUserInfo.userId = ((NSNumber *)info[@"id"]).integerValue;
             self.currentUserInfo.username = info[@"account"];
             self.currentUserInfo.nickname = info[@"nickname"];
         }
@@ -75,9 +76,10 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
 - (void)registerWithUserName:(NSString *)username password:(NSString *)password nickname:(NSString *)nickname completionHandler:(RegisterCompletionHandler)completionHandler
 {
     NSString *cipherPassword = [self encryptPassword:password];
-    
+    cipherPassword = [cipherPassword stringByEncodingURIComponent];
+    NSString *encodedNickname = [nickname stringByEncodingURIComponent];
     NSString *paramString = [NSString stringWithFormat:@"account=%@&password=%@&nickname=%@",
-                     username, cipherPassword, nickname];
+                     username, cipherPassword, encodedNickname];
     
     [self getWithProtocalName:@"register" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;
