@@ -109,11 +109,11 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     if (loginManager.logged) {
         NSLog(@"已登录");
         [self.loginButton setTitle:@"退出登录"];
-        if (loginManager.currentUserInfo.nickname.length > 0) {
-            self.usernameLabel.text = loginManager.currentUserInfo.nickname;
-        } else {
+//        if (loginManager.currentUserInfo.nickname.length > 0) {
+//            self.usernameLabel.text = loginManager.currentUserInfo.nickname;
+//        } else {
             self.usernameLabel.text = loginManager.currentUserInfo.username;
-        }
+        //}
         self.headerImageView.image = [UIImage imageNamed:@"chaiquan"];
     } else {
         NSLog(@"未登录");
@@ -139,14 +139,13 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp以及其他
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
     // 不设置type的时候才生效
-    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://itunes.apple.com/us/app/shuang-long-xi-zhu/id1096588313?l=zh&ls=1&mt=8"; // 这里填写为应用地址
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://itunes.apple.com/us/app/kuai-jie-jian-da-quan/id1126204786?l=zh&ls=1&mt=8"; // 这里填写为应用地址
     
     UIImage *appImage = [UIImage imageNamed:@"108x108"];
     NSString *content = @"我正在使用《快捷键大全》，挺不错的应用，你也来试试吧！";
     
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:nil];
 }
-
 
 #pragma mark - UITableViewDataSource
 

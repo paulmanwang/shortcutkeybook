@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet WLCCommentView *commentView;
 @property (weak, nonatomic) IBOutlet UILabel *browseCountLabel;
 
+@property (assign, nonatomic) BOOL isLoadingData;
+
 @end
 
 @implementation ShortcutKeyViewController
@@ -97,12 +99,23 @@
     
     self.browseCountLabel.text = [NSString stringWithFormat:@"%li次浏览", self.softwareItem.browseCount];
     
+    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+    self.isLoadingData = YES;
     [[SoftwareManager sharedInstance] queryAllShortcutKeysOfSoftware:self.softwareItem.softwareId completionHandler:^(NSError *error, NSArray *shortcutKeys) {
+        self.isLoadingData = NO;
+        [self.view dismissLoadingView];
         if (!error) {
             self.shortcutKeys = shortcutKeys;
             [self.tableView reloadData];
         }
     }];
+}
+
+- (void)timeout
+{
+    if (self.isLoadingData) {
+        [self.view showLoadingViewWithText:@"正在加载数据..."];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

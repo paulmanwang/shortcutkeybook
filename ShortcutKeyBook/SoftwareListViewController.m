@@ -12,6 +12,7 @@
 #import "SoftwareSearchViewController.h"
 #import "SoftwareManager.h"
 #import "SoftwareItem.h"
+#import "MJRefresh/MJRefresh.h"
 
 @interface SoftwareListViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -68,7 +69,8 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kSoftwareCell"];
-    
+    [self addRefreshHeader];
+
     [self querySoftwares];
 }
 
@@ -95,6 +97,16 @@
 }
 
 #pragma mark - Private
+
+- (void)addRefreshHeader
+{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        if (!self.isLoadingData) {
+            [self.tableView.mj_header beginRefreshing];
+            [self refreshData];
+        }
+    }];
+}
 
 - (void)configTitleView
 {
@@ -158,6 +170,7 @@
     }
     self.isLoadingData = YES;
     [[SoftwareManager sharedInstance] queryAllSoftwaresWithCompletionHandler:^(NSError *error, NSArray *softwares) {
+        [self.tableView.mj_header endRefreshing];
         self.isLoadingData = NO;
         [self.view dismissLoadingView];
         if (!error) {

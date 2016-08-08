@@ -38,7 +38,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.searchBar becomeFirstResponder];
+    
+    for (UIView *aView in self.searchBar.subviews) {
+        for (UIView *subView in aView.subviews) {
+            if ([subView isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+                [subView becomeFirstResponder];
+            }
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

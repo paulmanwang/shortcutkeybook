@@ -10,5 +10,6 @@ pod 'AFNetworking', '~> 2.0'
 pod 'RNCryptor', '~> 4.0.0-beta'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'UMengFeedback', '~> 2.3.4'
+pod 'MJRefresh'
 
 end

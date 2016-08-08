@@ -73,7 +73,7 @@
             <rect key="frame" x="0.0" y="0.0" width="265" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱或手机" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-0j-rlr">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机、邮箱或其他" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-0j-rlr">
                     <rect key="frame" x="0.0" y="60" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="FRS-s4-zDR"/>
@@ -132,7 +132,7 @@
             <rect key="frame" x="0.0" y="0.0" width="265" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱或手机" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blA-DQ-y6G">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机、邮箱或其他" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blA-DQ-y6G">
                     <rect key="frame" x="0.0" y="7" width="265" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="wvm-6w-bV0"/>

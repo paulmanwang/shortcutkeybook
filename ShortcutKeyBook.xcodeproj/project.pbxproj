@@ -89,6 +89,7 @@
 /* Begin PBXFileReference section */
 		6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.release.xcconfig"; sourceTree = "<group>"; };
 		7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShortcutKeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShortcutKeyBook/Pods-ShortcutKeyBook.debug.xcconfig"; sourceTree = "<group>"; };
+		921F0E851D58DC3A00381CF0 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJRefresh.framework; path = "../../../Library/Developer/Xcode/DerivedData/ShortcutKeyBook-ewdqwbunwlfidqflospcykywcqrp/Build/Products/Debug-iphoneos/MJRefresh/MJRefresh.framework"; sourceTree = "<group>"; };
 		921FC9371D4858F000C0483D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		921FC9391D4858F000C0483D /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		921FC93A1D4858F000C0483D /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -251,6 +252,7 @@
 		544E4BC4D498D4DB2987A3F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				921F0E851D58DC3A00381CF0 /* MJRefresh.framework */,
 				921FC9691D485A1300C0483D /* libz.tbd */,
 				921FC9671D485A0B00C0483D /* libstdc++.tbd */,
 				921FC9651D4859F900C0483D /* CoreTelephony.framework */,
