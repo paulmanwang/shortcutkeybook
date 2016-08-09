@@ -231,6 +231,11 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     AMCellType cellTye = [self cellTypeForIndexPath:indexPath];
     switch (cellTye) {
         case AMCellTypeMyCreatedShortcuts: {
+            if (![LoginManager sharedInstance].logged) {
+                LoginViewController *loginViewController = [LoginViewController new];
+                [self presentViewControllerWithNavi:loginViewController animated:YES completion:nil];
+                return;
+            }
             MyCreatedViewController *vc = [MyCreatedViewController myCreatedViewController];
             [self.navigationController pushViewController:vc animated:YES];
             break;

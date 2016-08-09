@@ -136,7 +136,7 @@
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="软件名称(包含字母或数字)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoF-6U-EJx">
                         <rect key="frame" x="8" y="15" width="304" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
                         <connections>
                             <outlet property="delegate" destination="-1" id="1rH-kB-GvJ"/>
                         </connections>
