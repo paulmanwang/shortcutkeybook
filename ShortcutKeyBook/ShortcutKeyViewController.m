@@ -273,7 +273,7 @@
     [UMSocialData defaultData].extConfig.wechatSessionData.url = url; // 不填写默认跳转到了UMeng首页
     
     UIImage *appImage = [UIImage imageNamed:@"108x108"];
-    NSString *content = @"总结的非常全面，很实用，赶紧去看看";
+    NSString *content = @"总结的非常全面，很实用，赶紧去看看吧！！！";
     
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:content shareImage:appImage shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline] delegate:self];
 }

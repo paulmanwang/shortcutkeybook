@@ -40,7 +40,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <color key="barTintColor" red="0.078431372549019607" green="0.58823529411764708" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
-            <textInputTraits key="textInputTraits"/>
+            <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
             <point key="canvasLocation" x="251" y="-118"/>
         </searchBar>
     </objects>
