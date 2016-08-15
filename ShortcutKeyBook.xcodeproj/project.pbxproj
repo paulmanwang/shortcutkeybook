@@ -50,6 +50,8 @@
 		9241A72C1D221EC600FF47F1 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9241A72B1D221EC600FF47F1 /* LoginManager.m */; };
 		9241A72F1D221EE800FF47F1 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9241A72E1D221EE800FF47F1 /* UserInfo.m */; };
 		92797BB31D18FB2E00EADEE4 /* SoftwareSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */; };
+		927D24FC1D6218DE00F602FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D24FB1D6218DE00F602FE /* JavaScriptCore.framework */; };
+		927D25091D62200500F602FE /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D25081D62200500F602FE /* JSPatch.framework */; };
 		927DB9351D32A768000D94B6 /* WLCToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927DB9331D32A768000D94B6 /* WLCToastView.m */; };
 		927DB9361D32A768000D94B6 /* WLCToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927DB9341D32A768000D94B6 /* WLCToastView.xib */; };
 		927DB93D1D32A9BD000D94B6 /* UILabel+WLC.m in Sources */ = {isa = PBXBuildFile; fileRef = 927DB93C1D32A9BD000D94B6 /* UILabel+WLC.m */; };
@@ -171,6 +173,8 @@
 		9241A7301D22274F00FF47F1 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		92797BB01D18FB2E00EADEE4 /* SoftwareSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareSearchViewController.h; sourceTree = "<group>"; };
 		92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareSearchViewController.m; sourceTree = "<group>"; };
+		927D24FB1D6218DE00F602FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		927D25081D62200500F602FE /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
 		927DB9321D32A768000D94B6 /* WLCToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCToastView.h; sourceTree = "<group>"; };
 		927DB9331D32A768000D94B6 /* WLCToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCToastView.m; sourceTree = "<group>"; };
 		927DB9341D32A768000D94B6 /* WLCToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLCToastView.xib; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927D25091D62200500F602FE /* JSPatch.framework in Frameworks */,
+				927D24FC1D6218DE00F602FE /* JavaScriptCore.framework in Frameworks */,
 				921FC96A1D485A1300C0483D /* libz.tbd in Frameworks */,
 				921FC9681D485A0B00C0483D /* libstdc++.tbd in Frameworks */,
 				921FC9741D485D5900C0483D /* libWeChatSDK.a in Frameworks */,
@@ -252,6 +258,7 @@
 		544E4BC4D498D4DB2987A3F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				927D24FB1D6218DE00F602FE /* JavaScriptCore.framework */,
 				921F0E851D58DC3A00381CF0 /* MJRefresh.framework */,
 				921FC9691D485A1300C0483D /* libz.tbd */,
 				921FC9671D485A0B00C0483D /* libstdc++.tbd */,
@@ -388,6 +395,7 @@
 		923F507A1D262C4900A46AA6 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				927D25081D62200500F602FE /* JSPatch.framework */,
 				921FC96B1D485D5900C0483D /* Wechat */,
 				921FC9351D4858F000C0483D /* UMSocial_Sdk_5.2.1 */,
 				923F507B1D262C6200A46AA6 /* XMLDictionary.h */,
@@ -920,10 +928,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B5BDAAB39E570D1BD3FE1C0 /* Pods-ShortcutKeyBook.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/ShortcutKeyBook/**",
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/ShortcutKeyBook",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ShortcutKeyBook/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
@@ -946,11 +961,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6728C3EF5DFEE488CDC5B3E1 /* Pods-ShortcutKeyBook.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ShortcutKeyBook",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ShortcutKeyBook/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = ShortcutKeyBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

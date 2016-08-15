@@ -16,6 +16,7 @@
 #define UMAppKey    @"5770b2dbe0f55a5f640013e0"
 #define WXAppId     @"wx6d75e9579450d27d"
 #define WXAppSecret @"285ea8906cae9e3977ecc43de4231383"
+#define JSPatchAppKey @"41764ef38b2d53c7"
 
 #define kSoftwareNumChanged @"kSoftwareNumChanged"
 #define kWordButtonClicked  @"kWordButtonClicked"

@@ -43,10 +43,10 @@
 - (void)fillData:(CommentItem *)comment
 {
     self.contentLabel.text = comment.content;
-    if ([comment.createAccount isEqualToString:@"wlcunknownwlc"]) {
+    if ([comment.userNickname isEqualToString:@"wlcunknownwlc"]) {
         self.nicknameLabel.text = @"匿名用户";
     } else {
-        self.nicknameLabel.text = comment.createAccount;
+        self.nicknameLabel.text = comment.userNickname;
     }
     self.timeLabel.text = comment.addTime;
 }

@@ -27,11 +27,28 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onWordButtonClicked:) name:kWordButtonClicked object:nil];
 }
 
+- (NSRange)selectedRange:(UITextField *)field
+{
+    //开始位置
+    UITextPosition* beginning = field.beginningOfDocument;
+    //光标选择区域
+    UITextRange* selectedRange = field.selectedTextRange;
+    //选择的开始位置
+    UITextPosition* selectionStart = selectedRange.start;
+    //选择的结束位置
+    UITextPosition* selectionEnd = selectedRange.end;
+    //选择的实际位置
+    const NSInteger location = [field offsetFromPosition:beginning toPosition:selectionStart];
+    //选择的长度
+    const NSInteger length = [field offsetFromPosition:selectionStart toPosition:selectionEnd];
+    return NSMakeRange(location, length);
+}
+
 - (void)onWordButtonClicked:(NSNotification *)notification
 {
-    NSDictionary *userInfo = notification.userInfo;
-    NSString *word = userInfo[@"word"];
     if ([self.nameTextField isFirstResponder]) {
+        NSDictionary *userInfo = notification.userInfo;
+        NSString *word = userInfo[@"word"];
         self.nameTextField.text = [self.nameTextField.text stringByAppendingString:word];
     }
 }
@@ -56,6 +73,8 @@
 - (void)fillData:(ShortcutkeyItem *)item
 {
     self.shortcutKeyItem = item;
+    self.nameTextField.text = item.shortcutKeyName;
+    self.detailTextFiled.text = item.shortcutKeyDetail;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

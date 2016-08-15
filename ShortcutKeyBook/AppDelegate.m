@@ -13,6 +13,7 @@
 #import "UMengFeedback/UMFeedback.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
+#import "JSPatch/JSPatch.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [JSPatch startWithAppKey:JSPatchAppKey];
+    [JSPatch sync];
+    
     [UMFeedback setAppkey:UMAppKey];
     [UMSocialData setAppKey:UMAppKey];
     

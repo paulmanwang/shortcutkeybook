@@ -109,11 +109,11 @@ typedef NS_ENUM(NSUInteger, AMCellType){
     if (loginManager.logged) {
         NSLog(@"已登录");
         [self.loginButton setTitle:@"退出登录"];
-//        if (loginManager.currentUserInfo.nickname.length > 0) {
-//            self.usernameLabel.text = loginManager.currentUserInfo.nickname;
-//        } else {
+       if (loginManager.currentUserInfo.nickname.length > 0) {
+            self.usernameLabel.text = loginManager.currentUserInfo.nickname;
+        } else {
             self.usernameLabel.text = loginManager.currentUserInfo.username;
-        //}
+        }
         self.headerImageView.image = [UIImage imageNamed:@"chaiquan"];
     } else {
         NSLog(@"未登录");

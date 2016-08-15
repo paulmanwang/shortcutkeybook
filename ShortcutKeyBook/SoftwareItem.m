@@ -7,6 +7,7 @@
 //
 
 #import "SoftwareItem.h"
+#import "JSONModel.h"
 
 @implementation SoftwareItem
 
@@ -16,6 +17,7 @@
     if (self) {
         self.softwareId = ((NSNumber *)jsonData[@"id"]).integerValue;
         self.createAccount = jsonData[@"create_account"];
+        self.userNickName = jsonData[@"user_nickname"];
         self.softwareName = [jsonData[@"name"] stringByDecodingURIComponent];
         self.commentCount = ((NSNumber *)jsonData[@"comment_count"]).integerValue;
         self.likeCount = ((NSNumber *)jsonData[@"like_count"]).integerValue;
@@ -32,6 +34,7 @@
     if (self) {
         self.softwareName = [aDecoder decodeObjectForKey:@"softwareName"];
         self.createAccount = [aDecoder decodeObjectForKey:@"createAccount"];
+        self.userNickName = [aDecoder decodeObjectForKey:@"userNickname"];
         self.softwareId = [aDecoder decodeIntegerForKey:@"softwareId"];
         self.commentCount = [aDecoder decodeIntegerForKey:@"commentCount"];
         self.likeCount = [aDecoder decodeIntegerForKey:@"likeCount"];
@@ -45,6 +48,7 @@
 {
     [aCoder encodeInteger:self.softwareId forKey:@"softwareId"];
     [aCoder encodeObject:self.createAccount forKey:@"createAccount"];
+    [aCoder encodeObject:self.userNickName forKey:@"userNickname"];
     [aCoder encodeObject:self.softwareName forKey:@"softwareName"];
     [aCoder encodeInteger:self.commentCount forKey:@"commentCount"];
     [aCoder encodeInteger:self.likeCount forKey:@"likeCount"];

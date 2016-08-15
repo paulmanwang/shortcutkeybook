@@ -88,16 +88,16 @@
 //    self.backItem = [[UIBarButtonItem alloc] initWithTitle:@"呵呵" style:UIBarButtonItemStylePlain target:self action:@selector(test)];
 //    self.navigationItem.backBarButtonItem = self.backItem;
     
-    if ([self.softwareItem.createAccount isEqualToString:@"wlcunknownwlc"]) {
+    if ([self.softwareItem.userNickName isEqualToString:@"wlcunknownwlc"]) {
         self.authorLabel.text = @"匿名用户";
     } else {
-        self.authorLabel.text = self.softwareItem.createAccount;
+        self.authorLabel.text = self.softwareItem.userNickName;
     }
     
     NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
     self.timeLabel.text = subStrings[0];
     
-    self.browseCountLabel.text = [NSString stringWithFormat:@"%li次浏览", self.softwareItem.browseCount];
+    self.browseCountLabel.text = [NSString stringWithFormat:@"%lu次浏览", self.softwareItem.browseCount];
     
     [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
     self.isLoadingData = YES;

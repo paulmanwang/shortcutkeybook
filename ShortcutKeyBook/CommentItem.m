@@ -16,6 +16,7 @@
     if (self) {
         self.commentId = ((NSNumber *)jsonData[@"id"]).integerValue;
         self.createAccount = jsonData[@"create_account"];
+        self.userNickname = jsonData[@"user_nickname"];
         self.content = jsonData[@"content"];
         self.addTime = jsonData[@"add_time"];
     }

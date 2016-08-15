@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - JSONModel (1.2.0)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.0)
   - RNCryptor (4.0.0)
@@ -27,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - JSONModel
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh
   - RNCryptor (~> 4.0.0-beta)
@@ -34,11 +36,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   UMengFeedback: 5283cc0e324dffca4dd54c4abb3cbded56487817
 
-PODFILE CHECKSUM: 931446379d272914e62b656827ab69cccab9def3
+PODFILE CHECKSUM: 62c4115dae6e7885c86c6c27344df232efc6d016
 
 COCOAPODS: 1.0.1

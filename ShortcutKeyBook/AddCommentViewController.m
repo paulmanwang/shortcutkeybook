@@ -53,16 +53,14 @@
 - (void)onSubmit
 {
     NSString *content = self.textField.text;
-    if (content.length == 0) {
-        NSLog(@"请填写评论内容");
+    if (content.length == 0 || [content isEqualToString:@"输入评价内容"]) {
+        [self.view toastWithMessage:@"请填写评论内容"];
         return;
     }
     
-    NSString *createAccount = nil;
+    NSString *createAccount = @"wlcunknownwlc";
     if ([LoginManager sharedInstance].logged) {
         createAccount = [LoginManager sharedInstance].currentUserInfo.username;
-    } else {
-        createAccount = @"wlcunknownwlc";
     }
     
     [[SoftwareManager sharedInstance] addCommentWithSoftwareId:self.softwareItem.softwareId createAccout:createAccount content:content completionHanlder:^(NSError *error, BOOL success) {

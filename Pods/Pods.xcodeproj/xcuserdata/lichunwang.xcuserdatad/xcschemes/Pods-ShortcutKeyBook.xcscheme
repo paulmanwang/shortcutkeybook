@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "254E9B72459B90F27091F9B9F233A73F"
+               BlueprintIdentifier = "3E211968989316111D5676963EA87DE2"
                BuildableName = "Pods_ShortcutKeyBook.framework"
                BlueprintName = "Pods-ShortcutKeyBook"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "254E9B72459B90F27091F9B9F233A73F"
+            BlueprintIdentifier = "3E211968989316111D5676963EA87DE2"
             BuildableName = "Pods_ShortcutKeyBook.framework"
             BlueprintName = "Pods-ShortcutKeyBook"
             ReferencedContainer = "container:Pods.xcodeproj">
