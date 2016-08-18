@@ -19,6 +19,7 @@
         self.userNickname = jsonData[@"user_nickname"];
         self.content = jsonData[@"content"];
         self.addTime = jsonData[@"add_time"];
+        self.headerID = jsonData[@"headerID"];
     }
     
     return self;

@@ -59,6 +59,7 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
             self.currentUserInfo.userId = ((NSNumber *)info[@"id"]).integerValue;
             self.currentUserInfo.username = info[@"account"];
             self.currentUserInfo.nickname = info[@"nickname"];
+            self.currentUserInfo.headerID = info[@"headerID"];
         }
         else if ([resultString isEqualToString:@"406:Not Acceptable"]) {
             errorType = LoginErrorTypeInvalidPWD;
@@ -75,6 +76,9 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
 
 - (void)registerWithUserName:(NSString *)username password:(NSString *)password nickname:(NSString *)nickname completionHandler:(RegisterCompletionHandler)completionHandler
 {
+    // 随机取头像
+    NSInteger randomIndex = rand() % 14;
+    
     NSString *cipherPassword = [self encryptPassword:password];
     cipherPassword = [cipherPassword stringByEncodingURIComponent];
     NSString *encodedNickname = [nickname stringByEncodingURIComponent];

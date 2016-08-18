@@ -83,8 +83,8 @@
 		92BF5C611D1CE33D000FA2A8 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BF5C5F1D1CE33D000FA2A8 /* CommentViewController.xib */; };
 		92BF5C691D1D1586000FA2A8 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BF5C671D1D1586000FA2A8 /* CommentTableViewCell.m */; };
 		92BF5C6A1D1D1586000FA2A8 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BF5C681D1D1586000FA2A8 /* CommentTableViewCell.xib */; };
-		92BF5C721D1D367C000FA2A8 /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BF5C701D1D367C000FA2A8 /* AboutMeViewController.m */; };
 		92BF5C731D1D367C000FA2A8 /* AboutMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BF5C711D1D367C000FA2A8 /* AboutMeViewController.xib */; };
+		92C0463F1D636FC600FE321A /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C0463E1D636FC600FE321A /* AboutMeViewController.m */; };
 		B293D00E6154CC3C80DDB633 /* Pods_ShortcutKeyBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8F17AD009B7BFCE1BD27BC /* Pods_ShortcutKeyBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,8 +225,8 @@
 		92BF5C671D1D1586000FA2A8 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		92BF5C681D1D1586000FA2A8 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		92BF5C6F1D1D367C000FA2A8 /* AboutMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeViewController.h; sourceTree = "<group>"; };
-		92BF5C701D1D367C000FA2A8 /* AboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeViewController.m; sourceTree = "<group>"; };
 		92BF5C711D1D367C000FA2A8 /* AboutMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMeViewController.xib; sourceTree = "<group>"; };
+		92C0463E1D636FC600FE321A /* AboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeViewController.m; sourceTree = "<group>"; };
 		9C8F17AD009B7BFCE1BD27BC /* Pods_ShortcutKeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShortcutKeyBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -583,7 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				92BF5C6F1D1D367C000FA2A8 /* AboutMeViewController.h */,
-				92BF5C701D1D367C000FA2A8 /* AboutMeViewController.m */,
+				92C0463E1D636FC600FE321A /* AboutMeViewController.m */,
 				92BF5C711D1D367C000FA2A8 /* AboutMeViewController.xib */,
 				928014AD1D4CEC3B004DEA23 /* SoftwareInfoViewController.h */,
 				928014AE1D4CEC3B004DEA23 /* SoftwareInfoViewController.m */,
@@ -815,6 +815,7 @@
 				92843D7E1D159B84000F9555 /* ShortcutKeyCell.m in Sources */,
 				923F50BD1D2B79F800A46AA6 /* AddCommentViewController.m in Sources */,
 				9241A7261D22182B00FF47F1 /* UIView+WLC.m in Sources */,
+				92C0463F1D636FC600FE321A /* AboutMeViewController.m in Sources */,
 				92843D461D155964000F9555 /* main.m in Sources */,
 				923F507D1D262C6200A46AA6 /* XMLDictionary.m in Sources */,
 				923F50B21D2AC49F00A46AA6 /* NSString+WLC.m in Sources */,
@@ -823,7 +824,6 @@
 				923F50811D26338000A46AA6 /* SoftwareManager.m in Sources */,
 				92843D8F1D1626E4000F9555 /* AddShortcutTableViewCell.m in Sources */,
 				92843D631D155A31000F9555 /* SoftwareListViewController.m in Sources */,
-				92BF5C721D1D367C000FA2A8 /* AboutMeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

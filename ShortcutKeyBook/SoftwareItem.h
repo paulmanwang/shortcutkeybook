@@ -24,7 +24,9 @@
 
 @property (copy, nonatomic) NSString *createAccount; // to modify
 
-@property (copy, nonatomic) NSString *userNickName; 
+@property (copy, nonatomic) NSString *userNickName;
+
+@property (copy, nonatomic) NSString *userHeaderID;
 
 @property (copy, nonatomic) NSString *softwareName;
 

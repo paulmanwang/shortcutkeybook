@@ -17,6 +17,7 @@
         self.userId = [aDecoder decodeIntegerForKey:@"userId"];
         self.username = [aDecoder decodeObjectForKey:@"username"];
         self.nickname = [aDecoder decodeObjectForKey:@"nickname"];
+        self.headerID = [aDecoder decodeObjectForKey:@"headerID"];
     }
     
     return self;
@@ -27,6 +28,7 @@
     [aCoder encodeInteger:self.userId forKey:@"userId"];
     [aCoder encodeObject:self.username forKey:@"username"];
     [aCoder encodeObject:self.nickname forKey:@"nickname"];
+    [aCoder encodeObject:self.headerID forKey:@"headerID"];
 }
 
 @end

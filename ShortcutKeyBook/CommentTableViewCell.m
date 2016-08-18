@@ -49,6 +49,8 @@
         self.nicknameLabel.text = comment.userNickname;
     }
     self.timeLabel.text = comment.addTime;
+    
+    self.headerImageView.image = [UIImage imageNamed:comment.headerID];
 }
 
 @end

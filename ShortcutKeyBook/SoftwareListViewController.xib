@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,19 +17,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" placeholder="请输入软件名称" translatesAutoresizingMaskIntoConstraints="NO" id="LVS-YO-l2J">
+                <searchBar contentMode="redraw" placeholder="请输入软件名称" id="LVS-YO-l2J">
                     <rect key="frame" x="0.0" y="-2" width="320" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="LxT-IV-hbU"/>
-                    </constraints>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="barTintColor" red="0.078431372549019607" green="0.60784313725490191" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="ZoR-So-wpM"/>
                     </connections>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Hn-ON-Hfb">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Hn-ON-Hfb">
                     <rect key="frame" x="0.0" y="42" width="320" height="438"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="mOe-kc-CjY"/>
@@ -38,15 +37,6 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="7Hn-ON-Hfb" secondAttribute="trailing" id="0Sd-99-3na"/>
-                <constraint firstAttribute="trailing" secondItem="LVS-YO-l2J" secondAttribute="trailing" id="4B2-K2-7GY"/>
-                <constraint firstItem="LVS-YO-l2J" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EgB-9I-ehb"/>
-                <constraint firstItem="LVS-YO-l2J" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-2" id="Lxx-zw-4FA"/>
-                <constraint firstAttribute="bottom" secondItem="7Hn-ON-Hfb" secondAttribute="bottom" id="XJf-Uw-tJE"/>
-                <constraint firstItem="7Hn-ON-Hfb" firstAttribute="top" secondItem="LVS-YO-l2J" secondAttribute="bottom" id="e06-6n-24m"/>
-                <constraint firstItem="7Hn-ON-Hfb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mHJ-QX-OpF"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="14" y="130"/>
         </view>

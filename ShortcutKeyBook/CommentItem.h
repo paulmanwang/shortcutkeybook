@@ -15,6 +15,7 @@
 @property (copy, nonatomic) NSString *content;
 @property (copy, nonatomic) NSString *createAccount;
 @property (copy, nonatomic) NSString *userNickname;
+@property (copy, nonatomic) NSString *headerID;
 
 - (instancetype)initWithJsonData:(NSDictionary *)jsonData;
 

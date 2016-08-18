@@ -11,6 +11,7 @@
                 <outlet property="authorLabel" destination="XHe-yn-TQc" id="USI-yq-gtD"/>
                 <outlet property="browseCountLabel" destination="6wG-MX-tI6" id="Vul-Yh-ZNl"/>
                 <outlet property="commentView" destination="Apx-L7-CD9" id="enu-uf-zZ6"/>
+                <outlet property="headerImageView" destination="qDT-R8-6oI" id="97c-uf-a2M"/>
                 <outlet property="headerView" destination="tQ7-dF-j0r" id="sMW-0w-zoB"/>
                 <outlet property="praiseView" destination="bJI-So-qR3" id="cjL-f0-kkq"/>
                 <outlet property="tableView" destination="5dA-H6-tqZ" id="FFQ-mB-nkz"/>
@@ -36,7 +37,7 @@
                     <rect key="frame" x="0.0" y="430" width="320" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eq-C6-tsS">
-                            <rect key="frame" x="86.5" y="10" width="30" height="30"/>
+                            <rect key="frame" x="87" y="10" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="AbB-uA-PYY"/>
                                 <constraint firstAttribute="height" constant="30" id="gdM-8R-m22"/>

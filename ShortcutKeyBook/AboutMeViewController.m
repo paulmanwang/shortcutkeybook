@@ -51,7 +51,6 @@ typedef NS_ENUM(NSUInteger, AMCellType){
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.tableView.tableHeaderView = self.headerView;
     self.headerImageView.layer.cornerRadius = 38;
@@ -114,7 +113,7 @@ typedef NS_ENUM(NSUInteger, AMCellType){
         } else {
             self.usernameLabel.text = loginManager.currentUserInfo.username;
         }
-        self.headerImageView.image = [UIImage imageNamed:@"chaiquan"];
+        self.headerImageView.image = [UIImage imageNamed:loginManager.currentUserInfo.headerID];
     } else {
         NSLog(@"未登录");
         self.usernameLabel.text = @"未登录";

@@ -29,6 +29,8 @@
 @property (strong, nonatomic) NSMutableArray *shortcutList;
 @property (strong, nonatomic) IBOutlet UIView *wordHeaderView;
 
+@property (assign, nonatomic) BOOL isUIInit;
+
 @end
 
 @implementation AddShortcutViewController
@@ -50,7 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    // self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self configTitleView];
     self.saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(onSubmitBtnClicked)];
@@ -64,6 +67,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (!self.isUIInit) {
+        self.wordHeaderView.top += 64;
+        self.tableView.top += 64;
+        self.tableView.height -= 64;
+        self.isUIInit = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning

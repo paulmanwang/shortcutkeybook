@@ -23,6 +23,7 @@
 @property (assign, nonatomic) BOOL isLoadingData;
 @property (strong, nonatomic) NSMutableDictionary *letterDic;
 @property (strong, nonatomic) NSMutableArray *letterArray;
+@property (assign, nonatomic) BOOL isUIInit;
 
 @end
 
@@ -46,7 +47,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    //self.edgesForExtendedLayout = UIRectEdgeNone; // 唤醒时有黑边，这里去掉
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self configTitleView];
     self.searchBar.barTintColor = kAppBackgroudColor;
@@ -78,6 +80,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // 为了唤醒时有黑边不得已而为之
+    if (!self.isUIInit) {
+        self.isUIInit = YES;
+        self.searchBar.top += 64;
+        self.tableView.top += 64;
+        self.tableView.height -= 64;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

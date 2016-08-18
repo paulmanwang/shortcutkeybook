@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet WLCPraiseView *praiseView;
 @property (weak, nonatomic) IBOutlet WLCCommentView *commentView;
 @property (weak, nonatomic) IBOutlet UILabel *browseCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 @property (assign, nonatomic) BOOL isLoadingData;
 
@@ -93,6 +94,7 @@
     } else {
         self.authorLabel.text = self.softwareItem.userNickName;
     }
+    self.headerImageView.image = [UIImage imageNamed:self.softwareItem.userHeaderID];
     
     NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
     self.timeLabel.text = subStrings[0];

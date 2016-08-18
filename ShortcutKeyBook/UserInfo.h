@@ -13,5 +13,6 @@
 @property (assign, nonatomic) NSInteger userId;
 @property (copy, nonatomic) NSString *username;
 @property (copy, nonatomic) NSString *nickname;
+@property (copy, nonatomic) NSString *headerID;
 
 @end
