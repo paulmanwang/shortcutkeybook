@@ -33,6 +33,16 @@
     self.title = @"添加评论";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(onSubmit)];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+- (void)onTap
+{
+    if ([self.textField isFirstResponder]) {
+        [self.textField resignFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

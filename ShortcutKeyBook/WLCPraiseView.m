@@ -37,6 +37,11 @@
 {
     NSLog(@"onTap");
     NSLog(@"number = %@", self.numberLabel.text);
+    if (!self.enabled) {
+        NSLog(@"禁止点击");
+        return;
+    }
+    
     if ([self.delegate respondsToSelector:@selector(wlcPraiseViewDidClicked:)]) {
         [self.delegate wlcPraiseViewDidClicked:self];
     }

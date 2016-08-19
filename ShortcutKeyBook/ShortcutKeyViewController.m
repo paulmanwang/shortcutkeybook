@@ -63,6 +63,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ShortcutKeyCell" bundle:nil] forCellReuseIdentifier:@"ShortcutKeyCell"];
     
     self.praiseView.delegate = self;
+    self.praiseView.enabled = YES;
     self.commentView.delegate = self;
     
     [[SoftwareManager sharedInstance] updateBrowseNumWithSoftwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
@@ -216,7 +217,9 @@
 {
     BOOL hasThumbUp = [[SoftwareManager sharedInstance] softwareHasThumbUp:self.softwareItem];
     if (hasThumbUp) {
+        self.praiseView.enabled = NO;
         [[SoftwareManager sharedInstance] thumbUpWithUp:NO softwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
+            self.praiseView.enabled = YES;
             if (success) {
                 [[SoftwareManager sharedInstance] removeThumbUpSoftware:self.softwareItem];
                 NSLog(@"取消点赞成功");
@@ -229,9 +232,11 @@
         }];
     }
     else {
+        self.praiseView.enabled = NO;
         [[SoftwareManager sharedInstance] thumbUpWithUp:YES softwareId:self.softwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
             if (success) {
                 NSLog(@"点赞成功");
+                self.praiseView.enabled = YES;
                 [[SoftwareManager sharedInstance] addThumbUpSoftware:self.softwareItem];
                 self.softwareItem.likeCount += 1;
                 self.praiseView.numberLabel.hidden = NO;

@@ -21,5 +21,6 @@
 @property (weak, nonatomic) id<WLCPraiseViewDelegate> delegate;
 @property (strong, nonatomic) UILabel *numberLabel;
 @property (strong, nonatomic) UIImageView *praiseImageView;
+@property (assign, nonatomic) BOOL enabled;
 
 @end
