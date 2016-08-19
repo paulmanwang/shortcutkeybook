@@ -77,13 +77,12 @@ IMPLEMENTATE_SHARED_INSTANCE(LoginManager)
 - (void)registerWithUserName:(NSString *)username password:(NSString *)password nickname:(NSString *)nickname completionHandler:(RegisterCompletionHandler)completionHandler
 {
     // 随机取头像
-    NSInteger randomIndex = rand() % 14;
-    
+    NSInteger headerID = (rand() % 20) + 1;
     NSString *cipherPassword = [self encryptPassword:password];
     cipherPassword = [cipherPassword stringByEncodingURIComponent];
     NSString *encodedNickname = [nickname stringByEncodingURIComponent];
-    NSString *paramString = [NSString stringWithFormat:@"account=%@&password=%@&nickname=%@",
-                     username, cipherPassword, encodedNickname];
+    NSString *paramString = [NSString stringWithFormat:@"account=%@&password=%@&nickname=%@&headerID=%li",
+                     username, cipherPassword, encodedNickname, headerID];
     
     [self getWithProtocalName:@"register" paramString:paramString completionHandler:^(NSError *error, id bodyData) {
         NSString *resultString = (NSString *)bodyData;

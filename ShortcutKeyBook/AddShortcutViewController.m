@@ -69,9 +69,9 @@
     [super viewWillAppear:animated];
     
     if (!self.isUIInit) {
-        self.wordHeaderView.top += 64;
-        self.tableView.top += 64;
-        self.tableView.height -= 64;
+        self.wordHeaderView.top = 64;
+        self.tableView.top = 64 + kWordBoardHeight;
+        self.tableView.height = [self tableViewHeight];
         self.isUIInit = YES;
     }
 }
@@ -83,6 +83,11 @@
 
 #pragma mark - notification
 
+- (CGFloat)tableViewHeight
+{
+    return self.view.height - kTopBarHeight - kWordBoardHeight - kTabBarHeight;
+}
+
 - (void)onKeyboardWillShowNotification:(NSNotification *)notification
 {
     NSLog(@"onKeyboardWillShowNotification");
@@ -90,15 +95,13 @@
     NSDictionary *userInfo = [notification userInfo];
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGFloat keyboardHeight = [aValue CGRectValue].size.height;
-    if (self.tableView.height == self.view.height - kWordBoardHeight) {
-        self.tableView.frame = CGRectMake(0, kWordBoardHeight, self.tableView.width, self.view.height - keyboardHeight - kWordBoardHeight);
-    }
+    self.tableView.height = [self tableViewHeight] - keyboardHeight;
 }
 
 - (void)onKeyboardWillHideNotification:(NSNotification *)notification
 {
     NSLog(@"onKeyboardWillHideNotification self.view.height = %f", self.view.height);
-    self.tableView.frame = CGRectMake(0, kWordBoardHeight, self.tableView.width, self.view.height - kWordBoardHeight);
+    self.tableView.height = [self tableViewHeight];
 }
 
 #pragma mark - TextFieldDelegate

@@ -51,11 +51,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self configTitleView];
-    self.searchBar.barTintColor = kAppBackgroudColor;
+    UIColor *blueColor = [UIColor colorWithRed:25/255.0 green:160/255.0 blue:220/255.0 alpha:1.0];
+    self.searchBar.barTintColor = blueColor;
     
     // 去掉searchbar的一像素黑线
     self.searchBar.layer.borderWidth = 1;
-    self.searchBar.layer.borderColor = kAppBackgroudColor.CGColor;
+    self.searchBar.layer.borderColor = blueColor.CGColor;
     
     // 去掉navigationbar的一像素黑线
     UINavigationBar *bar = self.navigationController.navigationBar;
@@ -91,7 +92,7 @@
         self.isUIInit = YES;
         self.searchBar.top += 64;
         self.tableView.top += 64;
-        self.tableView.height -= 64;
+        self.tableView.height -= (kTopBarHeight + kTabBarHeight);
     }
 }
 

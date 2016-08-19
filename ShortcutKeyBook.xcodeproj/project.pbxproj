@@ -930,8 +930,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lichun Ｗang (54QM55S5G4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lichun Ｗang (54QM55S5G4)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)/**",
@@ -952,7 +952,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.ShortcutKeyBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "39ac5fc3-09c8-40b5-91d3-55d6692b9f1e";
+				PROVISIONING_PROFILE = "a53fa858-8f26-41ef-898e-476db1fcc84e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -963,8 +963,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lichun Ｗang (54QM55S5G4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lichun Ｗang (54QM55S5G4)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -984,7 +984,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.ShortcutKeyBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "39ac5fc3-09c8-40b5-91d3-55d6692b9f1e";
+				PROVISIONING_PROFILE = "a53fa858-8f26-41ef-898e-476db1fcc84e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

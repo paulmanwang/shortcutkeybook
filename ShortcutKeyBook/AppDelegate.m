@@ -52,6 +52,9 @@
 
 - (void)configUI
 {
+    [self configGlobalStatusBarAppearance];
+    [self configGlobalNavigationBarAppearance];
+    
     // root
     SoftwareListViewController *rootViewController = [SoftwareListViewController new];
     UINavigationController *naviForRoot = [[UINavigationController alloc] initWithRootViewController:rootViewController];
@@ -72,7 +75,7 @@
     naviForRoot.tabBarItem.selectedImage = [UIImage imageNamed:@"arrow_selected"];
     
     UILabel *addLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 38, 34)];
-    addLabel.backgroundColor = kAppBackgroudColor;
+    addLabel.backgroundColor = [UIColor colorWithRed:25/255.0 green:160/255.0 blue:220/255.0 alpha:1.0];
     addLabel.layer.cornerRadius = 2;
     addLabel.layer.masksToBounds = YES;
     addLabel.font = [UIFont systemFontOfSize:30];
@@ -89,23 +92,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = tabBarController;
     
-    [self configGlobalStatusBarAppearance];
-    [self configGlobalNavigationBarAppearance];
-    
     [self.window makeKeyAndVisible];
 }
 
 - (void)configGlobalNavigationBarAppearance
 {
-    UIColor *blueColor = kAppBackgroudColor;
-    UIColor *whiteColor = [UIColor whiteColor];
-    
     // set NavigationBar背景颜色和Title颜色(方法一，只能修改单个navigationBar)
     //    [naviForRoot.navigationBar setBarTintColor:blueColor];
     //    [naviForRoot.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]; // 这里仅仅只能修改标题的属性，返回按钮不能修改
     
     // 方法二，全局修改
-    [[UINavigationBar appearance] setBarTintColor:blueColor];
+    UIColor *whiteColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setBarTintColor:kAppBackgroudColor];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:whiteColor, NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:18]}]; // 这里仅仅只能修改标题的属性，返回按钮不能修改
     [[UINavigationBar appearance] setTintColor:whiteColor]; // 注意：tintColor不影响标题的颜色，影响返回、左边、邮编barItem的颜色
     
