@@ -74,6 +74,7 @@
 		92843D8F1D1626E4000F9555 /* AddShortcutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92843D8D1D1626E4000F9555 /* AddShortcutTableViewCell.m */; };
 		92843D901D1626E4000F9555 /* AddShortcutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */; };
 		929A46DA1D501A3000882690 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929A46D91D501A3000882690 /* LaunchScreen.xib */; };
+		92A6C3911D8FA75700D9CFAE /* SKBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A6C3901D8FA75700D9CFAE /* SKBTabBarController.m */; };
 		92B95DFD1D38AA1600E48581 /* OnePixelHeightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */; };
 		92B95E071D39B61500E48581 /* EmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B95E061D39B61500E48581 /* EmptyView.m */; };
 		92B95E091D39B62F00E48581 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B95E081D39B62F00E48581 /* EmptyView.xib */; };
@@ -210,6 +211,8 @@
 		92843D8D1D1626E4000F9555 /* AddShortcutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShortcutTableViewCell.m; sourceTree = "<group>"; };
 		92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddShortcutTableViewCell.xib; sourceTree = "<group>"; };
 		929A46D91D501A3000882690 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		92A6C38F1D8FA75700D9CFAE /* SKBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBTabBarController.h; sourceTree = "<group>"; };
+		92A6C3901D8FA75700D9CFAE /* SKBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBTabBarController.m; sourceTree = "<group>"; };
 		92B95DFB1D38AA1600E48581 /* OnePixelHeightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePixelHeightView.h; sourceTree = "<group>"; };
 		92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePixelHeightView.m; sourceTree = "<group>"; };
 		92B95E051D39B61500E48581 /* EmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyView.h; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 				92843D471D155964000F9555 /* AppDelegate.h */,
 				92843D481D155964000F9555 /* AppDelegate.m */,
 				9241A7301D22274F00FF47F1 /* Constants.h */,
+				92A6C38F1D8FA75700D9CFAE /* SKBTabBarController.h */,
+				92A6C3901D8FA75700D9CFAE /* SKBTabBarController.m */,
 			);
 			name = AppGlobal;
 			sourceTree = "<group>";
@@ -821,6 +826,7 @@
 				923F50B21D2AC49F00A46AA6 /* NSString+WLC.m in Sources */,
 				92304C321D436BE100627100 /* WLCPraiseView.m in Sources */,
 				92304C371D43774200627100 /* WLCCommentView.m in Sources */,
+				92A6C3911D8FA75700D9CFAE /* SKBTabBarController.m in Sources */,
 				923F50811D26338000A46AA6 /* SoftwareManager.m in Sources */,
 				92843D8F1D1626E4000F9555 /* AddShortcutTableViewCell.m in Sources */,
 				92843D631D155A31000F9555 /* SoftwareListViewController.m in Sources */,

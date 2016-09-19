@@ -14,6 +14,7 @@
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import "JSPatch/JSPatch.h"
+#import "SKBTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -67,7 +68,7 @@
     AboutMeViewController *aboutMeVewController = [AboutMeViewController new];
     UINavigationController *naviForAbout = [[UINavigationController alloc] initWithRootViewController:aboutMeVewController];
     
-    UITabBarController *tabBarController = [UITabBarController new];
+    SKBTabBarController *tabBarController = [SKBTabBarController sharedInstance];
     [tabBarController setViewControllers:@[naviForRoot, naviForAdd, naviForAbout]];
     
     // 配置图片

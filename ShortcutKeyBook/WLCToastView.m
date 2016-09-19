@@ -7,12 +7,13 @@
 //
 
 #import "WLCToastView.h"
+#import "SKBTabBarController.h"
 
 @implementation WLCToastView
 
 + (void)toastWithMessage:(NSString *)message onView:(UIView *)view
 {
-    UITabBarController *tabBarViewController = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UITabBarController *tabBarViewController = [SKBTabBarController sharedInstance];
     UINavigationController *naviController = (UINavigationController *)tabBarViewController.selectedViewController;
     UIViewController *topViewController = naviController.visibleViewController;
     
