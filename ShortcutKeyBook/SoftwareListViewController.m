@@ -272,7 +272,7 @@
     NSString *key = self.letterArray[indexPath.section];
     NSArray *softwares = (NSArray *)self.letterDic[key];
     SoftwareItem *item = softwares[indexPath.row];
-    ShortcutKeyViewController *vc = [[ShortcutKeyViewController alloc] initWithSoftwareItem:item];
+    ShortcutKeyViewController *vc = [[ShortcutKeyViewController alloc] initWithSoftwareItem:item shouldShowEditButton:NO];
     [self.navigationController pushViewController:vc animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

@@ -31,6 +31,9 @@
 
 @property (assign, nonatomic) BOOL isUIInit;
 
+@property (strong, nonatomic) SoftwareItem *originSoftwareItem;
+@property (copy, nonatomic) NSArray *originShortcutkeyList;
+
 @end
 
 @implementation AddShortcutViewController
@@ -49,6 +52,12 @@
     return self;
 }
 
+- (void)setSoftwareItem:(SoftwareItem *)item shortcutkeyList:(NSArray *)shortcutkeyList
+{
+    self.originSoftwareItem = item;
+    self.originShortcutkeyList = [shortcutkeyList copy];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,7 +70,14 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerNib:[UINib nibWithNibName:@"AddShortcutTableViewCell" bundle:nil] forCellReuseIdentifier:@"AddShortcutTableViewCell"];
-    [self initDataSource];
+    
+    if (self.originSoftwareItem) {
+        self.softwareNameLabel.text = self.originSoftwareItem.softwareName;
+        [self.shortcutList addObjectsFromArray:self.originShortcutkeyList];
+    }
+    else {
+        [self initDataSource];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,7 +101,12 @@
 
 - (CGFloat)tableViewHeight
 {
-    return self.view.height - kTopBarHeight - kWordBoardHeight - kTabBarHeight;
+    if (self.originSoftwareItem) {
+        return self.view.height - kTopBarHeight - kWordBoardHeight;
+    }
+    else {
+        return self.view.height - kTopBarHeight - kWordBoardHeight - kTabBarHeight;
+    }
 }
 
 - (void)onKeyboardWillShowNotification:(NSNotification *)notification
@@ -155,7 +176,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kSoftwareNumChanged object:self];
 }
 
-
 - (void)submitShortcutKey
 {
     NSString *softwareName = self.softwareNameLabel.text;
@@ -178,7 +198,6 @@
     }
     softwareName = [softwareName stringByEncodingURIComponent];
     
-    [self.view showLoadingViewWithText:@"正在提交信息..."];
     [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account completionHandler:^(NSError *error, BOOL success) {
         [self.view dismissLoadingView];
         if (success) {
@@ -345,7 +364,25 @@
         return;
     }
     
-    [self submitShortcutKey];
+    __weak typeof(self) weakSelf = self;
+    if (self.originSoftwareItem) {
+        [self.view showLoadingViewWithText:@"正在提交信息..."];
+        // 正确的方式应该是删除软件的快捷键，然后再重新更新快捷键
+        [[SoftwareManager sharedInstance] deleteMyCreatedSoftwareWithSoftwareId:self.originSoftwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
+            if (error) {
+                [weakSelf.view toastWithMessage:@"提交失败"];
+                [weakSelf.view dismissLoadingView];
+            }
+            else {
+                [weakSelf submitShortcutKey];
+            }
+        }];
+    }
+    else {
+        [self.view showLoadingViewWithText:@"正在提交信息..."];
+        [self submitShortcutKey];
+    }
+    
 }
 
 #pragma mark - AlertView

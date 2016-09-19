@@ -16,6 +16,8 @@
 #import "WLCCommentView.h"
 #import "LoginViewController.h"
 #import "UMSocial.h"
+#import "SKBTabBarController.h"
+#import "AddShortcutViewController.h"
 
 @interface ShortcutKeyViewController ()<WLCPraiseViewDelegate, WLCCommentViewDelegate, UMSocialUIDelegate>
 
@@ -35,16 +37,18 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 @property (assign, nonatomic) BOOL isLoadingData;
+@property (assign, nonatomic) BOOL shouldShowEditButton;
 
 @end
 
 @implementation ShortcutKeyViewController
 
-- (instancetype)initWithSoftwareItem:(SoftwareItem *)item
+- (instancetype)initWithSoftwareItem:(SoftwareItem *)item shouldShowEditButton:(BOOL)show
 {
     self = [super init];
     if (self) {
         self.softwareItem = item;
+        self.shouldShowEditButton = show;
         self.hidesBottomBarWhenPushed = YES;
     }
     
@@ -54,6 +58,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.shouldShowEditButton) {
+        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(onEditButtonClicked)];
+        self.navigationItem.rightBarButtonItem = editButtonItem;
+    }
+    
     self.title = [NSString stringWithFormat:@"%@快捷键", self.softwareItem.softwareName];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -102,7 +112,7 @@
     
     self.browseCountLabel.text = [NSString stringWithFormat:@"%lu次浏览", self.softwareItem.browseCount];
     
-    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+    // [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
     self.isLoadingData = YES;
     [[SoftwareManager sharedInstance] queryAllShortcutKeysOfSoftware:self.softwareItem.softwareId completionHandler:^(NSError *error, NSArray *shortcutKeys) {
         self.isLoadingData = NO;
@@ -112,6 +122,14 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (void)onEditButtonClicked
+{
+    AddShortcutViewController *addVC = [AddShortcutViewController new];
+    [addVC setSoftwareItem:self.softwareItem shortcutkeyList:self.shortcutKeys];
+    // 添加转场动画
+    [self presentViewControllerWithNavi:addVC animated:YES completion:nil];
 }
 
 - (void)timeout
@@ -144,10 +162,20 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    NSLog(@"shortcutkey dealloc");
 }
 
 #pragma mark - Private

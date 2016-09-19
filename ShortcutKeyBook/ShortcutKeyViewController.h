@@ -11,6 +11,6 @@
 
 @interface ShortcutKeyViewController : UIViewController
 
-- (instancetype)initWithSoftwareItem:(SoftwareItem *)item;
+- (instancetype)initWithSoftwareItem:(SoftwareItem *)item shouldShowEditButton:(BOOL)show;
 
 @end
