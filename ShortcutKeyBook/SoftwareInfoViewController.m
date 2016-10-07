@@ -11,24 +11,111 @@
 @interface SoftwareInfoViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (assign, nonatomic) CGPoint beginPoint;
+
+@property (strong, nonatomic) NSArray *softwareInfos;
+@property (assign, nonatomic) NSInteger importedIndex;
+@property (weak, nonatomic) IBOutlet UIButton *importButton;
 
 @end
 
 @implementation SoftwareInfoViewController
 
-- (void)viewDidLoad {
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+        self.softwareInfos = [NSMutableArray new];
+    }
+    
+    return self;
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.title = @"关于";
-    // Do any additional setup after loading the view from its nib.
+    self.importButton.hidden = YES;
     
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"version:%@", appVersion];
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
+    [self.view addGestureRecognizer:longPressGesture];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)onLongPress:(UILongPressGestureRecognizer *)longPressGesture
+{
+    if (longPressGesture.state == UIGestureRecognizerStateBegan) {
+        self.importButton.hidden = NO;
+    }
+}
+
+- (void)importSingleSoftware
+{
+    NSString *softwareInfo = self.softwareInfos[self.importedIndex];
+    NSArray *components = [softwareInfo componentsSeparatedByString:@"\n"];
+    NSString *softwareName = components[0];
+    
+    NSMutableArray *addedShortcuts = [NSMutableArray array];
+    for (NSInteger i = 1; i < components.count; i++) {
+        NSString *shortcutInfo = components[i];
+        if (shortcutInfo.length > 0) {
+            NSArray *shortcutComponents = [shortcutInfo componentsSeparatedByString:@"||"];
+            NSString *shortcutDetail = shortcutComponents[0];
+            NSString *shortcutName = shortcutComponents[1];
+            
+            NSMutableDictionary *info = [NSMutableDictionary new];
+            info[@"name"] = [shortcutName stringByEncodingURIComponent];
+            info[@"detail"] = [shortcutDetail stringByEncodingURIComponent];
+            [addedShortcuts addObject:info];
+        }
+    }
+    
+    // 插入软件信息
+    NSString *account = nil;
+    if ([LoginManager sharedInstance].logged) {
+        account = [LoginManager sharedInstance].currentUserInfo.username;
+    } else {
+        account = @"15019224279";
+    }
+    softwareName = [softwareName stringByEncodingURIComponent];
+
+    [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account completionHandler:^(NSError *error, BOOL success) {
+        self.importedIndex++;
+        if (self.importedIndex < self.softwareInfos.count) {
+            [self importSingleSoftware];
+            
+            if (error) {
+                NSLog(@"%@导入失败", softwareName);
+            }
+            else {
+                NSLog(@"%@导入成功", softwareName);
+            }
+        }
+        else {
+            self.importButton.enabled = YES;
+            self.importButton.hidden = YES;
+        }
+    }];
+}
+
+- (IBAction)onImportButtonClicked:(id)sender
+{
+    self.importButton.enabled = NO;
+    NSError *error;
+    NSString *textFileContents = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shortcut" ofType:@"txt"] encoding:NSUTF8StringEncoding error: &error];
+    self.softwareInfos = [textFileContents componentsSeparatedByString:@"&&&&&&\n"];
+    
+    self.importedIndex = 0;
+    [self importSingleSoftware];
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

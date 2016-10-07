@@ -18,8 +18,9 @@
 #define WXAppSecret @"285ea8906cae9e3977ecc43de4231383"
 #define JSPatchAppKey @"41764ef38b2d53c7"
 
-#define kSoftwareNumChanged @"kSoftwareNumChanged"
-#define kWordButtonClicked  @"kWordButtonClicked"
+#define kSoftwareNumChanged  @"kSoftwareNumChanged"
+#define kEditSoftwareSuccess @"kEditSoftwareSuccess"
+#define kWordButtonClicked   @"kWordButtonClicked"
 #define kTopBarHeight       64
 #define kTabBarHeight       49
 

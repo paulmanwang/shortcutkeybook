@@ -19,7 +19,7 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    [super awakeFromNib];
     self.nameLabel.textColor = kAppTextColor;
     self.detailLabel.textColor = kAppTextColor;
 }
@@ -29,15 +29,39 @@
     [super setSelected:selected animated:animated];
 }
 
-+ (CGFloat)cellHeight
++ (CGFloat)cellHeightWithData:(ShortcutkeyItem *)item
 {
-    return 40.0f;
+    CGFloat maxWidth = 142.0f;
+    UIFont *font = [UIFont systemFontOfSize:15];
+    CGSize maxSize = CGSizeMake(maxWidth, MAXFLOAT);
+    CGSize nameLabelSize = [item.shortcutKeyName boundingRectWithSize:maxSize
+                            options:NSStringDrawingUsesLineFragmentOrigin
+                         attributes:@{NSFontAttributeName:font}
+                            context:nil].size;
+    
+    maxWidth = [UIScreen mainScreen].bounds.size.width - 142 - 37;
+    maxSize = CGSizeMake(maxWidth, MAXFLOAT);
+    CGSize detailLabelSize =  [item.shortcutKeyDetail boundingRectWithSize:maxSize
+                                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                                              attributes:@{NSFontAttributeName:font}
+                                                                 context:nil].size;
+    
+    if (nameLabelSize.height > 21 || detailLabelSize.height > 21) {
+        return 60;
+    } else {
+        return 40;
+    }
 }
 
 - (void)fillData:(ShortcutkeyItem *)item
 {
     self.nameLabel.text = item.shortcutKeyName;
     self.detailLabel.text = item.shortcutKeyDetail;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touchesBegan");
 }
 
 @end

@@ -12,4 +12,6 @@
 
 - (void)presentViewControllerWithNavi:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
 
+- (void)dismiss;
+
 @end

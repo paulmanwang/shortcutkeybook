@@ -1,0 +1,9 @@
+WordTest
+查找文字、格式和特殊项||ctrl+F
+使字符变为粗体||Ctrl+B
+为字符添加下划线||Ctrl+U
+&&&&&&
+ExcelTest
+移动到工作薄中的下一张工作表||CTRL+Page down
+移动到工作薄中的上一张工作表或选中其它工作表||ctrl+page up
+选中当前工作表和下一张工作表||shift+ctrl+page down

@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+WLC.h"
+#import <objc/runtime.h>
 
 @implementation UIViewController (WLC)
 
@@ -18,9 +19,21 @@
     [self presentViewController:naviController animated:animated completion:completion];
 }
 
+- (void)setAnimated:(BOOL)animated
+{
+    NSNumber *number = animated ? @1 : @0;
+    objc_setAssociatedObject(self, @"animated", number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (void)onCloseBtnClicked
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self dismiss];
+}
+
+- (void)dismiss
+{
+    NSNumber *animated = objc_getAssociatedObject(self, @"animated");
+    [self.navigationController dismissViewControllerAnimated:(animated.integerValue == 1) completion:nil];
 }
 
 @end

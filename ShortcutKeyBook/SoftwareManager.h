@@ -37,6 +37,8 @@ DECLARA_SHARED_INSTANCE
 
 - (void)deleteMyCreatedSoftwareWithSoftwareId:(NSInteger)softwareId completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
 
+- (void)editSoftwareWithId:(NSInteger)softwareId softwareName:(NSString *)softwareName shortcutkeys:(NSArray *)shortcutkeys completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
+
 - (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler;
 
 - (void)searchSoftwaresWithKeyword:(NSString *)keyword completionHandler:(void(^)(NSError *error, NSArray *softwares))completionHandler;

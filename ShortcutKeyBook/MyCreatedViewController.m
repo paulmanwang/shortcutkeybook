@@ -26,7 +26,14 @@
     [super viewDidLoad];
     self.title = @"我创建的快捷键";
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEditSoftwareSuccess) name:kEditSoftwareSuccess object:nil];
+    [self reloadData];
+}
+
+- (void)reloadData
+{
     NSString *account = [LoginManager sharedInstance].currentUserInfo.username;
+    
     [[SoftwareManager sharedInstance] queryAllMyCreatedSoftwaresWithAccount:account completionHandler:^(NSError *error, NSArray *softwares) {
         if (softwares.count > 0) {
             self.softwares = softwares;
@@ -35,6 +42,11 @@
             [EmptyView showOnView:self.view withText:@"您还没有创建过快捷键哦~"];
         }
     }];
+}
+
+- (void)onEditSoftwareSuccess
+{
+    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,35 +13,31 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
+                <frame key="frameInset" width="320" height="39"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快进" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlZ-TG-ruT">
-                        <rect key="frame" x="158" y="9" width="152" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="oz9-8s-8eC"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快进" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlZ-TG-ruT">
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="command+shift+alt+F" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brh-Ai-NCZ">
-                        <rect key="frame" x="15" y="9" width="142" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="command+shift+alt+F" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brh-Ai-NCZ">
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="KQF-Am-0Yp"/>
-                            <constraint firstAttribute="width" constant="142" id="f9C-b0-wCN"/>
+                            <constraint firstAttribute="width" constant="142" id="mkc-mx-CQ0"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="RlZ-TG-ruT" secondAttribute="trailing" constant="10" id="2IW-Fi-hcm"/>
-                    <constraint firstItem="RlZ-TG-ruT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="ZbZ-5t-mjH"/>
-                    <constraint firstItem="brh-Ai-NCZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="cWE-hM-pAd"/>
-                    <constraint firstItem="brh-Ai-NCZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="lfk-MQ-Y3O"/>
-                    <constraint firstItem="RlZ-TG-ruT" firstAttribute="leading" secondItem="brh-Ai-NCZ" secondAttribute="trailing" constant="1" id="oba-Xh-Zdx"/>
+                    <constraint firstItem="brh-Ai-NCZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="6ln-Km-tIZ"/>
+                    <constraint firstItem="brh-Ai-NCZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="B4F-bA-n6r"/>
+                    <constraint firstAttribute="bottom" secondItem="RlZ-TG-ruT" secondAttribute="bottom" constant="9" id="bIz-Se-nhL"/>
+                    <constraint firstItem="RlZ-TG-ruT" firstAttribute="leading" secondItem="brh-Ai-NCZ" secondAttribute="trailing" constant="12" id="dVF-ir-gH6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="brh-Ai-NCZ" secondAttribute="bottom" constant="1" id="ggJ-1j-Hud"/>
+                    <constraint firstAttribute="trailing" secondItem="RlZ-TG-ruT" secondAttribute="trailing" constant="10" id="ha3-Xp-4OS"/>
+                    <constraint firstItem="RlZ-TG-ruT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="pZe-6f-pjA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -323,6 +323,42 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
     }];
 }
 
+- (void)editSoftwareWithId:(NSInteger)softwareId softwareName:(NSString *)softwareName shortcutkeys:(NSArray *)shortcutkeys completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
+{
+    // 将数组转换为字符串
+    NSMutableDictionary *info = [NSMutableDictionary new];
+    info[@"shortcutkeys"] = shortcutkeys;
+    
+    NSString *shortcutString = [NSString stringWithJsonData:info];
+    NSRange range;
+    range.location = 16;
+    range.length = shortcutString.length - range.location - 1;
+    NSString *subString = [shortcutString substringWithRange:range];
+    
+    NSDictionary *parameters = @{
+                                 @"software_id":@(softwareId),
+                                 @"software_name":softwareName,
+                                 @"shortcutkeys": subString
+                                 };
+    
+    [self postWithProtocalName:@"editsoftware" parameters:parameters completionHandler:^(NSError *error, id bodyData) {
+        NSString *resultString = (NSString *)bodyData;
+        NSLog(@"editsoftware resultString = %@", resultString);
+        if (!completionHandler) {
+            return;
+        }
+        if (error) {
+            completionHandler(error, NO);
+        }
+        
+        if ([resultString isEqualToString:@"200:OK"]) {
+            completionHandler(nil, YES);
+        } else {
+            completionHandler(nil, NO);
+        }
+    }];
+}
+
 - (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
 {
     // 将数组转换为字符串

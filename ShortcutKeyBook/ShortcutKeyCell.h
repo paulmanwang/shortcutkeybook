@@ -11,7 +11,7 @@
 
 @interface ShortcutKeyCell : UITableViewCell
 
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeightWithData:(ShortcutkeyItem *)item;
 
 - (void)fillData:(ShortcutkeyItem *)item;
 

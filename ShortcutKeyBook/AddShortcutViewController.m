@@ -173,13 +173,17 @@
 
 - (void)postNotification
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSoftwareNumChanged object:self];
+    if (self.originSoftwareItem) {
+        NSString *softwareName = self.softwareNameLabel.text;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kEditSoftwareSuccess object:self userInfo:@{@"softwareName":softwareName}];
+    }
+    else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSoftwareNumChanged object:self];
+    }
 }
 
-- (void)submitShortcutKey
+- (NSArray *)addedShortcutkeys
 {
-    NSString *softwareName = self.softwareNameLabel.text;
-    
     NSMutableArray *addedShortcuts = [NSMutableArray array];
     for (ShortcutkeyItem *item in self.shortcutList) {
         if (item.shortcutKeyName.length > 0) {
@@ -190,6 +194,31 @@
         }
     }
     
+    return addedShortcuts;
+}
+
+- (void)editSoftware
+{
+    NSString *softwareName = self.softwareNameLabel.text;
+    NSArray *addedShortcuts = [self addedShortcutkeys];
+    [[SoftwareManager sharedInstance] editSoftwareWithId:self.originSoftwareItem.softwareId softwareName:softwareName shortcutkeys:addedShortcuts completionHandler:^(NSError *error, BOOL success) {
+        [self.view dismissLoadingView];
+        if (success) {
+            [self postNotification];
+            [self dismiss];
+            [self.view toastWithMessage:@"编辑成功"];
+        }
+        else {
+            [self.view toastWithMessage:@"编辑失败"];
+        }
+    }];
+}
+
+- (void)submitShortcutKey
+{
+    NSString *softwareName = self.softwareNameLabel.text;
+    NSArray *addedShortcuts = [self addedShortcutkeys];
+
     NSString *account = nil;
     if ([LoginManager sharedInstance].logged) {
         account = [LoginManager sharedInstance].currentUserInfo.username;
@@ -364,25 +393,14 @@
         return;
     }
     
-    __weak typeof(self) weakSelf = self;
     if (self.originSoftwareItem) {
         [self.view showLoadingViewWithText:@"正在提交信息..."];
-        // 正确的方式应该是删除软件的快捷键，然后再重新更新快捷键
-        [[SoftwareManager sharedInstance] deleteMyCreatedSoftwareWithSoftwareId:self.originSoftwareItem.softwareId completionHandler:^(NSError *error, BOOL success) {
-            if (error) {
-                [weakSelf.view toastWithMessage:@"提交失败"];
-                [weakSelf.view dismissLoadingView];
-            }
-            else {
-                [weakSelf submitShortcutKey];
-            }
-        }];
+        [self editSoftware];
     }
     else {
         [self.view showLoadingViewWithText:@"正在提交信息..."];
         [self submitShortcutKey];
     }
-    
 }
 
 #pragma mark - AlertView

@@ -50,6 +50,8 @@
         self.softwareItem = item;
         self.shouldShowEditButton = show;
         self.hidesBottomBarWhenPushed = YES;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEditSoftwareSuccess:) name:kEditSoftwareSuccess object:nil];
     }
     
     return self;
@@ -112,7 +114,13 @@
     
     self.browseCountLabel.text = [NSString stringWithFormat:@"%lu次浏览", self.softwareItem.browseCount];
     
+    [self reloadShortcutkeys];
+    
     // [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+}
+
+- (void)reloadShortcutkeys
+{
     self.isLoadingData = YES;
     [[SoftwareManager sharedInstance] queryAllShortcutKeysOfSoftware:self.softwareItem.softwareId completionHandler:^(NSError *error, NSArray *shortcutKeys) {
         self.isLoadingData = NO;
@@ -124,12 +132,20 @@
     }];
 }
 
+- (void)onEditSoftwareSuccess:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *softwareName = userInfo[@"softwareName"];
+    self.title = [NSString stringWithFormat:@"%@快捷键", softwareName];
+    [self reloadShortcutkeys];
+}
+
 - (void)onEditButtonClicked
 {
     AddShortcutViewController *addVC = [AddShortcutViewController new];
     [addVC setSoftwareItem:self.softwareItem shortcutkeyList:self.shortcutKeys];
     // 添加转场动画
-    [self presentViewControllerWithNavi:addVC animated:YES completion:nil];
+    [self presentViewControllerWithNavi:addVC animated:NO completion:nil];
 }
 
 - (void)timeout
@@ -212,7 +228,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [ShortcutKeyCell cellHeight];
+    ShortcutkeyItem *item = self.shortcutKeys[indexPath.row];
+    return [ShortcutKeyCell cellHeightWithData:item];
 }
 
 #pragma mark - Button actions

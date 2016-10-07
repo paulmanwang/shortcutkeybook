@@ -49,6 +49,11 @@
 		9241A7261D22182B00FF47F1 /* UIView+WLC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9241A7251D22182B00FF47F1 /* UIView+WLC.m */; };
 		9241A72C1D221EC600FF47F1 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9241A72B1D221EC600FF47F1 /* LoginManager.m */; };
 		9241A72F1D221EE800FF47F1 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9241A72E1D221EE800FF47F1 /* UserInfo.m */; };
+		925491361D9D16DD00C309DB /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 925491351D9D16DD00C309DB /* LockScreenView.m */; };
+		925491381D9D170300C309DB /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925491371D9D170300C309DB /* LockScreenView.xib */; };
+		9254913B1D9DFB6C00C309DB /* UnlockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9254913A1D9DFB6C00C309DB /* UnlockScreenView.m */; };
+		9254913D1D9DFBCF00C309DB /* UnlockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9254913C1D9DFBCF00C309DB /* UnlockScreenView.xib */; };
+		925491441DA0B91300C309DB /* shortcut.txt in Resources */ = {isa = PBXBuildFile; fileRef = 925491431DA0B91300C309DB /* shortcut.txt */; };
 		92797BB31D18FB2E00EADEE4 /* SoftwareSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */; };
 		927D24FC1D6218DE00F602FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D24FB1D6218DE00F602FE /* JavaScriptCore.framework */; };
 		927D25091D62200500F602FE /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D25081D62200500F602FE /* JSPatch.framework */; };
@@ -75,6 +80,7 @@
 		92843D901D1626E4000F9555 /* AddShortcutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92843D8E1D1626E4000F9555 /* AddShortcutTableViewCell.xib */; };
 		929A46DA1D501A3000882690 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929A46D91D501A3000882690 /* LaunchScreen.xib */; };
 		92A6C3911D8FA75700D9CFAE /* SKBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A6C3901D8FA75700D9CFAE /* SKBTabBarController.m */; };
+		92ABBD191D9A10A700CCFD3D /* WLCSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92ABBD181D9A10A700CCFD3D /* WLCSwipeView.m */; };
 		92B95DFD1D38AA1600E48581 /* OnePixelHeightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */; };
 		92B95E071D39B61500E48581 /* EmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B95E061D39B61500E48581 /* EmptyView.m */; };
 		92B95E091D39B62F00E48581 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B95E081D39B62F00E48581 /* EmptyView.xib */; };
@@ -172,6 +178,13 @@
 		9241A72D1D221EE800FF47F1 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		9241A72E1D221EE800FF47F1 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		9241A7301D22274F00FF47F1 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		925491341D9D16DD00C309DB /* LockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockScreenView.h; sourceTree = "<group>"; };
+		925491351D9D16DD00C309DB /* LockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockScreenView.m; sourceTree = "<group>"; };
+		925491371D9D170300C309DB /* LockScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LockScreenView.xib; sourceTree = "<group>"; };
+		925491391D9DFB6C00C309DB /* UnlockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnlockScreenView.h; sourceTree = "<group>"; };
+		9254913A1D9DFB6C00C309DB /* UnlockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnlockScreenView.m; sourceTree = "<group>"; };
+		9254913C1D9DFBCF00C309DB /* UnlockScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnlockScreenView.xib; sourceTree = "<group>"; };
+		925491431DA0B91300C309DB /* shortcut.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shortcut.txt; sourceTree = "<group>"; };
 		92797BB01D18FB2E00EADEE4 /* SoftwareSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareSearchViewController.h; sourceTree = "<group>"; };
 		92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareSearchViewController.m; sourceTree = "<group>"; };
 		927D24FB1D6218DE00F602FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -213,6 +226,8 @@
 		929A46D91D501A3000882690 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		92A6C38F1D8FA75700D9CFAE /* SKBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBTabBarController.h; sourceTree = "<group>"; };
 		92A6C3901D8FA75700D9CFAE /* SKBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBTabBarController.m; sourceTree = "<group>"; };
+		92ABBD171D9A10A700CCFD3D /* WLCSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCSwipeView.h; sourceTree = "<group>"; };
+		92ABBD181D9A10A700CCFD3D /* WLCSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCSwipeView.m; sourceTree = "<group>"; };
 		92B95DFB1D38AA1600E48581 /* OnePixelHeightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePixelHeightView.h; sourceTree = "<group>"; };
 		92B95DFC1D38AA1600E48581 /* OnePixelHeightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePixelHeightView.m; sourceTree = "<group>"; };
 		92B95E051D39B61500E48581 /* EmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyView.h; sourceTree = "<group>"; };
@@ -425,6 +440,7 @@
 		9241A6D71D1FE27E00FF47F1 /* Resorces */ = {
 			isa = PBXGroup;
 			children = (
+				925491431DA0B91300C309DB /* shortcut.txt */,
 				92843D501D155964000F9555 /* Assets.xcassets */,
 			);
 			name = Resorces;
@@ -593,6 +609,14 @@
 				928014AD1D4CEC3B004DEA23 /* SoftwareInfoViewController.h */,
 				928014AE1D4CEC3B004DEA23 /* SoftwareInfoViewController.m */,
 				928014AF1D4CEC3B004DEA23 /* SoftwareInfoViewController.xib */,
+				92ABBD171D9A10A700CCFD3D /* WLCSwipeView.h */,
+				92ABBD181D9A10A700CCFD3D /* WLCSwipeView.m */,
+				925491341D9D16DD00C309DB /* LockScreenView.h */,
+				925491351D9D16DD00C309DB /* LockScreenView.m */,
+				925491371D9D170300C309DB /* LockScreenView.xib */,
+				925491391D9DFB6C00C309DB /* UnlockScreenView.h */,
+				9254913A1D9DFB6C00C309DB /* UnlockScreenView.m */,
+				9254913C1D9DFBCF00C309DB /* UnlockScreenView.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -710,6 +734,7 @@
 				928014B11D4CEC3B004DEA23 /* SoftwareInfoViewController.xib in Resources */,
 				921FC9521D4858F000C0483D /* UMSCommentDetailController.xib in Resources */,
 				921FC9581D4858F000C0483D /* UMSnsAccountViewController.xib in Resources */,
+				925491441DA0B91300C309DB /* shortcut.txt in Resources */,
 				921FC9571D4858F000C0483D /* UMSLoginViewController.xib in Resources */,
 				929A46DA1D501A3000882690 /* LaunchScreen.xib in Resources */,
 				92BF5C611D1CE33D000FA2A8 /* CommentViewController.xib in Resources */,
@@ -728,9 +753,11 @@
 				921FC9501D4858F000C0483D /* UMSocialLocalizable.strings in Resources */,
 				92843D841D15A032000F9555 /* ShortcutKeyViewController.xib in Resources */,
 				921FC9561D4858F000C0483D /* UMShareEditViewControlleriPad.xib in Resources */,
+				925491381D9D170300C309DB /* LockScreenView.xib in Resources */,
 				921FC9551D4858F000C0483D /* UMShareEditViewController.xib in Resources */,
 				92843D7F1D159B84000F9555 /* ShortcutKeyCell.xib in Resources */,
 				927DB9361D32A768000D94B6 /* WLCToastView.xib in Resources */,
+				9254913D1D9DFBCF00C309DB /* UnlockScreenView.xib in Resources */,
 				923F50BE1D2B79F800A46AA6 /* AddCommentViewController.xib in Resources */,
 				92843D641D155A31000F9555 /* SoftwareListViewController.xib in Resources */,
 				92843D901D1626E4000F9555 /* AddShortcutTableViewCell.xib in Resources */,
@@ -799,6 +826,8 @@
 				9241A7001D20E22900FF47F1 /* MyCreatedViewController.m in Sources */,
 				928014B01D4CEC3B004DEA23 /* SoftwareInfoViewController.m in Sources */,
 				923F508F1D27727A00A46AA6 /* SoftwareItem.m in Sources */,
+				9254913B1D9DFB6C00C309DB /* UnlockScreenView.m in Sources */,
+				925491361D9D16DD00C309DB /* LockScreenView.m in Sources */,
 				92BF5C241D1BC90A000FA2A8 /* LoginViewController.m in Sources */,
 				92843D711D1590FC000F9555 /* SoftwareCell.m in Sources */,
 				92797BB31D18FB2E00EADEE4 /* SoftwareSearchViewController.m in Sources */,
@@ -827,6 +856,7 @@
 				92304C321D436BE100627100 /* WLCPraiseView.m in Sources */,
 				92304C371D43774200627100 /* WLCCommentView.m in Sources */,
 				92A6C3911D8FA75700D9CFAE /* SKBTabBarController.m in Sources */,
+				92ABBD191D9A10A700CCFD3D /* WLCSwipeView.m in Sources */,
 				923F50811D26338000A46AA6 /* SoftwareManager.m in Sources */,
 				92843D8F1D1626E4000F9555 /* AddShortcutTableViewCell.m in Sources */,
 				92843D631D155A31000F9555 /* SoftwareListViewController.m in Sources */,

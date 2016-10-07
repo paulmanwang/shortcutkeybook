@@ -37,6 +37,30 @@
     return self.frame.size.height;
 }
 
+- (void)setLeft:(CGFloat)left
+{
+    CGRect rect = self.frame;
+    rect.origin.x = left;
+    self.frame = rect;
+}
+
+- (CGFloat)left
+{
+    return self.frame.origin.x;
+}
+
+- (void)setRight:(CGFloat)right
+{
+    CGRect rect = self.frame;
+    rect.origin.x = right - rect.size.width;
+    self.frame = rect;
+}
+
+- (CGFloat)right
+{
+    return self.frame.origin.x + self.frame.size.width;
+}
+
 - (void)setTop:(CGFloat)top
 {
     CGRect rect = self.frame;
