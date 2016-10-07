@@ -14,10 +14,12 @@
 + (void)toastWithMessage:(NSString *)message onView:(UIView *)view
 {
     UITabBarController *tabBarViewController = [SKBTabBarController sharedInstance];
-    UINavigationController *naviController = (UINavigationController *)tabBarViewController.selectedViewController;
-    UIViewController *topViewController = naviController.visibleViewController;
+//    NSLog(@"tabBarViewController = %@", tabBarViewController.view);
+//    UINavigationController *naviController = (UINavigationController *)tabBarViewController.selectedViewController;
+//    UIViewController *topViewController = naviController.visibleViewController; // visibleViewController和topViewController的区别：visibleViewController Return modal view controller if it exists. Otherwise the top view controller.
+//    view = topViewController.view;
     
-    view = topViewController.view;
+    view = tabBarViewController.view;
     WLCToastView *toastView = (WLCToastView *)[UIView viewWithNib:@"WLCToastView" owner:nil];
     
     toastView.toastButton.userInteractionEnabled = NO;
