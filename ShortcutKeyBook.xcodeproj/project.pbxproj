@@ -524,6 +524,7 @@
 		927DB9311D32A72A000D94B6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				92843D7B1D159B84000F9555 /* ShortcutKeyCell.h */,
 				92B95E051D39B61500E48581 /* EmptyView.h */,
 				92B95E061D39B61500E48581 /* EmptyView.m */,
 				92B95E081D39B62F00E48581 /* EmptyView.xib */,
@@ -625,7 +626,6 @@
 			isa = PBXGroup;
 			children = (
 				92304C3C1D443DE200627100 /* Add */,
-				92843D7B1D159B84000F9555 /* ShortcutKeyCell.h */,
 				92843D7C1D159B84000F9555 /* ShortcutKeyCell.m */,
 				92843D7D1D159B84000F9555 /* ShortcutKeyCell.xib */,
 				92843D801D15A032000F9555 /* ShortcutKeyViewController.h */,

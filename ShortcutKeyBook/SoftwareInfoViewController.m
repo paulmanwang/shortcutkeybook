@@ -83,11 +83,10 @@
     }
     softwareName = [softwareName stringByEncodingURIComponent];
 
-    [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account completionHandler:^(NSError *error, BOOL success) {
+    [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account autoAdd:YES completionHandler:^(NSError *error, BOOL success) {
         self.importedIndex++;
         if (self.importedIndex < self.softwareInfos.count) {
             [self importSingleSoftware];
-            
             if (error) {
                 NSLog(@"%@导入失败", softwareName);
             }

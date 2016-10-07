@@ -359,7 +359,7 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
     }];
 }
 
-- (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
+- (void)createSoftwareWithName:(NSString *)name shortcutKeys:(NSArray *)shortcutKeys account:(NSString *)account autoAdd:(BOOL)autoAdd completionHandler:(void(^)(NSError *error, BOOL success))completionHandler
 {
     // 将数组转换为字符串
     NSMutableDictionary *info = [NSMutableDictionary new];
@@ -373,12 +373,14 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
     NSString *subString = [shortcutString substringWithRange:range];
     NSLog(@"subString = %@", subString);
     
+    NSString *strAutoAdd = autoAdd ? @"1":@"0";
     NSDictionary *parameters = @{
         @"name":name,
         @"create_account":account,
         @"detail":@"miaoshu",
         @"logo":@"",
-        @"shortcutkeys": subString
+        @"shortcutkeys": subString,
+        @"auto_add":strAutoAdd
     };
     
     [self postWithProtocalName:@"addonesoftware" parameters:parameters completionHandler:^(NSError *error, id bodyData) {
@@ -389,11 +391,17 @@ IMPLEMENTATE_SHARED_INSTANCE(SoftwareManager)
         }
         if (error) {
             completionHandler(error, NO);
+            return;
         }
         
-        if ([resultString isEqualToString:@"200:OK"]) {
-            completionHandler(nil, YES);
-        } else {
+        if ([resultString isKindOfClass:[NSString class]]) {
+            if ([resultString isEqualToString:@"200:OK"]) {
+                completionHandler(nil, YES);
+            } else {
+                completionHandler(nil, NO);
+            }
+        }
+        else {
             completionHandler(nil, NO);
         }
     }];

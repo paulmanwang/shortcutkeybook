@@ -227,7 +227,7 @@
     }
     softwareName = [softwareName stringByEncodingURIComponent];
     
-    [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account completionHandler:^(NSError *error, BOOL success) {
+    [[SoftwareManager sharedInstance] createSoftwareWithName:softwareName shortcutKeys:addedShortcuts account:account autoAdd:NO completionHandler:^(NSError *error, BOOL success) {
         [self.view dismissLoadingView];
         if (success) {
             NSLog(@"添加成功");

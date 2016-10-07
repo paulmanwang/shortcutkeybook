@@ -7,3 +7,7 @@ ExcelTest
 移动到工作薄中的下一张工作表||CTRL+Page down
 移动到工作薄中的上一张工作表或选中其它工作表||ctrl+page up
 选中当前工作表和下一张工作表||shift+ctrl+page down
+&&&&&&
+PPTTest
+移动到工作薄中的下一张工作表||CTRL+Page down
+移动到工作薄中的上一张工作表或选中其它工作表||ctrl+page up
