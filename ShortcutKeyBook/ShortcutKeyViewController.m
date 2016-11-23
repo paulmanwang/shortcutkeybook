@@ -107,8 +107,7 @@
     } else {
         self.authorLabel.text = self.softwareItem.userNickName;
     }
-    self.headerImageView.image = [UIImage imageNamed:self.softwareItem.userHeaderID];
-    
+    self.headerImageView.image = [UIImage imageNamed:self.softwareItem.userHeaderID];    
     NSArray *subStrings = [self.softwareItem.addTime componentsSeparatedByString:@" "];
     self.timeLabel.text = subStrings[0];
     

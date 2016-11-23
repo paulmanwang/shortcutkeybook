@@ -29,8 +29,6 @@
 @property (strong, nonatomic) NSMutableArray *shortcutList;
 @property (strong, nonatomic) IBOutlet UIView *wordHeaderView;
 
-@property (assign, nonatomic) BOOL isUIInit;
-
 @property (strong, nonatomic) SoftwareItem *originSoftwareItem;
 @property (copy, nonatomic) NSArray *originShortcutkeyList;
 
@@ -61,8 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self configTitleView];
     self.saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(onSubmitBtnClicked)];
@@ -80,18 +77,6 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    if (!self.isUIInit) {
-        self.wordHeaderView.top = 64;
-        self.tableView.top = 64 + kWordBoardHeight;
-        self.tableView.height = [self tableViewHeight];
-        self.isUIInit = YES;
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -99,30 +84,23 @@
 
 #pragma mark - notification
 
-- (CGFloat)tableViewHeight
-{
-    if (self.originSoftwareItem) {
-        return self.view.height - kTopBarHeight - kWordBoardHeight;
-    }
-    else {
-        return self.view.height - kTopBarHeight - kWordBoardHeight - kTabBarHeight;
-    }
-}
-
 - (void)onKeyboardWillShowNotification:(NSNotification *)notification
 {
-    NSLog(@"onKeyboardWillShowNotification");
-    //获取键盘的高度
     NSDictionary *userInfo = [notification userInfo];
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGFloat keyboardHeight = [aValue CGRectValue].size.height;
-    self.tableView.height = [self tableViewHeight] - keyboardHeight;
+    
+    if (self.originSoftwareItem) {
+        self.tableView.height = self.view.height - kWordBoardHeight - keyboardHeight;
+    }
+    else {
+        self.tableView.height = self.view.height + kTabBarHeight - kWordBoardHeight - keyboardHeight;
+    }
 }
 
 - (void)onKeyboardWillHideNotification:(NSNotification *)notification
 {
-    NSLog(@"onKeyboardWillHideNotification self.view.height = %f", self.view.height);
-    self.tableView.height = [self tableViewHeight];
+    self.tableView.height = self.view.height - kWordBoardHeight;
 }
 
 #pragma mark - TextFieldDelegate

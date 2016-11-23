@@ -91,6 +91,7 @@
     naviForAbout.tabBarItem.selectedImage = [UIImage imageNamed:@"aboutme_selected"];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor]; // 修正拉起时有黑边的大BUG
     self.window.rootViewController = tabBarController;
     
     [self.window makeKeyAndVisible];

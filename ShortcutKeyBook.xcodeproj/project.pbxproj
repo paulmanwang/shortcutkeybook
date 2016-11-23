@@ -187,6 +187,7 @@
 		925491431DA0B91300C309DB /* shortcut.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shortcut.txt; sourceTree = "<group>"; };
 		92797BB01D18FB2E00EADEE4 /* SoftwareSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareSearchViewController.h; sourceTree = "<group>"; };
 		92797BB11D18FB2E00EADEE4 /* SoftwareSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareSearchViewController.m; sourceTree = "<group>"; };
+		927AE0741DE5315E0077EF41 /* ShortcutKeyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutKeyCell.h; sourceTree = "<group>"; };
 		927D24FB1D6218DE00F602FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		927D25081D62200500F602FE /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
 		927DB9321D32A768000D94B6 /* WLCToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCToastView.h; sourceTree = "<group>"; };
@@ -211,7 +212,6 @@
 		92843D6E1D1590FC000F9555 /* SoftwareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareCell.h; sourceTree = "<group>"; };
 		92843D6F1D1590FC000F9555 /* SoftwareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareCell.m; sourceTree = "<group>"; };
 		92843D701D1590FC000F9555 /* SoftwareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareCell.xib; sourceTree = "<group>"; };
-		92843D7B1D159B84000F9555 /* ShortcutKeyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutKeyCell.h; sourceTree = "<group>"; };
 		92843D7C1D159B84000F9555 /* ShortcutKeyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutKeyCell.m; sourceTree = "<group>"; };
 		92843D7D1D159B84000F9555 /* ShortcutKeyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutKeyCell.xib; sourceTree = "<group>"; };
 		92843D801D15A032000F9555 /* ShortcutKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutKeyViewController.h; sourceTree = "<group>"; };
@@ -524,7 +524,6 @@
 		927DB9311D32A72A000D94B6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				92843D7B1D159B84000F9555 /* ShortcutKeyCell.h */,
 				92B95E051D39B61500E48581 /* EmptyView.h */,
 				92B95E061D39B61500E48581 /* EmptyView.m */,
 				92B95E081D39B62F00E48581 /* EmptyView.xib */,
@@ -626,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				92304C3C1D443DE200627100 /* Add */,
+				927AE0741DE5315E0077EF41 /* ShortcutKeyCell.h */,
 				92843D7C1D159B84000F9555 /* ShortcutKeyCell.m */,
 				92843D7D1D159B84000F9555 /* ShortcutKeyCell.xib */,
 				92843D801D15A032000F9555 /* ShortcutKeyViewController.h */,

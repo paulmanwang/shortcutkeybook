@@ -1,13 +1,208 @@
-WordTest
-查找文字、格式和特殊项||ctrl+F
+Word
+查找文字、格式和特殊项||Ctrl+F
 使字符变为粗体||Ctrl+B
 为字符添加下划线||Ctrl+U
+删除段落格式||Ctrl+Q
+复制所选文本或对象||Ctrl+C
+剪切所选文本或对象||Ctrl+X
+粘贴文本或对象||Ctrl+V
+撤消上一操作||Ctrl+Z
+重复上一操作||Ctrl+Y
+单倍行距||Ctrl+1
+双倍行距||Ctrl+2
+1.5倍行距	||Ctrl+5
+在段前添加一行间距||Ctrl+0
+段落居中||Ctrl+E
+分散对齐||Ctrl+Shift+D
+取消左侧段落缩进||Ctrl+Shift+M
+创建悬挂缩进||Ctrl+T
+减小悬挂缩进量||Ctrl+Shift+T
+取消段落格式||Ctrl+Q
+创建与当前或最近使用过的文档类型相同的新文档	||Ctrl+N
+打开文档||Ctrl+O
+撤消拆分文档窗口||Alt+Shift+C
+保存文档||Ctrl+S
 &&&&&&
-ExcelTest
+Excel
 移动到工作薄中的下一张工作表||CTRL+Page down
 移动到工作薄中的上一张工作表或选中其它工作表||ctrl+page up
 选中当前工作表和下一张工作表||shift+ctrl+page down
+取消选中多张工作表||ctrl+page down
+选中当前工作表和上一张工作表||ctrk+shift+page up
+移动到行首或窗口左上角的单元格||home
+移动到文件首||ctrL+home
+移动到文件尾||ctrL+end
+向右移动一屏||Alt+page down
+向左移动一屏||Alt+page up
+切换到被拆分的工作表中的下一个窗格||F6
+显示“定位”对话框||F5
+显示“查找”对话框||shift+F5
+重复上一次查找操作||shift+F4
+选中整列||ctrl+空格
+选中整行||shift+空格
+选中整张工作表||ctrl+A
+用当前输入项填充选中的单元格区域||ctrl+enter
+重复上一次操作||F4或ctrl+y
+向下填充||ctrl+d
+向右填充||ctrl+r
+定义名称||ctrl+F3
+插入超链接||ctrl+k
+插入时间||ctrl+shift+:
+输入日期||ctrl+;
+显示清单的当前列中的数值下拉列表||alt+向下键
+输入日圆符号||alt+0165
+关闭了单元格的编辑状态后，将插入点移动到编辑栏内||F2
+在公式中，显示“插入函数”对话框||shift+F3
+将定义的名称粘贴到公式中||F3
+用SUM函数插入“自动求和”公式||Alt+=
+计算所有打开的工作簿中的所有工作表||F9
+计算活动工作表||shift+F9
+删除插入点到行末的文本||ctrl+delete
+显示“拼写检查”对话框||F7
+显示“自动更正”智能标记时，撤消或恢复上次的自动更正||ctrl+shift+z
+显示Microft Office剪贴板（多项复制和粘贴）||ctrl+c再ctrl+c
+剪切选中的单元格||ctrl+X
+粘贴复制的单元格||ctrl+V
+插入空白单元格||ctrl+shift++
+显示“样式”对话框||alt+`
+显示“单元格格式”对话框||ctrl+1
+应用“常规”数字格式||ctrl+shift+~
+应用带两个小数位的“货币”格式（负数在括号内）||ctrl+shift+$
+应用不带小数位的“百分比”格式||ctrl+shift+%
+应用带两位小数位的“科学记数”数字格式||ctrl+shift+^
+应用含年，月，日的“日期”格式||ctrl+shift+#
+应用含小时和分钟并标明上午或下午的“时间”格式||ctrl+shift+@
+应用带两位小数位，使用千位分隔符且负数用负号（-）表示的“数字”格式。||ctrl+shift+！
+应用或取消加粗格式||ctrl+B
+应用或取消字体倾斜格式||ctrl+I
+应用或取消下划线||ctrl+U
+应用或取消删除线||ctrl+5
+隐藏选中行。||ctrl+9
 &&&&&&
-PPTTest
-移动到工作薄中的下一张工作表||CTRL+Page down
-移动到工作薄中的上一张工作表或选中其它工作表||ctrl+page up
+PPT
+小写或大写之间更改字符格式||Ctrl+T
+更改字母大小写||Shift+F3
+应用粗体格式||Ctrl+B
+应用下划线||Ctrl+U
+应用斜体格式||Ctrl+l
+应用下标格式(自动调整间距)||Ctrl+等号
+应用上标格式(自动调整间距)||Ctrl+Shift+加号
+删除手动字符格式，如下标和上标||Ctrl+space
+复制文本格式||Ctrl+Shift+C
+粘贴文本格式||Ctrl+Shift+V
+居中对齐段落||Ctrl+E
+使段落两端对齐||Ctrl+J
+使段落左对齐||Ctrl+L
+使段落右对齐||Ctrl+R
+全屏开始放映演示文稿。||F5
+执行下一个动画或前进到下一张幻灯片||Page Down、向右键、向下键或空格键
+执行上一个动画或返回到上一张幻灯片||Page Up、向左键、向上键或空格键
+转到幻灯片 number。||number+Enter
+显示空白的黑色幻灯片，或者从空白的黑色幻灯片返回到演示文稿||B或句号
+显示空白的白色幻灯片，或者从空白的白色幻灯片返回到演示文稿||W或逗号
+停止或重新启动自动演示文稿。||S
+结束演示文稿。	||Esc或连字符
+擦除屏幕上的注释。||E
+转到下一张隐藏的幻灯片。	||H
+排练时设置新的排练时间。||T
+排练时使用原排练时间。||O
+排练时通过鼠标单击前进。||M
+重新记录幻灯片旁白和计时||R
+返回到第一张幻灯片||同时按住鼠标左右键2秒钟
+显示或隐藏箭头指针||A 或 =
+&&&&&&
+xcode
+跳转到导航区的不同位置||Command+1~8
+显示/隐藏导航区||Command+0
+在不同检测器之间跳转||Command+Option+1~6
+在不同库之间跳转||Control+Command+Option+1~4
+在jump bar的不同标签页跳转||Control+1~6
+显示关闭工具区||Command+Option+0
+显示标准单窗口编辑器||Command+Enter
+打开Assitant editor||Command+Option+Enter
+代开版本控制编辑器||Command+Option+Shift+Enter
+显示/隐藏调试区||Command+Shift+Y
+快速查找||Command+Shift+O
+快速打开帮助文档||Command+Shift+0
+切换头文件和m.文件||Command+Control+上下箭头键
+文件回退或前进||Command+Control+左箭头或右箭头
+注释或取消注释||Command+/
+左缩进||Command+[
+右缩进||Command+]
+文件内搜索||Command+F
+全局搜索||Command+Shift+F
+快速帮助||option+鼠标左键
+折叠||Command+Option+LEFT
+取消折叠||Command+Option+RIGHT
+编译||Command+B
+清理||Command+Shift+K
+运行||Command+R
+停止||Command+.
+单步调试||F6
+跳入||F7
+继续||F8
+新建项目||Command+Shift+N
+新建文件||Command+N
+新建空文件||Command+Control+N
+打开||Command+O
+关闭窗口||Command+W
+保存所有文件||Command+option+S
+还原到保存时状态||Command+U
+向右一个字符（forward）||Control+F
+向左一个字符（backward）||Control+B
+前一行（previous）||Control+P
+后一行（next）||Control+N
+去行首||Control+A
+到行尾（end）||Control+E
+调换光标两边的字符（transpose）||Control+T
+删除光标右侧字符（delete）||Control+D
+删除本行剩余的字符（kill）||Control++K
+&&&&&&
+eclipse
+打开资源||ctrl+shift+r
+快速outline||ctrl+o
+快速转换编辑器||ctrl+e
+为本地变量赋值||ctrl+2，L
+重命名||alt+shift+r
+提取本地变量及方法||alt+shift+l以及alt+shift+m
+在当前行之下创建一个空白行||shift+enter
+将当前行的内容往上或下移动||Alt+方向键
+编辑器窗口最大化||ctrl+m
+下一个错误及快速修改||ctrl+.及ctrl+1
+&&&&&&
+macbook
+全选||Command+A
+拷贝||Command+C
+粘贴||Command+V
+文字剪切||Command+X
+保存||Command+S
+另存为....（部分程序适用）||Command+Shift+S
+在同一程序的不同窗口下切换||Command+～
+新建当前程序的文件||Command+N
+打印||Command+P
+偏好设置||Command+，
+页面设置||Command+Shift+P
+关闭当前窗口||Command+W
+关闭当前程序||Command+Q
+切换到下一个应用程序||Command+tab
+切换到上一个应用程序||Command+Shift+tab
+退出所有程序并注销||Command+Shift+Q
+强制退出应用程序，类似于win下的任务管理器||Command+Option+esc
+隐藏当前程序（Boss Key）||Command+H
+隐藏所有后台程序||Command+Option+H
+单击文件后按快捷键可以快速预览||Space或Command+Y
+用幻灯片显示||Command+Shift+Y
+打开用户文件夹||Command+Shift+H
+打开桌面||Command+Shift+D
+打开电脑||Command+Shift+C
+打开应用程序||Command+Shift+A
+打开实用工具||Command+Shift+U
+前往文件夹||Command+Shift+G
+前往服务器||Command+K
+按名称重排桌面图标,5是按种类重排||Command+Control+1
+推出磁盘||Command+E
+打开上一层文件夹||Command+上箭头
+进入下一层文件夹||Command+下箭头
+显示或隐藏||DockCommand+Option+D
+显示Dock上程序的位置||Command+点击Dock
+更改文件名||Enter
